@@ -1,0 +1,101 @@
+---
+title: ""
+format:
+  html:
+    css: styles.css
+    toc: false
+    page-layout: full
+---
+
+#
+
+::: {.edu-section}
+
+## Education
+
+<details class="edu-card">
+<summary>
+  <span class="edu-school">University of California, San Diego</span>
+  <span class="edu-meta">M.S. in Business Analytics | Jul 2025 – Dec 2026</span>
+</summary>
+
+<div class="edu-body">
+
+San Diego, CA
+
+**Relevant Courses**
+- AI-Assisted Math & Programming for Business Analytics
+- Business Analytics in Marketing, Finance, and Operations
+- SQL and ETL
+- Collecting and Analyzing Large Data
+- Business Intelligence
+- Customer Analytics
+- Supply Chain Analytics
+- Experiments for Business Analytics
+
+</div>
+</details>
+
+<details class="edu-card">
+<summary>
+  <span class="edu-school">Ewha Womans University</span>
+  <span class="edu-meta">B.A. in Business Administration & Economics | Mar 2009 – Aug 2013</span>
+</summary>
+
+<div class="edu-body">
+
+Seoul, South Korea
+
+**Exchange Program**
+- EDHEC Business School, France
+  - MSc-level Coursework in Financial Economics
+
+**Relevant Courses**
+- Statistics for Business
+- Mathematics for Economics
+- Management Information Systems
+- Introduction to Excel and VBA Programming
+- Financial Economics
+- Seminars on Economics (Financial Engineering)
+
+</div>
+</details>
+
+<details class="edu-card">
+<summary>
+  <span class="edu-school">Korea National Open University</span>
+  <span class="edu-meta">Additional Coursework in Data Science & Statistics | Mar 2023 – Dec 2024</span>
+</summary>
+
+<div class="edu-body">
+
+Seoul, South Korea
+
+**Relevant Courses**
+- Python Computing
+- Linear Algebra
+- Statistical Computing with R
+- Statistical Analysis Using Excel
+- Probability Concepts and Applications
+- Introduction to Statistics
+
+</div>
+</details>
+
+:::
+
+::: {.edu-section}
+
+## Certifications
+
+- Certified Public Accountant (CPA) <span class="cert-meta">| Washington State, 2025</span>
+- SQL Developer <span class="cert-meta">| K-Data, 2025</span>
+- Foreign Exchange Manager <span class="cert-meta">| KITA, 2015</span>
+
+## Languages
+
+- Korean (Native)
+- English (Fluent)
+- Russian (Conversational, TORFL Level 1)
+- French (Basic, DELF A1)
+:::

@@ -1,0 +1,104 @@
+---
+title: "Experience"
+format:
+  html:
+    css: styles.css
+    toc: false
+    page-layout: full
+---
+
+# Experience
+
+::: {.exp-section}
+
+<div class="exp-card">
+
+<div class="exp-header">
+  <div class="exp-company">Qualcomm</div>
+  <div class="exp-meta">Business Analytics Consultant (Capstone) · Apr 2026 – Present</div>
+</div>
+
+<div class="exp-body">
+
+<ul>
+<li>Building predictive models to forecast NRE spend by integrating program, labor, and financial data</li>
+<li>Improving forecast accuracy and cost visibility for strategic decision-making</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="exp-card">
+
+<div class="exp-header">
+  <div class="exp-company">POSCO International</div>
+  <div class="exp-meta">Full-time · Mar 2014 – Jun 2025</div>
+</div>
+
+<div class="exp-body">
+
+<strong>Business Operation Manager (FP&A, Strategy)</strong>
+<span class="exp-submeta">Jul 2024 – Jun 2025</span>
+
+<ul>
+<li>Led long-term strategic planning through KPI development and multi-scenario financial modeling</li>
+<li>Supported portfolio and investment decisions across production, pricing, and FX scenarios</li>
+</ul>
+
+<strong>Cost Controller, Offshore Gas Field Development Project (EPCIC)</strong>
+<span class="exp-submeta">Jan 2021 – Jun 2024</span>
+
+<ul>
+<li>Managed financial operations for a multi-hundred-million-dollar EPCIC project</li>
+<li>Led CAPEX forecasting, variance analysis, and executive reporting</li>
+</ul>
+
+<strong>Treasury Analyst (Trade Finance)</strong>
+<span class="exp-submeta">Mar 2020 – Dec 2020</span>
+
+<ul>
+<li>Reduced financing costs through negotiation of L/C and Open Account transactions</li>
+<li>Improved liquidity via receivables factoring and A/R cycle optimization</li>
+</ul>
+
+<strong>Enterprise Risk Analyst (Credit, A/R, Inventory, FX, Insurance, Compliance) </strong>
+<span class="exp-submeta">Mar 2014 – Feb 2020</span>
+
+<ul>
+<li>Analyzed global counterparties to mitigate credit risk</li>
+<li>Built SAP-based risk models and early warning systems</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="exp-card">
+
+<div class="exp-header">
+  <div class="exp-company">Early Experience</div>
+</div>
+
+<div class="exp-body">
+
+<strong>Trade Finance Intern · Scotiabank</strong>
+<span class="exp-submeta">Dec 2013 – Jan 2014 · Seoul, South Korea</span>
+
+<ul>
+<li>Reviewed L/C documentation and supported trade finance operations</li>
+<li>Assisted with regulatory reporting to the Bank of Korea</li>
+</ul>
+
+<strong>Credit Risk Analyst Intern · POSCO International</strong>
+<span class="exp-submeta">Jun 2013 – Oct 2013 · Seoul, South Korea</span>
+
+<ul>
+<li>Conducted credit risk analysis and prepared approval reports for senior management</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>

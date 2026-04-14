@@ -1,0 +1,40 @@
+---
+title: ""
+format:
+  html:
+    css: styles.css
+    toc: false
+    page-layout: full
+    include-in-header: |
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+---
+
+::: {.hero}
+
+::: {.hero-left}
+
+::: {.image-container}
+![](files/headshot_circle.png){.hero-image alt="Jiyoung Koo"}
+
+::: {.hero-icons}
+[<i class="bi bi-envelope"></i>](mailto:j5koo@ucsd.edu){aria-label="Email"}
+[<i class="bi bi-linkedin"></i>](https://www.linkedin.com/in/jiyoungkoo){target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"}
+[<i class="bi bi-github"></i>](https://github.com/jiyoungkoo){target="_blank" rel="noopener noreferrer" aria-label="GitHub"}
+:::
+:::
+
+:::
+
+::: {.hero-right}
+
+# Hi, I’m [Jiyoung.]{.accent}
+
+I am a data-driven Finance & Strategy professional and CPA, currently pursuing an M.S. in Business Analytics at UC San Diego.
+
+I am passionate about leveraging data to improve financial performance, optimize operations, and support strategic decision-making.
+
+Outside of work, I enjoy swing dancing, tennis, running, and golf.
+
+:::
+
+:::

@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Jiyoung Koo"
+  navbar:
+    left:
+      - icon: person-fill
+        href: index.qmd
+        text: About
+      - icon: mortarboard
+        href: education.qmd
+        text: Education
+      - icon: briefcase
+        href: experience.qmd
+        text: Experience
+      - icon: file-earmark-check
+        href: resume.qmd
+        text: Resume
+      - icon: laptop
+        href: projects.qmd
+        text: Projects
+
+format:
+  html:
+    theme:
+      - cosmos
+      - brand
+    css: styles.css
+    toc: true
