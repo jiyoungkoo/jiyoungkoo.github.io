@@ -1,31 +1,101 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Hi, I’m Jiyoung.",
+    "objectID": "experience.html",
+    "href": "experience.html",
+    "title": "Experience",
     "section": "",
-    "text": "Hi, I’m Jiyoung.\nI am a data-driven Finance & Strategy professional and CPA, currently pursuing an M.S. in Business Analytics at UC San Diego.\nI am passionate about leveraging data to improve financial performance, optimize operations, and support strategic decision-making.\nOutside of work, I enjoy swing dancing, tennis, running, and golf."
+    "text": "Qualcomm\n\n\nBusiness Analytics Consultant (Capstone) · Apr 2026 – Present\n\n\n\n\n\nBuilding predictive models to forecast NRE spend by integrating program, labor, and financial data\n\n\nImproving forecast accuracy and cost visibility for strategic decision-making\n\n\n\n\n\n\n\nPOSCO International\n\n\nFull-time · Mar 2014 – Jun 2025\n\n\n\nBusiness Operation Manager (FP&A, Strategy) Jul 2024 – Jun 2025\n\n\nLed long-term strategic planning through KPI development and multi-scenario financial modeling\n\n\nSupported portfolio and investment decisions across production, pricing, and FX scenarios\n\n\nCost Controller, Offshore Gas Field Development Project (EPCIC) Jan 2021 – Jun 2024\n\n\nManaged financial operations for a multi-hundred-million-dollar EPCIC project\n\n\nLed CAPEX forecasting, variance analysis, and executive reporting\n\n\nTreasury Analyst (Trade Finance) Mar 2020 – Dec 2020\n\n\nReduced financing costs through negotiation of L/C and Open Account transactions\n\n\nImproved liquidity via receivables factoring and A/R cycle optimization\n\n\nEnterprise Risk Analyst (Credit, A/R, Inventory, FX, Insurance, Compliance)  Mar 2014 – Feb 2020\n\n\nAnalyzed global counterparties to mitigate credit risk\n\n\nBuilt SAP-based risk models and early warning systems\n\n\n\n\n\n\n\n\nTrade Finance Intern · Scotiabank Dec 2013 – Jan 2014 · Seoul, South Korea\n\n\nReviewed L/C documentation and supported trade finance operations\n\n\nAssisted with regulatory reporting to the Bank of Korea\n\n\nCredit Risk Analyst Intern · POSCO International Jun 2013 – Oct 2013 · Seoul, South Korea\n\n\nConducted credit risk analysis and prepared approval reports for senior management"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Jiyoung Koo",
+    "objectID": "experience.html#early-experience",
+    "href": "experience.html#early-experience",
+    "title": "Experience",
     "section": "",
-    "text": "Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.\n\n\nUniversity of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011\n\n\n\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
+    "text": "Trade Finance Intern · Scotiabank Dec 2013 – Jan 2014 · Seoul, South Korea\n\n\nReviewed L/C documentation and supported trade finance operations\n\n\nAssisted with regulatory reporting to the Bank of Korea\n\n\nCredit Risk Analyst Intern · POSCO International Jun 2013 – Oct 2013 · Seoul, South Korea\n\n\nConducted credit risk analysis and prepared approval reports for senior management"
   },
   {
-    "objectID": "files/resume.html",
-    "href": "files/resume.html",
-    "title": "My Resume",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
     "section": "",
-    "text": "Download PDF file."
+    "text": "A/B Testing a Call to Action\n\n\nA simulation-based introduction to A/B testing and key ideas in classical frequentist statistics.\n\n\n\nJiyoung Koo\n\n\nApr 15, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "My Resume",
+    "objectID": "blog/ab_testing/ab_testing.html",
+    "href": "blog/ab_testing/ab_testing.html",
+    "title": "A/B Testing a Call to Action",
     "section": "",
-    "text": "Download PDF file."
+    "text": "import numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.stats import norm\nimport statsmodels.api as sm\nimport pandas as pd\n\nnp.random.seed(42)\nplt.rcParams[\"figure.figsize\"] = (8, 5)\nplt.rcParams[\"axes.spines.top\"] = False\nplt.rcParams[\"axes.spines.right\"] = False"
+  },
+  {
+    "objectID": "blog/ab_testing/ab_testing.html#introduction",
+    "href": "blog/ab_testing/ab_testing.html#introduction",
+    "title": "A/B Testing a Call to Action",
+    "section": "Introduction",
+    "text": "Introduction\nSuppose I run a website with a landing page that invites visitors to subscribe to a newsletter. A small wording change in that invitation may affect whether people decide to sign up, so rather than relying on intuition, I want to test two alternative calls to action.\nIn this example, CTA A reads “Sign up for our newsletter here!” and CTA B reads “Stay up to date by signing up!”. To evaluate which version performs better, I run an A/B test. In an A/B test, visitors are randomly assigned to see one of the two versions, and then I compare the sign-up rates across the groups. Because assignment is random, any systematic difference in outcomes can be attributed to the CTA rather than to differences in the visitors themselves."
+  },
+  {
+    "objectID": "blog/ab_testing/ab_testing.html#the-ab-test-as-a-statistical-problem",
+    "href": "blog/ab_testing/ab_testing.html#the-ab-test-as-a-statistical-problem",
+    "title": "A/B Testing a Call to Action",
+    "section": "The A/B Test as a Statistical Problem",
+    "text": "The A/B Test as a Statistical Problem\nEach visitor either signs up or does not sign up, so each individual outcome can be modeled as a draw from a Bernoulli distribution with parameter \\(\\pi\\), where \\(\\pi\\) is the probability of signing up.\nBecause the language of the CTA may affect user behavior, I allow that probability to differ across the two groups. Visitors who see CTA A have sign-up probability \\(\\pi_A\\), while visitors who see CTA B have sign-up probability \\(\\pi_B\\). In both groups, each observation takes only two possible values: 1 if the visitor signs up and 0 if the visitor does not.\nThe quantity I care about is the difference in sign-up rates between the two versions:\n\\[\n\\theta = \\pi_A - \\pi_B\n\\]\nTo estimate this quantity, I use the difference in sample means:\n\\[\n\\hat\\theta = \\bar{X}_A - \\bar{X}_B\n\\]\nBecause each observation is either 0 or 1, the sample mean is just the proportion of visitors who signed up. That means \\(\\bar{X}_A = \\hat\\pi_A\\) and \\(\\bar{X}_B = \\hat\\pi_B\\), so the estimator is simply the observed difference in sign-up rates."
+  },
+  {
+    "objectID": "blog/ab_testing/ab_testing.html#simulating-data",
+    "href": "blog/ab_testing/ab_testing.html#simulating-data",
+    "title": "A/B Testing a Call to Action",
+    "section": "Simulating Data",
+    "text": "Simulating Data\nIn a real A/B test, I would not know the true values of \\(\\pi_A\\) and \\(\\pi_B\\). For this exercise, however, it is useful to set those values ourselves so that we can study how the estimator behaves when we know the truth. This lets us compare what the simulation produces to the actual underlying treatment effect.\nHere I assume that the true sign-up probability under CTA A is 0.22 and the true sign-up probability under CTA B is 0.18. That means the true treatment effect is:\n\\[\n\\theta = 0.22 - 0.18 = 0.04\n\\]\nI now simulate 1,000 draws from each Bernoulli distribution.\n\nn = 1000\npi_A = 0.22\npi_B = 0.18\ntheta_true = pi_A - pi_B\n\nA = np.random.binomial(1, pi_A, n)\nB = np.random.binomial(1, pi_B, n)\n\npi_A_hat = A.mean()\npi_B_hat = B.mean()\ntheta_hat = pi_A_hat - pi_B_hat\n\nsummary_df = pd.DataFrame({\n    \"Group\": [\"CTA A\", \"CTA B\"],\n    \"True sign-up rate\": [pi_A, pi_B],\n    \"Sample sign-up rate\": [pi_A_hat, pi_B_hat],\n    \"Sample size\": [n, n]\n})\n\nsummary_df.round(4)\n\n\n\n\n\n\n\n\nGroup\nTrue sign-up rate\nSample sign-up rate\nSample size\n\n\n\n\n0\nCTA A\n0.22\n0.216\n1000\n\n\n1\nCTA B\n0.18\n0.178\n1000\n\n\n\n\n\n\n\nThe simulated sample proportions are not exactly equal to the true probabilities, but they should be reasonably close. That is exactly what we expect from random sampling."
+  },
+  {
+    "objectID": "blog/ab_testing/ab_testing.html#the-law-of-large-numbers",
+    "href": "blog/ab_testing/ab_testing.html#the-law-of-large-numbers",
+    "title": "A/B Testing a Call to Action",
+    "section": "The Law of Large Numbers",
+    "text": "The Law of Large Numbers\nThe Law of Large Numbers tells us that as the sample size grows, the sample mean converges to the population mean. In this setting, that idea is important because it helps justify why \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\) should be close to the true \\(\\theta\\) once the sample is large enough.\nTo illustrate this, I compute the element-wise differences between the simulated CTA A and CTA B outcomes, then calculate the cumulative average of that difference vector.\n\ndiff = A - B\ncum_avg = np.cumsum(diff) / np.arange(1, n + 1)\n\nplt.plot(np.arange(1, n + 1), cum_avg, linewidth=2)\nplt.axhline(theta_true, linestyle=\"--\", linewidth=2)\nplt.xlabel(\"Number of observations\")\nplt.ylabel(\"Cumulative average of A - B\")\nplt.title(\"Law of Large Numbers: Running estimate of the treatment effect\")\nplt.show()\n\n\n\n\n\n\n\n\nAt the beginning of the sample, the running average moves around quite a bit because each additional observation has a large impact on the estimate. As more observations are added, the line becomes much more stable and gradually settles near the true value of 0.04.\nThe main lesson from this plot is that larger samples reduce noise. The estimator is still random, but with enough observations it becomes much more reliable. This is the practical value of the Law of Large Numbers in an A/B testing context."
+  },
+  {
+    "objectID": "blog/ab_testing/ab_testing.html#bootstrap-standard-errors",
+    "href": "blog/ab_testing/ab_testing.html#bootstrap-standard-errors",
+    "title": "A/B Testing a Call to Action",
+    "section": "Bootstrap Standard Errors",
+    "text": "Bootstrap Standard Errors\nOnce I have an estimate of the treatment effect, the next question is how precise that estimate is. A point estimate alone does not tell us how much uncertainty remains, so it is useful to report a standard error and a confidence interval.\nOne way to estimate the standard error is by using the bootstrap. The bootstrap is a resampling method that avoids relying entirely on a closed-form formula. The basic idea is to repeatedly resample from the observed data, with replacement, and recalculate the statistic of interest each time. The standard deviation of those resampled statistics provides an estimate of the standard error.\nI now generate 1,000 bootstrap resamples. In each resample, I draw 1,000 observations with replacement from group A and 1,000 observations with replacement from group B, compute the difference in means, and store the result.\n\nboot_thetas = []\n\nfor _ in range(1000):\n    A_star = np.random.choice(A, size=n, replace=True)\n    B_star = np.random.choice(B, size=n, replace=True)\n    theta_star = A_star.mean() - B_star.mean()\n    boot_thetas.append(theta_star)\n\nboot_thetas = np.array(boot_thetas)\nboot_se = boot_thetas.std(ddof=1)\n\nanalytic_se = np.sqrt(\n    (pi_A_hat * (1 - pi_A_hat)) / n +\n    (pi_B_hat * (1 - pi_B_hat)) / n\n)\n\nci_lower = theta_hat - 1.96 * boot_se\nci_upper = theta_hat + 1.96 * boot_se\n\nse_results = pd.DataFrame({\n    \"Quantity\": [\n        \"Point estimate\",\n        \"Bootstrap standard error\",\n        \"Analytical standard error\",\n        \"95% CI lower bound\",\n        \"95% CI upper bound\"\n    ],\n    \"Value\": [theta_hat, boot_se, analytic_se, ci_lower, ci_upper]\n})\n\nse_results.round(4)\n\n\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\n0\nPoint estimate\n0.0380\n\n\n1\nBootstrap standard error\n0.0177\n\n\n2\nAnalytical standard error\n0.0178\n\n\n3\n95% CI lower bound\n0.0034\n\n\n4\n95% CI upper bound\n0.0726\n\n\n\n\n\n\n\nThe bootstrap standard error and the analytical standard error should be very close to one another. That is reassuring, because it suggests that both methods are capturing the same underlying uncertainty in the estimate.\nUsing the bootstrap standard error, the 95% confidence interval for \\(\\theta\\) is the point estimate plus or minus 1.96 standard errors. Interpreted in plain language, this interval gives a plausible range for the true difference in sign-up rates between the two CTAs. If the interval excludes zero, that suggests evidence of a real difference between the two versions."
+  },
+  {
+    "objectID": "blog/ab_testing/ab_testing.html#the-central-limit-theorem",
+    "href": "blog/ab_testing/ab_testing.html#the-central-limit-theorem",
+    "title": "A/B Testing a Call to Action",
+    "section": "The Central Limit Theorem",
+    "text": "The Central Limit Theorem\nThe Central Limit Theorem says that regardless of the shape of the underlying population distribution, the sampling distribution of the sample mean becomes approximately Normal as the sample size grows. Since my estimator is the difference in two sample means, the same idea applies here as well.\nTo demonstrate this, I simulate the sampling distribution of \\(\\hat\\theta\\) for four different sample sizes: \\(n \\in \\{25, 50, 100, 500\\}\\). For each sample size, I repeatedly draw observations from the two Bernoulli distributions, compute the difference in means, and repeat that process 1,000 times.\n\ndef simulate_theta_dist(sample_size, pi_A, pi_B, reps=1000):\n    estimates = []\n    for _ in range(reps):\n        A_sim = np.random.binomial(1, pi_A, sample_size)\n        B_sim = np.random.binomial(1, pi_B, sample_size)\n        estimates.append(A_sim.mean() - B_sim.mean())\n    return np.array(estimates)\n\nsample_sizes = [25, 50, 100, 500]\ntheta_sims = {s: simulate_theta_dist(s, pi_A, pi_B, reps=1000) for s in sample_sizes}\n\n\nfig, axes = plt.subplots(2, 2, figsize=(11, 8), sharex=True, sharey=True)\naxes = axes.flatten()\n\nall_vals = np.concatenate(list(theta_sims.values()))\nxmin, xmax = all_vals.min(), all_vals.max()\n\nfor ax, s in zip(axes, sample_sizes):\n    ax.hist(theta_sims[s], bins=30)\n    ax.axvline(theta_true, linestyle=\"--\", linewidth=2)\n    ax.set_title(f\"n = {s}\")\n    ax.set_xlim(xmin, xmax)\n    ax.set_xlabel(r\"$\\hat\\theta$\")\n    ax.set_ylabel(\"Frequency\")\n\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\nAt smaller sample sizes, the histograms look rougher and less smooth. As the sample size increases, the distribution becomes more regular and more bell-shaped. This is the Central Limit Theorem in action.\nThe important takeaway is that with large enough samples, the sampling distribution of the difference in means can be approximated well by a Normal distribution. That approximation is what makes large-sample hypothesis testing possible."
+  },
+  {
+    "objectID": "blog/ab_testing/ab_testing.html#hypothesis-testing",
+    "href": "blog/ab_testing/ab_testing.html#hypothesis-testing",
+    "title": "A/B Testing a Call to Action",
+    "section": "Hypothesis Testing",
+    "text": "Hypothesis Testing\nNow that I have seen the Central Limit Theorem in action, I can use it to perform a formal hypothesis test. The purpose of a hypothesis test is to evaluate whether the observed difference in sign-up rates could reasonably have occurred if there were actually no difference between the two CTAs.\nThe null and alternative hypotheses are:\n\\[\nH_0: \\theta = 0\n\\]\n\\[\nH_1: \\theta \\neq 0\n\\]\nTo test the null, I standardize the estimate using its standard error:\n\\[\nz = \\frac{\\hat\\theta - 0}{SE(\\hat\\theta)}\n\\]\nThe logic behind this is straightforward. First, the CLT tells us that \\(\\hat\\theta\\) is approximately Normally distributed in large samples. Second, under the null hypothesis that distribution is centered at 0. Third, when a Normal random variable is divided by its standard deviation, the result follows a standard Normal distribution. That means under \\(H_0\\), the statistic \\(z\\) is approximately distributed as \\(N(0,1)\\), which gives us a reference distribution for computing a p-value.\nThis is sometimes called a t-test, but in this setting it is more accurate to think of it as a large-sample z-test. The classical exact t-test comes from Normally distributed data with an estimated variance. Here the data are Bernoulli rather than Normal, so there is no exact t-distribution result. Instead, we rely on the CLT and a Normal approximation. In large samples, the practical difference is very small, but the conceptual distinction is still worth understanding.\n\nz_stat = theta_hat / analytic_se\np_value = 2 * (1 - norm.cdf(abs(z_stat)))\n\nht_results = pd.DataFrame({\n    \"Statistic\": [\"Estimate\", \"Standard error\", \"z-statistic\", \"p-value\"],\n    \"Value\": [theta_hat, analytic_se, z_stat, p_value]\n})\n\nht_results.round(4)\n\n\n\n\n\n\n\n\nStatistic\nValue\n\n\n\n\n0\nEstimate\n0.0380\n\n\n1\nStandard error\n0.0178\n\n\n2\nz-statistic\n2.1388\n\n\n3\np-value\n0.0325\n\n\n\n\n\n\n\nA small p-value indicates that the observed difference would be unlikely under the null hypothesis of no treatment effect. In this simulation, because the true difference is 0.04, I would expect the test to often provide evidence against the null, although randomness still matters in any single sample."
+  },
+  {
+    "objectID": "blog/ab_testing/ab_testing.html#the-t-test-as-a-regression",
+    "href": "blog/ab_testing/ab_testing.html#the-t-test-as-a-regression",
+    "title": "A/B Testing a Call to Action",
+    "section": "The T-Test as a Regression",
+    "text": "The T-Test as a Regression\nIt turns out that this two-sample comparison is mathematically equivalent to a simple linear regression. That is useful because it shows that A/B testing can be analyzed using the same tools that are commonly used for regression, and those tools extend naturally to more complex settings.\nTo do this, I stack the two groups into a single dataset. Let \\(Y_i\\) be the outcome for visitor \\(i\\), equal to 1 if the visitor signs up and 0 otherwise. Let \\(D_i\\) be an indicator equal to 1 if the visitor saw CTA A and 0 if the visitor saw CTA B. I then estimate the regression:\n\\[\nY_i = \\beta_0 + \\beta_1 D_i + \\varepsilon_i\n\\]\nIn this model, \\(\\beta_0\\) is the expected value of \\(Y_i\\) when \\(D_i = 0\\), which is the mean of group B. The quantity \\(\\beta_0 + \\beta_1\\) is the expected value of \\(Y_i\\) when \\(D_i = 1\\), which is the mean of group A. Therefore, \\(\\beta_1\\) must be the difference in means, \\(\\pi_A - \\pi_B = \\theta\\). That means the OLS estimate \\(\\hat\\beta_1\\) is numerically identical to \\(\\hat\\theta\\).\n\nY = np.concatenate([A, B])\nD = np.concatenate([np.ones(n), np.zeros(n)])\n\nreg_df = pd.DataFrame({\n    \"Y\": Y,\n    \"D\": D\n})\n\nX = sm.add_constant(reg_df[\"D\"])\nmodel = sm.OLS(reg_df[\"Y\"], X).fit()\n\nreg_results = pd.DataFrame({\n    \"Statistic\": [\"Coefficient on D\", \"Standard error\", \"t-statistic\", \"p-value\"],\n    \"Value\": [\n        model.params[\"D\"],\n        model.bse[\"D\"],\n        model.tvalues[\"D\"],\n        model.pvalues[\"D\"]\n    ]\n})\n\nreg_results.round(4)\n\n\n\n\n\n\n\n\nStatistic\nValue\n\n\n\n\n0\nCoefficient on D\n0.0380\n\n\n1\nStandard error\n0.0178\n\n\n2\nt-statistic\n2.1377\n\n\n3\np-value\n0.0327\n\n\n\n\n\n\n\n\ncomparison = pd.DataFrame({\n    \"Approach\": [\"Two-sample test\", \"Regression\"],\n    \"Estimate\": [theta_hat, model.params[\"D\"]],\n    \"SE\": [analytic_se, model.bse[\"D\"]],\n    \"Test statistic\": [z_stat, model.tvalues[\"D\"]],\n    \"p-value\": [p_value, model.pvalues[\"D\"]]\n})\n\ncomparison.round(4)\n\n\n\n\n\n\n\n\nApproach\nEstimate\nSE\nTest statistic\np-value\n\n\n\n\n0\nTwo-sample test\n0.038\n0.0178\n2.1388\n0.0325\n\n\n1\nRegression\n0.038\n0.0178\n2.1377\n0.0327\n\n\n\n\n\n\n\nThe coefficient estimate from the regression matches the difference-in-means estimate from the earlier section. The standard errors may differ slightly because the regression output uses the standard OLS variance formula, while the earlier analytical formula was tailored specifically to Bernoulli samples.\nThis equivalence matters because the regression framework makes it easy to add controls, interaction terms, or multiple treatments. In the simple two-group case, it gives the same basic answer, but it also opens the door to more flexible experimental analysis."
+  },
+  {
+    "objectID": "blog/ab_testing/ab_testing.html#the-problem-with-peeking",
+    "href": "blog/ab_testing/ab_testing.html#the-problem-with-peeking",
+    "title": "A/B Testing a Call to Action",
+    "section": "The Problem with Peeking",
+    "text": "The Problem with Peeking\nNow suppose a manager is impatient and does not want to wait until the full sample has been collected. Instead, she checks the hypothesis test after every 100 visitors per group and stops the experiment early if any one of those tests is significant at the 5% level.\nThis is a problem under classical frequentist inference. A single test at \\(\\alpha = 0.05\\) has a 5% chance of producing a false positive when the null is true. But when I repeatedly test the data as it accumulates, each peek creates another opportunity to reject the null by chance alone. The overall probability of at least one false rejection becomes much larger than 5%.\nTo show this, I simulate a world in which the null hypothesis is true, so that \\(\\pi_A = \\pi_B = 0.20\\). In each simulated experiment, I generate 1,000 observations for each group and compute a p-value after every 100 observations per group. If any one of those p-values is below 0.05, I count that experiment as a false positive. I then repeat the entire process 10,000 times.\n\ndef run_peeking_experiment(n_total=1000, p=0.20, step=100, alpha=0.05):\n    A_null = np.random.binomial(1, p, n_total)\n    B_null = np.random.binomial(1, p, n_total)\n\n    for i in range(step, n_total + 1, step):\n        A_sub = A_null[:i]\n        B_sub = B_null[:i]\n\n        theta_i = A_sub.mean() - B_sub.mean()\n        pA_i = A_sub.mean()\n        pB_i = B_sub.mean()\n\n        se_i = np.sqrt(\n            (pA_i * (1 - pA_i)) / i +\n            (pB_i * (1 - pB_i)) / i\n        )\n\n        if se_i == 0:\n            continue\n\n        z_i = theta_i / se_i\n        pval_i = 2 * (1 - norm.cdf(abs(z_i)))\n\n        if pval_i &lt; alpha:\n            return 1\n\n    return 0\n\nn_experiments = 10000\npeeking_results = np.array([run_peeking_experiment() for _ in range(n_experiments)])\nfalse_positive_rate = peeking_results.mean()\n\npeeking_summary = pd.DataFrame({\n    \"Scenario\": [\"Nominal false positive rate from one test\", \"Empirical false positive rate with peeking\"],\n    \"Rate\": [0.05, false_positive_rate]\n})\n\npeeking_summary.round(4)\n\n\n\n\n\n\n\n\nScenario\nRate\n\n\n\n\n0\nNominal false positive rate from one test\n0.0500\n\n\n1\nEmpirical false positive rate with peeking\n0.1987\n\n\n\n\n\n\n\nThe simulated false positive rate under peeking is usually much higher than 0.05. That means repeated checking makes it much easier to incorrectly declare a winner even when the two CTAs are actually identical.\nIn practice, this matters because A/B tests are often monitored in real time. If the stopping rule is not planned in advance, ordinary p-values can become misleading. Classical frequentist inference assumes a fixed analysis plan, and peeking violates that assumption."
+  },
+  {
+    "objectID": "blog/ab_testing/ab_testing.html#conclusion",
+    "href": "blog/ab_testing/ab_testing.html#conclusion",
+    "title": "A/B Testing a Call to Action",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis A/B testing example illustrates several core ideas in classical frequentist statistics. The Law of Large Numbers shows why sample averages become more reliable as the sample grows. The bootstrap provides a practical way to measure uncertainty. The Central Limit Theorem explains why Normal approximations become useful for inference. Hypothesis testing gives a formal framework for evaluating evidence, and the regression formulation shows that the same logic can be expressed in a broader modeling language.\nJust as importantly, the peeking example shows that sound inference depends not only on formulas but also on disciplined experimental practice. A/B testing is powerful, but only when it is paired with careful statistical reasoning."
   },
   {
     "objectID": "projects.html",
@@ -33,6 +103,13 @@
     "title": "My Projects",
     "section": "",
     "text": "No matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Jiyoung Koo",
+    "section": "",
+    "text": "Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.\n\n\nUniversity of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011\n\n\n\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
   },
   {
     "objectID": "about.html#education",
@@ -49,41 +126,6 @@
     "text": "Wengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
   },
   {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "Jiyoung Koo",
-    "section": "Education",
-    "text": "Education\n\nUniversity of California, San Diego M.S. in Business Analytics, 2025 - 2026\nEwha Womans University B.A. in Business Administration and Economics, 2009 - 2013"
-  },
-  {
-    "objectID": "index.html#experience",
-    "href": "index.html#experience",
-    "title": "Jiyoung Koo",
-    "section": "Experience",
-    "text": "Experience\n\nPOSCO International 2013 - 2025\n\nBusiness Operation Manager (FP&A, Strategy) 2024 - 2025\nCost Controller (EPCIC Project) 2021 - 2024\nTrade Finance Analyst 2020\nTrade Risk Analyst (Credit, Operations) 2014 - 2020\nEnterprise Risk Management Intern 2013"
-  },
-  {
-    "objectID": "index.html#certifications",
-    "href": "index.html#certifications",
-    "title": "Jiyoung Koo",
-    "section": "Certifications",
-    "text": "Certifications\n\nCertified Public Accountant (CPA) Washington State\nSQL Developer K-Data\nForeign Exchange Manager Korea International Trade Association"
-  },
-  {
-    "objectID": "index.html#current",
-    "href": "index.html#current",
-    "title": "Jiyoung Koo",
-    "section": "Current",
-    "text": "Current\n\nM.S. in Business Analytics UC San Diego\nCPA Washington State\nSeeking Finance, Strategy, and Analytics Opportunities U.S."
-  },
-  {
-    "objectID": "index.html#experience-1",
-    "href": "index.html#experience-1",
-    "title": "Jiyoung Koo",
-    "section": "Experience",
-    "text": "Experience\n\nPOSCO International 2013 - 2025\n\nBusiness Operation Manager (FP&A, Strategy) 2024 - 2025\nCost Controller (EPCIC Project) 2021 - 2024\nTrade Finance Analyst 2020\nTrade Risk Analyst (Credit, Operations) 2014 - 2020\nEnterprise Risk Management Intern 2013"
-  },
-  {
     "objectID": "education.html",
     "href": "education.html",
     "title": "",
@@ -98,62 +140,6 @@
     "text": "University of California, San Diego M.S. in Business Analytics | Jul 2025 – Dec 2026\n\n\nSan Diego, CA\nRelevant Courses - AI-Assisted Math & Programming for Business Analytics - Business Analytics in Marketing, Finance, and Operations - SQL and ETL - Collecting and Analyzing Large Data - Business Intelligence - Customer Analytics - Supply Chain Analytics - Experiments for Business Analytics\n\n\n\n\nEwha Womans University B.A. in Business Administration & Economics | Mar 2009 – Aug 2013\n\n\nSeoul, South Korea\nExchange Program - EDHEC Business School, France - MSc-level Coursework in Financial Economics\nRelevant Courses - Statistics for Business - Mathematics for Economics - Management Information Systems - Introduction to Excel and VBA Programming - Financial Economics - Seminars on Economics (Financial Engineering)\n\n\n\n\nKorea National Open University Additional Coursework in Data Science & Statistics | Mar 2023 – Dec 2024\n\n\nSeoul, South Korea\nRelevant Courses - Python Computing - Linear Algebra - Statistical Computing with R - Statistical Analysis Using Excel - Probability Concepts and Applications - Introduction to Statistics"
   },
   {
-    "objectID": "education.html#experience",
-    "href": "education.html#experience",
-    "title": "Jiyoung Koo",
-    "section": "",
-    "text": "Wengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
-  },
-  {
-    "objectID": "experience.html",
-    "href": "experience.html",
-    "title": "Experience",
-    "section": "",
-    "text": "Experience\n\n\n\n\nQualcomm\n\n\nBusiness Analytics Consultant (Capstone) · Apr 2026 – Present\n\n\n\n\n\nBuilding predictive models to forecast NRE spend by integrating program, labor, and financial data\n\n\nImproving forecast accuracy and cost visibility for strategic decision-making\n\n\n\n\n\n\n\nPOSCO International\n\n\nFull-time · Mar 2014 – Jun 2025\n\n\n\nBusiness Operation Manager (FP&A, Strategy) Jul 2024 – Jun 2025\n\n\nLed long-term strategic planning through KPI development and multi-scenario financial modeling\n\n\nSupported portfolio and investment decisions across production, pricing, and FX scenarios\n\n\nCost Controller, Offshore Gas Field Development Project (EPCIC) Jan 2021 – Jun 2024\n\n\nManaged financial operations for a multi-hundred-million-dollar EPCIC project\n\n\nLed CAPEX forecasting, variance analysis, and executive reporting\n\n\nTreasury Analyst (Trade Finance) Mar 2020 – Dec 2020\n\n\nReduced financing costs through negotiation of L/C and Open Account transactions\n\n\nImproved liquidity via receivables factoring and A/R cycle optimization\n\n\nEnterprise Risk Analyst (Credit, A/R, Inventory, FX, Insurance, Compliance)  Mar 2014 – Feb 2020\n\n\nAnalyzed global counterparties to mitigate credit risk\n\n\nBuilt SAP-based risk models and early warning systems\n\n\n\n\n\n\n\nEarly Experience\n\n\n\nTrade Finance Intern · Scotiabank Dec 2013 – Jan 2014 · Seoul, South Korea\n\n\nReviewed L/C documentation and supported trade finance operations\n\n\nAssisted with regulatory reporting to the Bank of Korea\n\n\nCredit Risk Analyst Intern · POSCO International Jun 2013 – Oct 2013 · Seoul, South Korea\n\n\nConducted credit risk analysis and prepared approval reports for senior management"
-  },
-  {
-    "objectID": "experience.html#education",
-    "href": "experience.html#education",
-    "title": "Jiyoung Koo",
-    "section": "",
-    "text": "University of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011"
-  },
-  {
-    "objectID": "experience.html#experience",
-    "href": "experience.html#experience",
-    "title": "Experience",
-    "section": "",
-    "text": "POSCO International 2013 - 2025\n\nBusiness Operation Manager (FP&A, Strategy) 2024 - 2025\nCost Controller (EPCIC Project) 2021 - 2024\nTrade Finance Analyst 2020\nTrade Risk Analyst (Credit, Operations) 2014 - 2020\nEnterprise Risk Management Intern 2013"
-  },
-  {
-    "objectID": "experience.html#posco-international",
-    "href": "experience.html#posco-international",
-    "title": "Experience",
-    "section": "",
-    "text": "POSCO International 2013 - 2025\n\nBusiness Operation Manager (FP&A, Strategy) 2024 - 2025\nCost Controller (EPCIC Project) 2021 - 2024\nTrade Finance Analyst 2020\nTrade Risk Analyst (Credit, Operations) 2014 - 2020\nEnterprise Risk Management Intern 2013"
-  },
-  {
-    "objectID": "experience.html#posco-international-2013---2025",
-    "href": "experience.html#posco-international-2013---2025",
-    "title": "Experience",
-    "section": "",
-    "text": "Business Operation Manager (FP&A, Strategy) 2024 - 2025\nCost Controller (EPCIC Project) 2021 - 2024\nTrade Finance Analyst 2020\nTrade Risk Analyst (Credit, Operations) 2014 - 2020\nEnterprise Risk Management Intern 2013"
-  },
-  {
-    "objectID": "experience.html#posco-international-mar-2014-jun-2025",
-    "href": "experience.html#posco-international-mar-2014-jun-2025",
-    "title": "Experience",
-    "section": "",
-    "text": "Business Operation Manager (FP&A, Strategy) Jul 2024 – Jun 2025\nCost Control Lead, Gas Field Development Project (EPCIC) Jan 2021 – Jun 2024\nTrade Finance Associate Mar 2020 – Dec 2020\nEnterprise Risk Analyst (Credit Risk, Operations) Mar 2014 – Feb 2020\nEnterprise Risk Management Intern Jun 2013 – Oct 2013"
-  },
-  {
-    "objectID": "education.html#education-1",
-    "href": "education.html#education-1",
-    "title": "Education",
-    "section": "",
-    "text": "University of California, San Diego M.S. in Business Analytics | Jul 2025 – Dec 2026\n\n\nSan Diego, CA\nRelevant Courses - AI-Assisted Math & Programming for Business Analytics - Business Analytics in Marketing, Finance, and Operations - SQL and ETL - Collecting and Analyzing Large Data - Business Intelligence - Customer Analytics - Supply Chain Analytics - Experiments for Business Analytics\n\n\n\n\nEwha Womans University B.A. in Business Administration & Economics | Mar 2009 – Aug 2013\n\n\nSeoul, South Korea\nRelevant Courses - Statistics for Business - Mathematics for Economics - Management Information Systems - Introduction to Excel and VBA Programming - Financial Economics - Seminars on Economics (Financial Engineering)\n\n\n\n\nKorea National Open University Additional Coursework in Data Science & Statistics | Mar 2023 – Dec 2024\n\n\nSeoul, South Korea\nRelevant Courses - Python Computing - Linear Algebra - Statistical Computing with R - Statistical Analysis Using Excel - Probability Concepts and Applications - Introduction to Statistics"
-  },
-  {
     "objectID": "education.html#certifications",
     "href": "education.html#certifications",
     "title": "",
@@ -166,5 +152,89 @@
     "title": "",
     "section": "",
     "text": "Korean (Native)\nEnglish (Fluent)\nRussian (Conversational, TORFL Level 1)\nFrench (Basic, DELF A1)"
+  },
+  {
+    "objectID": "hw1_questions.html",
+    "href": "hw1_questions.html",
+    "title": "A/B Testing a Call to Action",
+    "section": "",
+    "text": "Note\n\n\n\nWrite a short introduction for the reader that sets the scene. Cover the following points in your own words:\n\nYou have a website and your landing page includes a place where visitors can sign up to receive your newsletter.\nYou want to test which of two possible “calls to action” (CTAs) leads to more sign-ups. CTA A reads “Sign up for our newsletter here!” and CTA B reads “Stay up to date by signing up!” (you are welcome to change the language of the CTAs).\nYou will evaluate which CTA performs better by running an A/B test. Explain what an A/B test is: visitors are randomly assigned to see one of the two CTAs, and you compare sign-up rates between the two groups."
+  },
+  {
+    "objectID": "hw1_questions.html#introduction",
+    "href": "hw1_questions.html#introduction",
+    "title": "A/B Testing a Call to Action",
+    "section": "",
+    "text": "Note\n\n\n\nWrite a short introduction for the reader that sets the scene. Cover the following points in your own words:\n\nYou have a website and your landing page includes a place where visitors can sign up to receive your newsletter.\nYou want to test which of two possible “calls to action” (CTAs) leads to more sign-ups. CTA A reads “Sign up for our newsletter here!” and CTA B reads “Stay up to date by signing up!” (you are welcome to change the language of the CTAs).\nYou will evaluate which CTA performs better by running an A/B test. Explain what an A/B test is: visitors are randomly assigned to see one of the two CTAs, and you compare sign-up rates between the two groups."
+  },
+  {
+    "objectID": "hw1_questions.html#the-ab-test-as-a-statistical-problem",
+    "href": "hw1_questions.html#the-ab-test-as-a-statistical-problem",
+    "title": "A/B Testing a Call to Action",
+    "section": "The A/B Test as a Statistical Problem",
+    "text": "The A/B Test as a Statistical Problem\n\n\n\n\n\n\nNote\n\n\n\nIn this section, connect the A/B test to a formal statistical framework. Address each of the following ideas:\n\nEach visitor either signs up or does not, so we can model each visitor’s outcome as a draw from a Bernoulli distribution with parameter \\(\\pi\\), the probability of signing up.\nBecause the CTA a visitor sees may influence their probability of signing up, we allow the parameter to differ across groups: visitors who see CTA A have sign-up probability \\(\\pi_A\\), and visitors who see CTA B have sign-up probability \\(\\pi_B\\). Each visitor can either sign up (1) or not (0).\nThe quantity we care about is \\(\\theta = \\pi_A - \\pi_B\\), the difference in sign-up rates between the two CTAs.\nOur estimator of \\(\\theta\\) is the difference in sample means, \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\). (Since each observation is either 0 or 1, the sample mean is simply the proportion of visitors who signed up — so \\(\\bar{X}_A = \\hat\\pi_A\\) and \\(\\bar{X}_B = \\hat\\pi_B\\).)"
+  },
+  {
+    "objectID": "hw1_questions.html#simulating-data",
+    "href": "hw1_questions.html#simulating-data",
+    "title": "A/B Testing a Call to Action",
+    "section": "Simulating Data",
+    "text": "Simulating Data\n\n\n\n\n\n\nNote\n\n\n\n\nWrite a brief paragraph for the reader explaining that in the real world we would not know the true values of \\(\\pi_A\\) and \\(\\pi_B\\), but for the purpose of this exercise we will set them ourselves so that we can study the behavior of our estimator when we know the truth.\nSuppose \\(\\pi_A = 0.22\\) and \\(\\pi_B = 0.18\\), so the true difference is \\(\\theta = 0.04\\).\nUsing a language of your choice, simulate 1,000 draws from each of the two Bernoulli distributions (2,000 total). Store the results so you can use them in the sections that follow."
+  },
+  {
+    "objectID": "hw1_questions.html#the-law-of-large-numbers",
+    "href": "hw1_questions.html#the-law-of-large-numbers",
+    "title": "A/B Testing a Call to Action",
+    "section": "The Law of Large Numbers",
+    "text": "The Law of Large Numbers\n\n\n\n\n\n\nNote\n\n\n\n\nWrite an introductory sentence or two explaining the Law of Large Numbers to the reader: as the sample size grows, the sample mean converges to the population mean. Connect this back to our estimator — the LLN is what gives us confidence that \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\) will be close to the true \\(\\theta\\) when our sample is large enough.\nThen demonstrate this visually. Using the simulated data from the previous section, compute the element-wise differences between the CTA A draws and the CTA B draws to get a vector of 1,000 differences. Calculate the cumulative average of that vector (i.e., the running mean after 1 draw, after 2 draws, …, after 1,000 draws) and plot it against the number of observations.\nThe plot should show a noisy average when only a few observations are included that settles down and converges toward the true difference of 0.04 as the sample size grows.\nAfter the plot, write a few sentences explaining what the reader should take away from it."
+  },
+  {
+    "objectID": "hw1_questions.html#bootstrap-standard-errors",
+    "href": "hw1_questions.html#bootstrap-standard-errors",
+    "title": "A/B Testing a Call to Action",
+    "section": "Bootstrap Standard Errors",
+    "text": "Bootstrap Standard Errors\n\n\n\n\n\n\nNote\n\n\n\n\nNow that we “trust” our estimator, the next natural question is: how precise is it? We would like to report not just a point estimate of \\(\\theta\\) but also a confidence interval that communicates our uncertainty.\nWrite a short introduction explaining the idea of bootstrapping to the reader. The bootstrap is a resampling method that lets us estimate the variability of a statistic without relying on a closed-form formula. We resample (with replacement) from our observed data many times, compute the statistic of interest on each resample, and use the standard deviation of those resampled statistics as our estimate of the standard error.\nThen carry out the following steps:\n\nFrom your 1,000 CTA A draws and 1,000 CTA B draws, draw a bootstrap resample of size 1,000 (with replacement) from each group. Compute \\(\\hat\\theta^* = \\bar{X}_A^* - \\bar{X}_B^*\\) for that resample.\nRepeat step 1 a total of 1,000 times to produce a vector of 1,000 bootstrapped estimates of \\(\\theta\\).\nCompute the standard deviation of those 1,000 values. This is your bootstrapped standard error.\nCompare it to the analytical standard error. For the difference in means of two independent Bernoulli samples, the standard error formula is:\n\n\n\\[\nSE(\\hat\\theta) = \\sqrt{\\frac{\\hat\\pi_A(1 - \\hat\\pi_A)}{n_A} + \\frac{\\hat\\pi_B(1 - \\hat\\pi_B)}{n_B}}\n\\]\nwhere \\(\\hat\\pi_A\\) and \\(\\hat\\pi_B\\) are the sample proportions and \\(n_A\\) and \\(n_B\\) are the sample sizes.\n\nReport both the bootstrapped standard error and the analytical standard error and comment on how close they are to each other. Then use the bootstrapped standard error to construct a 95% confidence interval for \\(\\theta\\) and interpret it for the reader."
+  },
+  {
+    "objectID": "hw1_questions.html#the-central-limit-theorem",
+    "href": "hw1_questions.html#the-central-limit-theorem",
+    "title": "A/B Testing a Call to Action",
+    "section": "The Central Limit Theorem",
+    "text": "The Central Limit Theorem\n\n\n\n\n\n\nNote\n\n\n\n\nWrite a short introduction explaining the Central Limit Theorem to the reader: regardless of the shape of the underlying population distribution, the sampling distribution of the sample mean (and therefore of the difference in sample means) becomes approximately Normal as the sample size grows.\nThen demonstrate this visually by creating four histograms, one for each of the following sample sizes: \\(n \\in \\{25, 50, 100, 500\\}\\).\nFor each sample size \\(n\\):\n\nDraw \\(n\\) observations from the CTA A distribution and \\(n\\) observations from the CTA B distribution.\nCompute \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\).\nRepeat steps 1–2 a total of 1,000 times to produce 1,000 values of \\(\\hat\\theta\\).\nPlot a histogram of those 1,000 values.\n\nArrange the four histograms so they can be compared easily (e.g., in a 2x2 grid with consistent x-axis scales).\nAfter the plots, write a few sentences explaining what the reader should observe: at small sample sizes the histogram may look rough or asymmetric, but as \\(n\\) increases the distribution of \\(\\hat\\theta\\) becomes smoother and more bell-shaped, illustrating the Central Limit Theorem in action."
+  },
+  {
+    "objectID": "hw1_questions.html#hypothesis-testing",
+    "href": "hw1_questions.html#hypothesis-testing",
+    "title": "A/B Testing a Call to Action",
+    "section": "Hypothesis Testing",
+    "text": "Hypothesis Testing\n\n\n\n\n\n\nNote\n\n\n\n\nNow that we have seen the CLT in action — that the sampling distribution of \\(\\hat\\theta\\) is approximately Normal for large samples — we can use this result to perform a formal hypothesis test.\nWrite a paragraph explaining what a hypothesis test is to the reader. We set up a null hypothesis \\(H_0: \\theta = 0\\) (i.e., the two CTAs produce the same sign-up rate) and an alternative hypothesis \\(H_1: \\theta \\neq 0\\). The goal is to assess whether the data provide enough evidence to reject \\(H_0\\).\nThen explain why we standardize \\(\\hat\\theta\\) to form a test statistic. We compute:\n\n\\[\nz = \\frac{\\hat\\theta - 0}{SE(\\hat\\theta)}\n\\]\n\nWalk the reader through the logic of this standardization step by step:\n\nBy the CLT, we know that \\(\\hat\\theta\\) is approximately Normal for large samples. Under \\(H_0\\), the mean of that distribution is 0.\nWhen we divide a Normal random variable by its standard deviation, we get a standard Normal \\(N(0,1)\\). So under \\(H_0\\), \\(z \\;\\dot\\sim\\; N(0,1)\\).\nThis means we know the distribution of our test statistic under the null, which is exactly what we need to compute a p-value.\n\nExplain to the reader why this is sometimes called a “t-test” even though the test statistic follows an approximate Normal distribution, not a t-distribution. The classical t-test arises when the data are drawn from a Normal distribution and the variance must be estimated — the ratio then follows an exact t-distribution. In our setting the data are Bernoulli (not Normal), so there is no exact t-distribution result. The CLT gives us approximate Normality, and since we estimate the SE from the data, what we are really doing is closer to a z-test. In practice, for large samples the t-distribution and the standard Normal are nearly identical, so the distinction has little practical consequence — but it is important to understand why.\nUsing your simulated data, compute the test statistic and its associated p-value (using the standard Normal distribution as the reference). Interpret the result for the reader."
+  },
+  {
+    "objectID": "hw1_questions.html#the-t-test-as-a-regression",
+    "href": "hw1_questions.html#the-t-test-as-a-regression",
+    "title": "A/B Testing a Call to Action",
+    "section": "The T-Test as a Regression",
+    "text": "The T-Test as a Regression\n\n\n\n\n\n\nNote\n\n\n\n\nIt turns out that the two-sample test we just ran is mathematically equivalent to a simple linear regression. Understanding this connection is useful because it means the same machinery — and the same software — that you use for regression can also perform hypothesis tests, and it generalizes naturally to more complex experimental designs.\nExplain the setup to the reader. Stack the CTA A and CTA B data into a single dataset with two columns: an outcome \\(Y_i\\) (1 if the visitor signed up, 0 otherwise) and an indicator \\(D_i\\) (1 if the visitor saw CTA A, 0 if they saw CTA B). Then fit the regression:\n\n\\[\nY_i = \\beta_0 + \\beta_1 D_i + \\varepsilon_i\n\\]\n\nWalk through the interpretation of the coefficients:\n\n\\(\\beta_0\\) is the expected value of \\(Y_i\\) when \\(D_i = 0\\) — i.e., the mean of the B group, which estimates \\(\\pi_B\\).\n\\(\\beta_0 + \\beta_1\\) is the expected value of \\(Y_i\\) when \\(D_i = 1\\) — i.e., the mean of the A group, which estimates \\(\\pi_A\\).\nTherefore \\(\\beta_1 = \\pi_A - \\pi_B = \\theta\\), and the OLS estimate \\(\\hat\\beta_1\\) is numerically identical to \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\).\n\nFit this regression using your simulated data. Report the coefficient estimate \\(\\hat\\beta_1\\), its standard error, its t-statistic, and its p-value. Compare these to the values you computed in the previous section using the two-sample approach — they should match (up to a small difference in how the standard error is computed; standard OLS assumes a single pooled variance, while the two-sample formula we used assumes separate variances for each group).\nExplain to the reader why this equivalence matters: the regression framework makes it easy to add controls, interactions, or additional treatment arms, all while producing the same inference in the simple case."
+  },
+  {
+    "objectID": "hw1_questions.html#the-problem-with-peeking",
+    "href": "hw1_questions.html#the-problem-with-peeking",
+    "title": "A/B Testing a Call to Action",
+    "section": "The Problem with Peeking",
+    "text": "The Problem with Peeking\n\n\n\n\n\n\nNote\n\n\n\n\nYour boss is impatient. Rather than waiting until all 1,000 visitors have been assigned to each group, she wants to run the hypothesis test after every 100 visitors per group — peeking at the results after 100, 200, 300, …, up to 1,000 visitors per group (10 tests in total). If any of those tests comes back significant at the \\(\\alpha = 0.05\\) level, she wants to declare a winner and stop the experiment early.\nExplain to the reader why this is problematic under classical frequentist statistics. The key issue is that a single test at \\(\\alpha = 0.05\\) has a 5% chance of a false positive (rejecting \\(H_0\\) when it is actually true). But when you conduct multiple tests on accumulating data, each peek is another opportunity to get a false positive. The overall probability of at least one false rejection across all the peeks is much higher than 5%.\nDemonstrate this with a simulation. The idea is as follows:\n\nSet up a world where the null hypothesis is true: \\(\\pi_A = \\pi_B = 0.20\\) (i.e., \\(\\theta = 0\\), there is no difference between the CTAs).\nSimulate a single experiment: draw 1,000 observations for group A and 1,000 for group B. After every 100 observations per group (at \\(n = 100, 200, \\ldots, 1000\\)), compute the z-statistic and p-value. Record whether any of the 10 p-values falls below 0.05.\nRepeat step 2 a total of 10,000 times to simulate 10,000 experiments.\nCompute the fraction of those 10,000 experiments in which at least one peek produced a significant result. This is the empirical false positive rate under peeking.\n\nCompare this to the nominal 5% false positive rate of a single test. Report the result and explain to the reader why peeking inflates the Type I error rate and what this means in practice for running A/B tests."
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "My Resume",
+    "section": "",
+    "text": "Download PDF file."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hi, I’m Jiyoung.",
+    "section": "",
+    "text": "Hi, I’m Jiyoung.\nI am a data-driven Finance & Strategy professional and CPA, currently pursuing an M.S. in Business Analytics at UC San Diego.\nI am passionate about leveraging data to improve financial performance, optimize operations, and support strategic decision-making.\nOutside of work, I enjoy swing dancing, tennis, running, and golf."
   }
 ]

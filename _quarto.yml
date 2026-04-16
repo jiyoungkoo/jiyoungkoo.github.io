@@ -18,6 +18,9 @@ website:
       - icon: file-earmark-check
         href: resume.qmd
         text: Resume
+      - icon: journal-text
+        href: blog.qmd
+        text: Blog
       - icon: laptop
         href: projects.qmd
         text: Projects
@@ -25,7 +28,7 @@ website:
 format:
   html:
     theme:
-      - cosmos
+      - cosmo
       - brand
     css: styles.css
     toc: true

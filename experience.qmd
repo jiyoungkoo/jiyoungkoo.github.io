@@ -7,8 +7,6 @@ format:
     page-layout: full
 ---
 
-# Experience
-
 ::: {.exp-section}
 
 <div class="exp-card">
@@ -74,11 +72,9 @@ format:
 
 </div>
 
-<div class="exp-card">
+## Early Experience
 
-<div class="exp-header">
-  <div class="exp-company">Early Experience</div>
-</div>
+<div class="exp-card">
 
 <div class="exp-body">
 

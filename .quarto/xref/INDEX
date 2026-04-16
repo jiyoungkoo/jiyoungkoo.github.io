@@ -25,5 +25,17 @@
   },
   "experience.qmd": {
     "experience.html": "28354069"
+  },
+  "hw1_questions.qmd": {
+    "hw1_questions.html": "bbec52a2"
+  },
+  "ABtesting.qmd": {
+    "ABtesting.html": "935947be"
+  },
+  "blog/ab_testing/ab_testing.qmd": {
+    "ab_testing.html": "dc2a05d1"
+  },
+  "blog.qmd": {
+    "blog.html": "4c6bc9af"
   }
 }
