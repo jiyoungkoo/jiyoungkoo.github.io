@@ -1,0 +1,193 @@
+---
+title: "Replication of Karlan and List (2007)"
+subtitle: "Does Price Matter in Charitable Giving? Evidence from a Large-Scale Natural Field Experiment"
+author: "Jiyoung Koo"
+date: "2026-04-20"
+description: "A replication of key findings from Karlan and List (2007) on matching grants and charitable giving."
+format:
+  html:
+    toc: true
+    code-fold: false
+execute:
+  echo: true
+  warning: false
+  message: false
+jupyter: python3
+---
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+
+plt.rcParams["figure.figsize"] = (8, 5)
+plt.rcParams["axes.spines.top"] = False
+plt.rcParams["axes.spines.right"] = False
+```
+
+
+## Introduction
+
+Karlan and List (2007) study whether matching grants affect charitable giving. In their field experiment, prior donors to a nonprofit organization were randomly assigned to receive either a standard fundraising letter or a letter that included a matching grant offer. The main question is whether lowering the effective “price” of giving through a match increases the likelihood that people donate.
+
+This is an important causal question because fundraisers often use matching campaigns to increase donations, but it is not obvious whether these offers truly change behavior or simply repackage the same appeal. Because the authors use random assignment, differences in outcomes between the treatment and control groups can be interpreted causally.
+
+In this post, I replicate three parts of their analysis. First, I check whether treatment and control groups look balanced on observable variables, which helps confirm that randomization worked. Second, I replicate the main finding that matching grants increase donation rates and average revenue per solicitation. Third, I estimate a regression similar to one of the specifications in Table 3. As an additional exercise, I also visualize the treatment effect graphically and explain whether the result mainly operates through the extensive or intensive margin.
+
+## Loading the Data
+
+```{python}
+df = pd.read_stata("AERtables1-5.dta")
+df.head()
+```
+
+To prepare for the analysis, I create a binary variable equal to 1 if a person donated and 0 otherwise.
+
+```{python}
+df["donate"] = (df["amount"] > 0).astype(int)
+```
+
+## Balance Check (Replicating Part of Table 1)
+
+A key feature of a randomized experiment is that the treatment and control groups should be similar before treatment. If that is true, then differences in outcomes after the letters are sent are more credibly caused by the matching grant itself.
+
+I examine a few observable variables that appear in Table 1:
+
+* `freq`: number of prior donations
+* `HPA`: highest previous amount donated
+* `dormant`: indicator for whether the donor had been inactive
+* `ltmedMRA`: indicator for whether the donor’s recent giving was below the median
+
+```{python}
+balance_vars = ["freq", "HPA", "dormant", "ltmedMRA"]
+
+balance_table = (
+    df.groupby("treatment")[balance_vars]
+      .mean()
+      .T
+      .rename(columns={0.0: "Control", 1.0: "Treatment"})
+)
+
+balance_table.round(3)
+```
+
+The treatment and control groups are very similar on these observable characteristics. This supports the claim that randomization worked as intended and that there is no obvious evidence of selection bias between the two groups.
+
+## Main Analysis
+
+### Replicating Table 2A, Panel A
+
+The core result in the paper is that matching grants increase both the response rate and the average amount raised per solicitation.
+
+### Response Rate
+
+```{python}
+response_rate = df.groupby("treatment")["donate"].mean()
+response_rate
+```
+
+```{python}
+response_rate_percent = (100 * response_rate).round(2)
+response_rate_percent
+```
+
+The donation rate is about 1.79% in the control group and 2.20% in the treatment group. This means that offering a matching grant increases the probability of donating by roughly 23%.
+
+### Average Donation Amount (Unconditional)
+
+```{python}
+avg_amount = df.groupby("treatment")["amount"].mean()
+avg_amount
+```
+
+The average amount raised per solicitation is about 0.81 in the control group and 0.97 in the treatment group. This is an increase of about 19%, which closely matches the main result in the paper.
+
+### Average Donation Conditional on Giving
+
+```{python}
+conditional_amount = df[df["amount"] > 0].groupby("treatment")["amount"].mean()
+conditional_amount
+```
+
+Among those who donate, the average gift size is fairly similar across groups. This suggests that the matching grant mostly affects whether people choose to donate, rather than how much they give once they decide to contribute.
+
+## Regression Analysis
+
+Because the assignment notes mention that Table 3 appears to have been produced using a standard linear regression even though the paper labels it as probit, I estimate a linear probability model using OLS.
+
+```{python}
+temp = df[["donate", "treatment"]].copy().dropna()
+
+X = sm.add_constant(temp["treatment"])
+y = temp["donate"]
+
+ols_model = sm.OLS(y, X)
+ols_result = ols_model.fit()
+
+print(ols_result.summary())
+```
+
+The coefficient on `treatment` is positive and statistically significant, indicating that receiving a matching offer increases the probability of donating. In a linear probability model, this coefficient can be interpreted directly as the change in donation probability associated with treatment.
+
+This OLS specification is also useful because it aligns more closely with the assignment note that the Table 3 estimates appear to come from a standard linear regression.
+
+### Regression with Basic Controls
+
+As a robustness check, I also add a few pre-treatment characteristics as controls.
+
+```{python}
+controls = ["freq", "HPA", "dormant", "ltmedMRA"]
+temp2 = df[["donate", "treatment"] + controls].copy().dropna()
+
+X2 = sm.add_constant(temp2[["treatment"] + controls])
+y2 = temp2["donate"]
+
+ols_controls_model = sm.OLS(y2, X2)
+ols_controls_result = ols_controls_model.fit()
+
+print(ols_controls_result.summary())
+```
+
+The treatment effect remains positive after adding controls, which supports the conclusion that the matching grant increased donation probability.
+
+Because treatment was randomly assigned, the treatment coefficient can be interpreted causally: randomization helps ensure that other factors, such as prior donor characteristics or baseline giving tendencies, are balanced across groups on average.
+
+## Something Additional: A Graphical Presentation of the Main Result
+
+As an additional exercise, I present the treatment effect graphically. The paper mainly reports this result in a table, but a simple figure makes the difference easy to see.
+
+```{python}
+plot_df = (
+    df.groupby("treatment")["donate"]
+      .agg(["mean", "count", "std"])
+      .reset_index()
+)
+
+plot_df["se"] = plot_df["std"] / np.sqrt(plot_df["count"])
+plot_df["ci95"] = 1.96 * plot_df["se"]
+
+labels = ["Control", "Treatment"]
+means = plot_df["mean"]
+errors = plot_df["ci95"]
+
+plt.bar(labels, means, yerr=errors, capsize=6)
+plt.ylabel("Response Rate")
+plt.title("Effect of Matching Grant on Donation Probability")
+plt.show()
+```
+
+The graph shows a clear increase in the response rate for the treatment group. The difference is small in absolute terms but meaningful relative to the low baseline donation rate.
+
+This pattern also helps clarify the mechanism behind the main effect. The matching grant appears to operate mainly through the **extensive margin**: it gets more people to donate. By contrast, the conditional gift amount changes very little, so there is less evidence that the treatment strongly affects the **intensive margin**, or how much donors choose to give once they decide to donate.
+
+## Conclusion
+
+This replication reproduces the main qualitative findings of Karlan and List (2007). First, the treatment and control groups appear balanced on observable characteristics, which supports the validity of the experimental design. Second, matching grants increase both the probability of donating and the average amount raised per solicitation. Third, an OLS regression confirms that the treatment effect is positive and statistically significant.
+
+My additional graph also makes the main result easier to see and reinforces the interpretation that the effect works primarily by increasing participation rather than changing gift size among donors.
+
+Overall, this paper provides a clear example of how randomized experiments can be used to draw causal conclusions in marketing and fundraising contexts.
+
+```
+```

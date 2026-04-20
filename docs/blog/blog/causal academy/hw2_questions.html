@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.13">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jiyoung Koo">
+<meta name="dcterms.date" content="2026-04-20">
+<meta name="description" content="A replication of key findings from Karlan and List (2007) on matching grants and charitable giving.">
+
+<title>Replication of Karlan and List (2007) – Jiyoung Koo</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ac077c1e730dfeb5e42400639d17284e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c384ec995cbf13eb23541f616f7ca5ff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Jiyoung Koo</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> <i class="bi bi-person-fill" role="img">
+</i> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../education.html"> <i class="bi bi-mortarboard" role="img">
+</i> 
+<span class="menu-text">Education</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../experience.html"> <i class="bi bi-briefcase" role="img">
+</i> 
+<span class="menu-text">Experience</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../resume.html"> <i class="bi bi-file-earmark-check" role="img">
+</i> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog.html"> <i class="bi bi-journal-text" role="img">
+</i> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html"> <i class="bi bi-laptop" role="img">
+</i> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#loading-the-data" id="toc-loading-the-data" class="nav-link" data-scroll-target="#loading-the-data">Loading the Data</a></li>
+  <li><a href="#balance-check-replicating-part-of-table-1" id="toc-balance-check-replicating-part-of-table-1" class="nav-link" data-scroll-target="#balance-check-replicating-part-of-table-1">Balance Check (Replicating Part of Table 1)</a></li>
+  <li><a href="#main-analysis" id="toc-main-analysis" class="nav-link" data-scroll-target="#main-analysis">Main Analysis</a>
+  <ul class="collapse">
+  <li><a href="#replicating-table-2a-panel-a" id="toc-replicating-table-2a-panel-a" class="nav-link" data-scroll-target="#replicating-table-2a-panel-a">Replicating Table 2A, Panel A</a></li>
+  <li><a href="#response-rate" id="toc-response-rate" class="nav-link" data-scroll-target="#response-rate">Response Rate</a></li>
+  <li><a href="#average-donation-amount-unconditional" id="toc-average-donation-amount-unconditional" class="nav-link" data-scroll-target="#average-donation-amount-unconditional">Average Donation Amount (Unconditional)</a></li>
+  <li><a href="#average-donation-conditional-on-giving" id="toc-average-donation-conditional-on-giving" class="nav-link" data-scroll-target="#average-donation-conditional-on-giving">Average Donation Conditional on Giving</a></li>
+  </ul></li>
+  <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis">Regression Analysis</a>
+  <ul class="collapse">
+  <li><a href="#regression-with-basic-controls" id="toc-regression-with-basic-controls" class="nav-link" data-scroll-target="#regression-with-basic-controls">Regression with Basic Controls</a></li>
+  </ul></li>
+  <li><a href="#something-additional-a-graphical-presentation-of-the-main-result" id="toc-something-additional-a-graphical-presentation-of-the-main-result" class="nav-link" data-scroll-target="#something-additional-a-graphical-presentation-of-the-main-result">Something Additional: A Graphical Presentation of the Main Result</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Replication of Karlan and List (2007)</h1>
+<p class="subtitle lead">Does Price Matter in Charitable Giving? Evidence from a Large-Scale Natural Field Experiment</p>
+</div>
+
+<div>
+  <div class="description">
+    A replication of key findings from Karlan and List (2007) on matching grants and charitable giving.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jiyoung Koo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 20, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="12a0d292" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> (<span class="dv">8</span>, <span class="dv">5</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"axes.spines.top"</span>] <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"axes.spines.right"</span>] <span class="op">=</span> <span class="va">False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Karlan and List (2007) study whether matching grants affect charitable giving. In their field experiment, prior donors to a nonprofit organization were randomly assigned to receive either a standard fundraising letter or a letter that included a matching grant offer. The main question is whether lowering the effective “price” of giving through a match increases the likelihood that people donate.</p>
+<p>This is an important causal question because fundraisers often use matching campaigns to increase donations, but it is not obvious whether these offers truly change behavior or simply repackage the same appeal. Because the authors use random assignment, differences in outcomes between the treatment and control groups can be interpreted causally.</p>
+<p>In this post, I replicate three parts of their analysis. First, I check whether treatment and control groups look balanced on observable variables, which helps confirm that randomization worked. Second, I replicate the main finding that matching grants increase donation rates and average revenue per solicitation. Third, I estimate a regression similar to one of the specifications in Table 3. As an additional exercise, I also visualize the treatment effect graphically and explain whether the result mainly operates through the extensive or intensive margin.</p>
+</section>
+<section id="loading-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-the-data">Loading the Data</h2>
+<div id="3739e9e6" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_stata(<span class="st">"AERtables1-5.dta"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">amount</th>
+<th data-quarto-table-cell-role="th">freq</th>
+<th data-quarto-table-cell-role="th">HPA</th>
+<th data-quarto-table-cell-role="th">ask1</th>
+<th data-quarto-table-cell-role="th">ask2</th>
+<th data-quarto-table-cell-role="th">ask3</th>
+<th data-quarto-table-cell-role="th">control</th>
+<th data-quarto-table-cell-role="th">treatment</th>
+<th data-quarto-table-cell-role="th">ask</th>
+<th data-quarto-table-cell-role="th">ratio</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">size25</th>
+<th data-quarto-table-cell-role="th">size50</th>
+<th data-quarto-table-cell-role="th">size100</th>
+<th data-quarto-table-cell-role="th">MRM2</th>
+<th data-quarto-table-cell-role="th">dormant</th>
+<th data-quarto-table-cell-role="th">ltmedMRA</th>
+<th data-quarto-table-cell-role="th">red0</th>
+<th data-quarto-table-cell-role="th">blue0</th>
+<th data-quarto-table-cell-role="th">close25</th>
+<th data-quarto-table-cell-role="th">amountchange</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0.0</td>
+<td>32.0</td>
+<td>500.0</td>
+<td>750.0</td>
+<td>950.0</td>
+<td>1125.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>19.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>-150.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>0.0</td>
+<td>22.0</td>
+<td>300.0</td>
+<td>500.0</td>
+<td>625.0</td>
+<td>750.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>29.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>-100.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>0.0</td>
+<td>22.0</td>
+<td>500.0</td>
+<td>750.0</td>
+<td>950.0</td>
+<td>1125.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>-218.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>0.0</td>
+<td>29.0</td>
+<td>250.0</td>
+<td>500.0</td>
+<td>625.0</td>
+<td>750.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>-50.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>0.0</td>
+<td>17.0</td>
+<td>50.0</td>
+<td>55.0</td>
+<td>70.0</td>
+<td>85.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>8.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>-50.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 35 columns</p>
+</div>
+</div>
+</div>
+<p>To prepare for the analysis, I create a binary variable equal to 1 if a person donated and 0 otherwise.</p>
+<div id="609f242d" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"donate"</span>] <span class="op">=</span> (df[<span class="st">"amount"</span>] <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="balance-check-replicating-part-of-table-1" class="level2">
+<h2 class="anchored" data-anchor-id="balance-check-replicating-part-of-table-1">Balance Check (Replicating Part of Table 1)</h2>
+<p>A key feature of a randomized experiment is that the treatment and control groups should be similar before treatment. If that is true, then differences in outcomes after the letters are sent are more credibly caused by the matching grant itself.</p>
+<p>I examine a few observable variables that appear in Table 1:</p>
+<ul>
+<li><code>freq</code>: number of prior donations</li>
+<li><code>HPA</code>: highest previous amount donated</li>
+<li><code>dormant</code>: indicator for whether the donor had been inactive</li>
+<li><code>ltmedMRA</code>: indicator for whether the donor’s recent giving was below the median</li>
+</ul>
+<div id="d03c8ec9" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>balance_vars <span class="op">=</span> [<span class="st">"freq"</span>, <span class="st">"HPA"</span>, <span class="st">"dormant"</span>, <span class="st">"ltmedMRA"</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>balance_table <span class="op">=</span> (</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    df.groupby(<span class="st">"treatment"</span>)[balance_vars]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      .mean()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      .T</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      .rename(columns<span class="op">=</span>{<span class="fl">0.0</span>: <span class="st">"Control"</span>, <span class="fl">1.0</span>: <span class="st">"Treatment"</span>})</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>balance_table.<span class="bu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">treatment</th>
+<th data-quarto-table-cell-role="th">Control</th>
+<th data-quarto-table-cell-role="th">Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">freq</th>
+<td>8.047</td>
+<td>8.035</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">HPA</th>
+<td>58.960</td>
+<td>59.597</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">dormant</th>
+<td>0.523</td>
+<td>0.524</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">ltmedMRA</th>
+<td>0.488</td>
+<td>0.497</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The treatment and control groups are very similar on these observable characteristics. This supports the claim that randomization worked as intended and that there is no obvious evidence of selection bias between the two groups.</p>
+</section>
+<section id="main-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="main-analysis">Main Analysis</h2>
+<section id="replicating-table-2a-panel-a" class="level3">
+<h3 class="anchored" data-anchor-id="replicating-table-2a-panel-a">Replicating Table 2A, Panel A</h3>
+<p>The core result in the paper is that matching grants increase both the response rate and the average amount raised per solicitation.</p>
+</section>
+<section id="response-rate" class="level3">
+<h3 class="anchored" data-anchor-id="response-rate">Response Rate</h3>
+<div id="007cc738" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>response_rate <span class="op">=</span> df.groupby(<span class="st">"treatment"</span>)[<span class="st">"donate"</span>].mean()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>response_rate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>treatment
+0.0    0.017858
+1.0    0.022039
+Name: donate, dtype: float64</code></pre>
+</div>
+</div>
+<div id="102c293d" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>response_rate_percent <span class="op">=</span> (<span class="dv">100</span> <span class="op">*</span> response_rate).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>response_rate_percent</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>treatment
+0.0    1.79
+1.0    2.20
+Name: donate, dtype: float64</code></pre>
+</div>
+</div>
+<p>The donation rate is about 1.79% in the control group and 2.20% in the treatment group. This means that offering a matching grant increases the probability of donating by roughly 23%.</p>
+</section>
+<section id="average-donation-amount-unconditional" class="level3">
+<h3 class="anchored" data-anchor-id="average-donation-amount-unconditional">Average Donation Amount (Unconditional)</h3>
+<div id="8d79048d" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>avg_amount <span class="op">=</span> df.groupby(<span class="st">"treatment"</span>)[<span class="st">"amount"</span>].mean()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>avg_amount</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>treatment
+0.0    0.813268
+1.0    0.966873
+Name: amount, dtype: float32</code></pre>
+</div>
+</div>
+<p>The average amount raised per solicitation is about 0.81 in the control group and 0.97 in the treatment group. This is an increase of about 19%, which closely matches the main result in the paper.</p>
+</section>
+<section id="average-donation-conditional-on-giving" class="level3">
+<h3 class="anchored" data-anchor-id="average-donation-conditional-on-giving">Average Donation Conditional on Giving</h3>
+<div id="cdfedfac" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>conditional_amount <span class="op">=</span> df[df[<span class="st">"amount"</span>] <span class="op">&gt;</span> <span class="dv">0</span>].groupby(<span class="st">"treatment"</span>)[<span class="st">"amount"</span>].mean()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>conditional_amount</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>treatment
+0.0    45.540268
+1.0    43.871876
+Name: amount, dtype: float32</code></pre>
+</div>
+</div>
+<p>Among those who donate, the average gift size is fairly similar across groups. This suggests that the matching grant mostly affects whether people choose to donate, rather than how much they give once they decide to contribute.</p>
+</section>
+</section>
+<section id="regression-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="regression-analysis">Regression Analysis</h2>
+<p>Because the assignment notes mention that Table 3 appears to have been produced using a standard linear regression even though the paper labels it as probit, I estimate a linear probability model using OLS.</p>
+<div id="792ba678" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> df[[<span class="st">"donate"</span>, <span class="st">"treatment"</span>]].copy().dropna()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(temp[<span class="st">"treatment"</span>])</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> temp[<span class="st">"donate"</span>]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>ols_model <span class="op">=</span> sm.OLS(y, X)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>ols_result <span class="op">=</span> ols_model.fit()</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ols_result.summary())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 donate   R-squared:                       0.000
+Model:                            OLS   Adj. R-squared:                  0.000
+Method:                 Least Squares   F-statistic:                     9.618
+Date:                Mon, 20 Apr 2026   Prob (F-statistic):            0.00193
+Time:                        00:26:19   Log-Likelihood:                 26630.
+No. Observations:               50083   AIC:                        -5.326e+04
+Df Residuals:                   50081   BIC:                        -5.324e+04
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.0179      0.001     16.225      0.000       0.016       0.020
+treatment      0.0042      0.001      3.101      0.002       0.002       0.007
+==============================================================================
+Omnibus:                    59814.280   Durbin-Watson:                   1.997
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          4317152.727
+Skew:                           6.740   Prob(JB):                         0.00
+Kurtosis:                      46.440   Cond. No.                         3.23
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</code></pre>
+</div>
+</div>
+<p>The coefficient on <code>treatment</code> is positive and statistically significant, indicating that receiving a matching offer increases the probability of donating. In a linear probability model, this coefficient can be interpreted directly as the change in donation probability associated with treatment.</p>
+<p>This OLS specification is also useful because it aligns more closely with the assignment note that the Table 3 estimates appear to come from a standard linear regression.</p>
+<section id="regression-with-basic-controls" class="level3">
+<h3 class="anchored" data-anchor-id="regression-with-basic-controls">Regression with Basic Controls</h3>
+<p>As a robustness check, I also add a few pre-treatment characteristics as controls.</p>
+<div id="1f787673" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>controls <span class="op">=</span> [<span class="st">"freq"</span>, <span class="st">"HPA"</span>, <span class="st">"dormant"</span>, <span class="st">"ltmedMRA"</span>]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>temp2 <span class="op">=</span> df[[<span class="st">"donate"</span>, <span class="st">"treatment"</span>] <span class="op">+</span> controls].copy().dropna()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>X2 <span class="op">=</span> sm.add_constant(temp2[[<span class="st">"treatment"</span>] <span class="op">+</span> controls])</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> temp2[<span class="st">"donate"</span>]</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>ols_controls_model <span class="op">=</span> sm.OLS(y2, X2)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>ols_controls_result <span class="op">=</span> ols_controls_model.fit()</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ols_controls_result.summary())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 donate   R-squared:                       0.016
+Model:                            OLS   Adj. R-squared:                  0.016
+Method:                 Least Squares   F-statistic:                     165.9
+Date:                Mon, 20 Apr 2026   Prob (F-statistic):          1.45e-175
+Time:                        00:26:19   Log-Likelihood:                 27036.
+No. Observations:               50083   AIC:                        -5.406e+04
+Df Residuals:                   50077   BIC:                        -5.401e+04
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.0148      0.002      8.942      0.000       0.012       0.018
+treatment      0.0042      0.001      3.128      0.002       0.002       0.007
+freq           0.0013   5.74e-05     22.702      0.000       0.001       0.001
+HPA         -1.49e-05    9.6e-06     -1.552      0.121   -3.37e-05    3.91e-06
+dormant       -0.0163      0.001    -12.777      0.000      -0.019      -0.014
+ltmedMRA       0.0041      0.001      3.045      0.002       0.001       0.007
+==============================================================================
+Omnibus:                    58989.422   Durbin-Watson:                   1.993
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          4091508.000
+Skew:                           6.590   Prob(JB):                         0.00
+Kurtosis:                      45.273   Cond. No.                         299.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</code></pre>
+</div>
+</div>
+<p>The treatment effect remains positive after adding controls, which supports the conclusion that the matching grant increased donation probability.</p>
+<p>Because treatment was randomly assigned, the treatment coefficient can be interpreted causally: randomization helps ensure that other factors, such as prior donor characteristics or baseline giving tendencies, are balanced across groups on average.</p>
+</section>
+</section>
+<section id="something-additional-a-graphical-presentation-of-the-main-result" class="level2">
+<h2 class="anchored" data-anchor-id="something-additional-a-graphical-presentation-of-the-main-result">Something Additional: A Graphical Presentation of the Main Result</h2>
+<p>As an additional exercise, I present the treatment effect graphically. The paper mainly reports this result in a table, but a simple figure makes the difference easy to see.</p>
+<div id="b71ec840" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> (</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    df.groupby(<span class="st">"treatment"</span>)[<span class="st">"donate"</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>      .agg([<span class="st">"mean"</span>, <span class="st">"count"</span>, <span class="st">"std"</span>])</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>      .reset_index()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plot_df[<span class="st">"se"</span>] <span class="op">=</span> plot_df[<span class="st">"std"</span>] <span class="op">/</span> np.sqrt(plot_df[<span class="st">"count"</span>])</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>plot_df[<span class="st">"ci95"</span>] <span class="op">=</span> <span class="fl">1.96</span> <span class="op">*</span> plot_df[<span class="st">"se"</span>]</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">"Control"</span>, <span class="st">"Treatment"</span>]</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> plot_df[<span class="st">"mean"</span>]</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>errors <span class="op">=</span> plot_df[<span class="st">"ci95"</span>]</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>plt.bar(labels, means, yerr<span class="op">=</span>errors, capsize<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Response Rate"</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Effect of Matching Grant on Donation Probability"</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hw2_questions_files/figure-html/cell-12-output-1.png" width="680" height="431" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The graph shows a clear increase in the response rate for the treatment group. The difference is small in absolute terms but meaningful relative to the low baseline donation rate.</p>
+<p>This pattern also helps clarify the mechanism behind the main effect. The matching grant appears to operate mainly through the <strong>extensive margin</strong>: it gets more people to donate. By contrast, the conditional gift amount changes very little, so there is less evidence that the treatment strongly affects the <strong>intensive margin</strong>, or how much donors choose to give once they decide to donate.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This replication reproduces the main qualitative findings of Karlan and List (2007). First, the treatment and control groups appear balanced on observable characteristics, which supports the validity of the experimental design. Second, matching grants increase both the probability of donating and the average amount raised per solicitation. Third, an OLS regression confirms that the treatment effect is positive and statistically significant.</p>
+<p>My additional graph also makes the main result easier to see and reinforces the interpretation that the effect works primarily by increasing participation rather than changing gift size among donors.</p>
+<p>Overall, this paper provides a clear example of how randomized experiments can be used to draw causal conclusions in marketing and fundraising contexts.</p>
+<pre><code></code></pre>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
