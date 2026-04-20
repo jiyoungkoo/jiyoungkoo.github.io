@@ -1,38 +1,38 @@
 {
   "about.qmd": {
-    "about.html": "290d1dc5"
+    "about.html": "17ef5eb9"
   },
   "education.qmd": {
-    "education.html": "3c491d8b"
+    "education.html": "e4d9038c"
   },
   "projects.qmd": {
-    "projects.html": "32209a33"
+    "projects.html": "cef7d567"
   },
   "hw1_questions.qmd": {
-    "hw1_questions.html": "20d41c70"
+    "hw1_questions.html": "a37de18b"
   },
   "blog/blog/ab_testing/ab_testing.qmd": {
-    "ab_testing.html": "eec9b39f"
+    "ab_testing.html": "c4c3f5ec"
   },
   "blog/blog/causal academy/replication_karlan_list.qmd": {
-    "replication_karlan_list.html": "7c7bd384"
+    "replication_karlan_list.html": "502fe352"
   },
   "resume.qmd": {
-    "resume.html": "5af4682a"
+    "resume.html": "7a18aca0"
   },
   "projects/project1/index.qmd": {
-    "index.html": "ce52cbff"
+    "index.html": "45f2eb86"
   },
   "projects/project2/index.qmd": {
-    "index.html": "f7a3cb61"
+    "index.html": "a61a15af"
   },
   "blog.qmd": {
-    "blog.html": "dd256397"
+    "blog.html": "8167a79f"
   },
   "index.qmd": {
-    "index.html": "10d8a1c8"
+    "index.html": "9118eb18"
   },
   "experience.qmd": {
-    "experience.html": "a1e7f10d"
+    "experience.html": "b93cdd7e"
   }
 }
