@@ -1,53 +1,38 @@
 {
-  "index.qmd": {
-    "index.html": "d913a62a"
-  },
   "about.qmd": {
-    "about.html": "8b8bd734"
-  },
-  "files/resume.qmd": {
-    "resume.html": "f263eac3"
-  },
-  "resume.qmd": {
-    "resume.html": "241c9ed4"
-  },
-  "projects.qmd": {
-    "projects.html": "c78c90d4"
-  },
-  "projects/project1/index.qmd": {
-    "index.html": "2a9b1bf6"
-  },
-  "projects/project2/index.qmd": {
-    "index.html": "eb0e2df5"
+    "about.html": "290d1dc5"
   },
   "education.qmd": {
-    "education.html": "2ae096a4"
+    "education.html": "3c491d8b"
   },
-  "experience.qmd": {
-    "experience.html": "28354069"
+  "projects.qmd": {
+    "projects.html": "32209a33"
   },
   "hw1_questions.qmd": {
-    "hw1_questions.html": "bbec52a2"
-  },
-  "ABtesting.qmd": {
-    "ABtesting.html": "935947be"
-  },
-  "blog/ab_testing/ab_testing.qmd": {
-    "ab_testing.html": "dc2a05d1"
-  },
-  "blog.qmd": {
-    "blog.html": "4c6bc9af"
-  },
-  "blog/blog/causal academy/hw2_questions.qmd": {
-    "hw2_questions.html": "8f36b5fc"
-  },
-  "hw2/hw2.ipynb": {
-    "hw2.html": "5759f00f"
+    "hw1_questions.html": "20d41c70"
   },
   "blog/blog/ab_testing/ab_testing.qmd": {
-    "ab_testing.html": "b09b90cd"
+    "ab_testing.html": "eec9b39f"
   },
   "blog/blog/causal academy/replication_karlan_list.qmd": {
-    "replication_karlan_list.html": "71add094"
+    "replication_karlan_list.html": "7c7bd384"
+  },
+  "resume.qmd": {
+    "resume.html": "5af4682a"
+  },
+  "projects/project1/index.qmd": {
+    "index.html": "ce52cbff"
+  },
+  "projects/project2/index.qmd": {
+    "index.html": "f7a3cb61"
+  },
+  "blog.qmd": {
+    "blog.html": "dd256397"
+  },
+  "index.qmd": {
+    "index.html": "10d8a1c8"
+  },
+  "experience.qmd": {
+    "experience.html": "a1e7f10d"
   }
 }

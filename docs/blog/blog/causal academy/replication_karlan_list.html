@@ -236,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="868005ec" class="cell" data-execution_count="1">
+<div id="bf140091" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -254,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="loading-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="loading-the-data">Loading the Data</h2>
-<div id="cb34eb81" class="cell" data-execution_count="2">
+<div id="c340a141" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_stata(<span class="st">"AERtables1-5.dta"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -417,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>To prepare for the analysis, I create a binary variable equal to 1 if a person donated and 0 otherwise.</p>
-<div id="c3ac94f4" class="cell" data-execution_count="3">
+<div id="d744728a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"donate"</span>] <span class="op">=</span> (df[<span class="st">"amount"</span>] <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -431,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>dormant</code>: indicator for whether the donor had been inactive</li>
 <li><code>ltmedMRA</code>: indicator for whether the donor’s recent giving was below the median</li>
 </ul>
-<div id="d4cf82fd" class="cell" data-execution_count="4">
+<div id="d960fce9" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>balance_vars <span class="op">=</span> [<span class="st">"freq"</span>, <span class="st">"HPA"</span>, <span class="st">"dormant"</span>, <span class="st">"ltmedMRA"</span>]</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>balance_table <span class="op">=</span> (</span>
@@ -491,7 +491,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="response-rate" class="level3">
 <h3 class="anchored" data-anchor-id="response-rate">Response Rate</h3>
-<div id="887553e0" class="cell" data-execution_count="5">
+<div id="80b25ecd" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>response_rate <span class="op">=</span> df.groupby(<span class="st">"treatment"</span>)[<span class="st">"donate"</span>].mean()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>response_rate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -501,7 +501,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Name: donate, dtype: float64</code></pre>
 </div>
 </div>
-<div id="626fbb3c" class="cell" data-execution_count="6">
+<div id="249e0085" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>response_rate_percent <span class="op">=</span> (<span class="dv">100</span> <span class="op">*</span> response_rate).<span class="bu">round</span>(<span class="dv">2</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>response_rate_percent</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -515,7 +515,7 @@ Name: donate, dtype: float64</code></pre>
 </section>
 <section id="average-donation-amount-unconditional" class="level3">
 <h3 class="anchored" data-anchor-id="average-donation-amount-unconditional">Average Donation Amount (Unconditional)</h3>
-<div id="95812d99" class="cell" data-execution_count="7">
+<div id="d44f1b90" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>avg_amount <span class="op">=</span> df.groupby(<span class="st">"treatment"</span>)[<span class="st">"amount"</span>].mean()</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>avg_amount</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -529,7 +529,7 @@ Name: amount, dtype: float32</code></pre>
 </section>
 <section id="average-donation-conditional-on-giving" class="level3">
 <h3 class="anchored" data-anchor-id="average-donation-conditional-on-giving">Average Donation Conditional on Giving</h3>
-<div id="07708cce" class="cell" data-execution_count="8">
+<div id="40298a0c" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>conditional_amount <span class="op">=</span> df[df[<span class="st">"amount"</span>] <span class="op">&gt;</span> <span class="dv">0</span>].groupby(<span class="st">"treatment"</span>)[<span class="st">"amount"</span>].mean()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>conditional_amount</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -545,7 +545,7 @@ Name: amount, dtype: float32</code></pre>
 <section id="regression-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="regression-analysis">Regression Analysis</h2>
 <p>Because the assignment notes mention that Table 3 appears to have been produced using a standard linear regression even though the paper labels it as probit, I estimate a linear probability model using OLS.</p>
-<div id="e4ee7c99" class="cell" data-execution_count="9">
+<div id="7f09e31f" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> df[[<span class="st">"donate"</span>, <span class="st">"treatment"</span>]].copy().dropna()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(temp[<span class="st">"treatment"</span>])</span>
@@ -562,7 +562,7 @@ Dep. Variable:                 donate   R-squared:                       0.000
 Model:                            OLS   Adj. R-squared:                  0.000
 Method:                 Least Squares   F-statistic:                     9.618
 Date:                Mon, 20 Apr 2026   Prob (F-statistic):            0.00193
-Time:                        00:40:26   Log-Likelihood:                 26630.
+Time:                        00:46:22   Log-Likelihood:                 26630.
 No. Observations:               50083   AIC:                        -5.326e+04
 Df Residuals:                   50081   BIC:                        -5.324e+04
 Df Model:                           1                                         
@@ -588,7 +588,7 @@ Notes:
 <section id="regression-with-basic-controls" class="level3">
 <h3 class="anchored" data-anchor-id="regression-with-basic-controls">Regression with Basic Controls</h3>
 <p>As a robustness check, I also add a few pre-treatment characteristics as controls.</p>
-<div id="dec16f80" class="cell" data-execution_count="10">
+<div id="7ffadc40" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>controls <span class="op">=</span> [<span class="st">"freq"</span>, <span class="st">"HPA"</span>, <span class="st">"dormant"</span>, <span class="st">"ltmedMRA"</span>]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>temp2 <span class="op">=</span> df[[<span class="st">"donate"</span>, <span class="st">"treatment"</span>] <span class="op">+</span> controls].copy().dropna()</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -606,7 +606,7 @@ Dep. Variable:                 donate   R-squared:                       0.016
 Model:                            OLS   Adj. R-squared:                  0.016
 Method:                 Least Squares   F-statistic:                     165.9
 Date:                Mon, 20 Apr 2026   Prob (F-statistic):          1.45e-175
-Time:                        00:40:26   Log-Likelihood:                 27036.
+Time:                        00:46:22   Log-Likelihood:                 27036.
 No. Observations:               50083   AIC:                        -5.406e+04
 Df Residuals:                   50077   BIC:                        -5.401e+04
 Df Model:                           5                                         
@@ -638,7 +638,7 @@ Notes:
 <section id="something-additional-a-graphical-presentation-of-the-main-result" class="level2">
 <h2 class="anchored" data-anchor-id="something-additional-a-graphical-presentation-of-the-main-result">Something Additional: A Graphical Presentation of the Main Result</h2>
 <p>As an additional exercise, I present the treatment effect graphically. The paper mainly reports this result in a table, but a simple figure makes the difference easy to see.</p>
-<div id="79d68f0b" class="cell" data-execution_count="11">
+<div id="5309e104" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> (</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    df.groupby(<span class="st">"treatment"</span>)[<span class="st">"donate"</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>      .agg([<span class="st">"mean"</span>, <span class="st">"count"</span>, <span class="st">"std"</span>])</span>
