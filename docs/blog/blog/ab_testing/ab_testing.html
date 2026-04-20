@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -259,18 +224,6 @@ window.Quarto = {
 </header>
 
 
-<div id="67bac7c5" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> (<span class="dv">8</span>, <span class="dv">5</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"axes.spines.top"</span>] <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"axes.spines.right"</span>] <span class="op">=</span> <span class="va">False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Suppose I run a website with a landing page that invites visitors to subscribe to a newsletter. A small wording change in that invitation may affect whether people decide to sign up, so rather than relying on intuition, I want to test two alternative calls to action.</p>
@@ -298,27 +251,7 @@ window.Quarto = {
 \theta = 0.22 - 0.18 = 0.04
 \]</span></p>
 <p>I now simulate 1,000 draws from each Bernoulli distribution.</p>
-<div id="6e69832d" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pi_A <span class="op">=</span> <span class="fl">0.22</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pi_B <span class="op">=</span> <span class="fl">0.18</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>theta_true <span class="op">=</span> pi_A <span class="op">-</span> pi_B</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, pi_A, n)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, pi_B, n)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>pi_A_hat <span class="op">=</span> A.mean()</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>pi_B_hat <span class="op">=</span> B.mean()</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>theta_hat <span class="op">=</span> pi_A_hat <span class="op">-</span> pi_B_hat</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>summary_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Group"</span>: [<span class="st">"CTA A"</span>, <span class="st">"CTA B"</span>],</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"True sign-up rate"</span>: [pi_A, pi_B],</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sample sign-up rate"</span>: [pi_A_hat, pi_B_hat],</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sample size"</span>: [n, n]</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>summary_df.<span class="bu">round</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b9ecb6c1" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
@@ -360,16 +293,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="the-law-of-large-numbers">The Law of Large Numbers</h2>
 <p>The Law of Large Numbers tells us that as the sample size grows, the sample mean converges to the population mean. In this setting, that idea is important because it helps justify why <span class="math inline">\(\hat\theta = \bar{X}_A - \bar{X}_B\)</span> should be close to the true <span class="math inline">\(\theta\)</span> once the sample is large enough.</p>
 <p>To illustrate this, I compute the element-wise differences between the simulated CTA A and CTA B outcomes, then calculate the cumulative average of that difference vector.</p>
-<div id="3debe027" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>diff <span class="op">=</span> A <span class="op">-</span> B</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cum_avg <span class="op">=</span> np.cumsum(diff) <span class="op">/</span> np.arange(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.plot(np.arange(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>), cum_avg, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.axhline(theta_true, linestyle<span class="op">=</span><span class="st">"--"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of observations"</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Cumulative average of A - B"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Law of Large Numbers: Running estimate of the treatment effect"</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="64bbacb0" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -386,38 +310,7 @@ window.Quarto = {
 <p>Once I have an estimate of the treatment effect, the next question is how precise that estimate is. A point estimate alone does not tell us how much uncertainty remains, so it is useful to report a standard error and a confidence interval.</p>
 <p>One way to estimate the standard error is by using the bootstrap. The bootstrap is a resampling method that avoids relying entirely on a closed-form formula. The basic idea is to repeatedly resample from the observed data, with replacement, and recalculate the statistic of interest each time. The standard deviation of those resampled statistics provides an estimate of the standard error.</p>
 <p>I now generate 1,000 bootstrap resamples. In each resample, I draw 1,000 observations with replacement from group A and 1,000 observations with replacement from group B, compute the difference in means, and store the result.</p>
-<div id="49a2b412" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>boot_thetas <span class="op">=</span> []</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    A_star <span class="op">=</span> np.random.choice(A, size<span class="op">=</span>n, replace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    B_star <span class="op">=</span> np.random.choice(B, size<span class="op">=</span>n, replace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    theta_star <span class="op">=</span> A_star.mean() <span class="op">-</span> B_star.mean()</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    boot_thetas.append(theta_star)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>boot_thetas <span class="op">=</span> np.array(boot_thetas)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>boot_se <span class="op">=</span> boot_thetas.std(ddof<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>analytic_se <span class="op">=</span> np.sqrt(</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    (pi_A_hat <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> pi_A_hat)) <span class="op">/</span> n <span class="op">+</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    (pi_B_hat <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> pi_B_hat)) <span class="op">/</span> n</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ci_lower <span class="op">=</span> theta_hat <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> boot_se</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>ci_upper <span class="op">=</span> theta_hat <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> boot_se</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>se_results <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Quantity"</span>: [</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Point estimate"</span>,</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Bootstrap standard error"</span>,</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Analytical standard error"</span>,</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"95% CI lower bound"</span>,</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"95% CI upper bound"</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Value"</span>: [theta_hat, boot_se, analytic_se, ci_lower, ci_upper]</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>se_results.<span class="bu">round</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4cf6687d" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
@@ -469,35 +362,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="the-central-limit-theorem">The Central Limit Theorem</h2>
 <p>The Central Limit Theorem says that regardless of the shape of the underlying population distribution, the sampling distribution of the sample mean becomes approximately Normal as the sample size grows. Since my estimator is the difference in two sample means, the same idea applies here as well.</p>
 <p>To demonstrate this, I simulate the sampling distribution of <span class="math inline">\(\hat\theta\)</span> for four different sample sizes: <span class="math inline">\(n \in \{25, 50, 100, 500\}\)</span>. For each sample size, I repeatedly draw observations from the two Bernoulli distributions, compute the difference in means, and repeat that process 1,000 times.</p>
-<div id="97a3025c" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simulate_theta_dist(sample_size, pi_A, pi_B, reps<span class="op">=</span><span class="dv">1000</span>):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    estimates <span class="op">=</span> []</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(reps):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        A_sim <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, pi_A, sample_size)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        B_sim <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, pi_B, sample_size)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        estimates.append(A_sim.mean() <span class="op">-</span> B_sim.mean())</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(estimates)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>sample_sizes <span class="op">=</span> [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">500</span>]</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>theta_sims <span class="op">=</span> {s: simulate_theta_dist(s, pi_A, pi_B, reps<span class="op">=</span><span class="dv">1000</span>) <span class="cf">for</span> s <span class="kw">in</span> sample_sizes}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="a5e844c2" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">8</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> axes.flatten()</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>all_vals <span class="op">=</span> np.concatenate(<span class="bu">list</span>(theta_sims.values()))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>xmin, xmax <span class="op">=</span> all_vals.<span class="bu">min</span>(), all_vals.<span class="bu">max</span>()</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, s <span class="kw">in</span> <span class="bu">zip</span>(axes, sample_sizes):</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    ax.hist(theta_sims[s], bins<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    ax.axvline(theta_true, linestyle<span class="op">=</span><span class="st">"--"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f"n = </span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(xmin, xmax)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="vs">r"</span><span class="dv">$</span><span class="er">\</span><span class="vs">hat</span><span class="ch">\t</span><span class="vs">heta</span><span class="dv">$</span><span class="vs">"</span>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Frequency"</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="67259626" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -525,16 +390,7 @@ z = \frac{\hat\theta - 0}{SE(\hat\theta)}
 \]</span></p>
 <p>The logic behind this is straightforward. First, the CLT tells us that <span class="math inline">\(\hat\theta\)</span> is approximately Normally distributed in large samples. Second, under the null hypothesis that distribution is centered at 0. Third, when a Normal random variable is divided by its standard deviation, the result follows a standard Normal distribution. That means under <span class="math inline">\(H_0\)</span>, the statistic <span class="math inline">\(z\)</span> is approximately distributed as <span class="math inline">\(N(0,1)\)</span>, which gives us a reference distribution for computing a p-value.</p>
 <p>This is sometimes called a t-test, but in this setting it is more accurate to think of it as a large-sample z-test. The classical exact t-test comes from Normally distributed data with an estimated variance. Here the data are Bernoulli rather than Normal, so there is no exact t-distribution result. Instead, we rely on the CLT and a Normal approximation. In large samples, the practical difference is very small, but the conceptual distinction is still worth understanding.</p>
-<div id="6d984fed" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>z_stat <span class="op">=</span> theta_hat <span class="op">/</span> analytic_se</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p_value <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> norm.cdf(<span class="bu">abs</span>(z_stat)))</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ht_results <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Statistic"</span>: [<span class="st">"Estimate"</span>, <span class="st">"Standard error"</span>, <span class="st">"z-statistic"</span>, <span class="st">"p-value"</span>],</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Value"</span>: [theta_hat, analytic_se, z_stat, p_value]</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>ht_results.<span class="bu">round</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7779ba85" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
@@ -584,29 +440,7 @@ z = \frac{\hat\theta - 0}{SE(\hat\theta)}
 Y_i = \beta_0 + \beta_1 D_i + \varepsilon_i
 \]</span></p>
 <p>In this model, <span class="math inline">\(\beta_0\)</span> is the expected value of <span class="math inline">\(Y_i\)</span> when <span class="math inline">\(D_i = 0\)</span>, which is the mean of group B. The quantity <span class="math inline">\(\beta_0 + \beta_1\)</span> is the expected value of <span class="math inline">\(Y_i\)</span> when <span class="math inline">\(D_i = 1\)</span>, which is the mean of group A. Therefore, <span class="math inline">\(\beta_1\)</span> must be the difference in means, <span class="math inline">\(\pi_A - \pi_B = \theta\)</span>. That means the OLS estimate <span class="math inline">\(\hat\beta_1\)</span> is numerically identical to <span class="math inline">\(\hat\theta\)</span>.</p>
-<div id="73d2e32e" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.concatenate([A, B])</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.concatenate([np.ones(n), np.zeros(n)])</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>reg_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Y"</span>: Y,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D"</span>: D</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(reg_df[<span class="st">"D"</span>])</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(reg_df[<span class="st">"Y"</span>], X).fit()</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>reg_results <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Statistic"</span>: [<span class="st">"Coefficient on D"</span>, <span class="st">"Standard error"</span>, <span class="st">"t-statistic"</span>, <span class="st">"p-value"</span>],</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Value"</span>: [</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        model.params[<span class="st">"D"</span>],</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        model.bse[<span class="st">"D"</span>],</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        model.tvalues[<span class="st">"D"</span>],</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        model.pvalues[<span class="st">"D"</span>]</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>reg_results.<span class="bu">round</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="48a30dfc" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
@@ -646,16 +480,7 @@ Y_i = \beta_0 + \beta_1 D_i + \varepsilon_i
 </div>
 </div>
 </div>
-<div id="2eb32eda" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>comparison <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Approach"</span>: [<span class="st">"Two-sample test"</span>, <span class="st">"Regression"</span>],</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Estimate"</span>: [theta_hat, model.params[<span class="st">"D"</span>]],</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SE"</span>: [analytic_se, model.bse[<span class="st">"D"</span>]],</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Test statistic"</span>: [z_stat, model.tvalues[<span class="st">"D"</span>]],</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"p-value"</span>: [p_value, model.pvalues[<span class="st">"D"</span>]]</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>comparison.<span class="bu">round</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="328fad7f" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
@@ -702,45 +527,7 @@ Y_i = \beta_0 + \beta_1 D_i + \varepsilon_i
 <p>Now suppose a manager is impatient and does not want to wait until the full sample has been collected. Instead, she checks the hypothesis test after every 100 visitors per group and stops the experiment early if any one of those tests is significant at the 5% level.</p>
 <p>This is a problem under classical frequentist inference. A single test at <span class="math inline">\(\alpha = 0.05\)</span> has a 5% chance of producing a false positive when the null is true. But when I repeatedly test the data as it accumulates, each peek creates another opportunity to reject the null by chance alone. The overall probability of at least one false rejection becomes much larger than 5%.</p>
 <p>To show this, I simulate a world in which the null hypothesis is true, so that <span class="math inline">\(\pi_A = \pi_B = 0.20\)</span>. In each simulated experiment, I generate 1,000 observations for each group and compute a p-value after every 100 observations per group. If any one of those p-values is below 0.05, I count that experiment as a false positive. I then repeat the entire process 10,000 times.</p>
-<div id="4a4cb36a" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_peeking_experiment(n_total<span class="op">=</span><span class="dv">1000</span>, p<span class="op">=</span><span class="fl">0.20</span>, step<span class="op">=</span><span class="dv">100</span>, alpha<span class="op">=</span><span class="fl">0.05</span>):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    A_null <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, p, n_total)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    B_null <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, p, n_total)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(step, n_total <span class="op">+</span> <span class="dv">1</span>, step):</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        A_sub <span class="op">=</span> A_null[:i]</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        B_sub <span class="op">=</span> B_null[:i]</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        theta_i <span class="op">=</span> A_sub.mean() <span class="op">-</span> B_sub.mean()</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        pA_i <span class="op">=</span> A_sub.mean()</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        pB_i <span class="op">=</span> B_sub.mean()</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        se_i <span class="op">=</span> np.sqrt(</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            (pA_i <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> pA_i)) <span class="op">/</span> i <span class="op">+</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>            (pB_i <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> pB_i)) <span class="op">/</span> i</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> se_i <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        z_i <span class="op">=</span> theta_i <span class="op">/</span> se_i</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        pval_i <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> norm.cdf(<span class="bu">abs</span>(z_i)))</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> pval_i <span class="op">&lt;</span> alpha:</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>n_experiments <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>peeking_results <span class="op">=</span> np.array([run_peeking_experiment() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_experiments)])</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>false_positive_rate <span class="op">=</span> peeking_results.mean()</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>peeking_summary <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Scenario"</span>: [<span class="st">"Nominal false positive rate from one test"</span>, <span class="st">"Empirical false positive rate with peeking"</span>],</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Rate"</span>: [<span class="fl">0.05</span>, false_positive_rate]</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>peeking_summary.<span class="bu">round</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ff687358" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 

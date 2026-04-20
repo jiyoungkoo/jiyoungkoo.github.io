@@ -9,7 +9,7 @@ format:
     toc: true
     code-fold: false
 execute:
-  echo: true
+  echo: false
   warning: false
   message: false
 jupyter: python3
