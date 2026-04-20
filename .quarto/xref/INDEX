@@ -46,5 +46,8 @@
   },
   "blog/blog/ab_testing/ab_testing.qmd": {
     "ab_testing.html": "b09b90cd"
+  },
+  "blog/blog/causal academy/replication_karlan_list.qmd": {
+    "replication_karlan_list.html": "71add094"
   }
 }
