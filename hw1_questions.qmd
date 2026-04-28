@@ -9,15 +9,12 @@ date: today
 ## Introduction
 
 ::: {.callout-note}
-Write a short introduction for the reader that sets the scene. Cover the following points in your own words:
+Suppose you manage a website with a landing page that includes an option for visitors to sign up for your newsletter. You are interested in improving the effectiveness of this sign-up feature.
 
-- You have a website and your landing page includes a place where visitors can sign up to receive your newsletter.
+To do this, you consider two different calls to action (CTAs). CTA A reads "Sign up for our newsletter here!" while CTA B reads "Stay up to date by signing up!" Although the messages are similar, even small differences in wording may influence user behavior.
 
-- You want to test which of two possible "calls to action" (CTAs) leads to more sign-ups. CTA A reads "Sign up for our newsletter here!" and CTA B reads "Stay up to date by signing up!" (you are welcome to change the language of the CTAs).
-
-- You will evaluate which CTA performs better by running an A/B test. Explain what an A/B test is: visitors are randomly assigned to see one of the two CTAs, and you compare sign-up rates between the two groups.
+To determine which CTA performs better, you run an A/B test. In an A/B test, visitors are randomly assigned to see one of the two versions. You can then compare the sign-up rates between the two groups to evaluate which CTA leads to more conversions.
 :::
-
 
 ## The A/B Test as a Statistical Problem
 
