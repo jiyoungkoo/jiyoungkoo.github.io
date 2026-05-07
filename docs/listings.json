@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/blog/ab_pitfall/index.html",
       "/blog/blog/causal academy/replication_karlan_list.html",
       "/blog/blog/ab_testing/ab_testing.html"
     ]
@@ -9,8 +10,17 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/quarto_website/projects/project1/index.html",
+      "/quarto_website/projects/project2/index.html",
       "/projects/project1/index.html",
       "/projects/project2/index.html"
+    ]
+  },
+  {
+    "listing": "/quarto_website/projects.html",
+    "items": [
+      "/quarto_website/projects/project1/index.html",
+      "/quarto_website/projects/project2/index.html"
     ]
   }
 ]

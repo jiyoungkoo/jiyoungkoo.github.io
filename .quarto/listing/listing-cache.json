@@ -3,6 +3,9 @@
     "projects.qmd": [
       "projects"
     ],
+    "quarto_website/projects.qmd": [
+      "projects"
+    ],
     "blog.qmd": [
       "blog"
     ]

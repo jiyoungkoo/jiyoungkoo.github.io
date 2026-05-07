@@ -34,5 +34,32 @@
   },
   "experience.qmd": {
     "experience.html": "37cdef45"
+  },
+  "ab_testing_failures.qmd": {
+    "ab_testing_failures.html": "d2fef6aa"
+  },
+  "ab_testing_failures (2).qmd": {
+    "ab_testing_failures (2).html": "ba7e85d8"
+  },
+  "blog/blog/ab_pitfall/index.qmd": {
+    "index.html": "795d1c33"
+  },
+  "quarto_website/projects.qmd": {
+    "projects.html": "121b151f"
+  },
+  "quarto_website/hw1_questions (2).qmd": {
+    "hw1_questions (2).html": "1cee49c6"
+  },
+  "quarto_website/resume.qmd": {
+    "resume.html": "092f2fc8"
+  },
+  "quarto_website/projects/project1/index.qmd": {
+    "index.html": "4aec35e4"
+  },
+  "quarto_website/projects/project2/index.qmd": {
+    "index.html": "3aadd2a1"
+  },
+  "quarto_website/index.qmd": {
+    "index.html": "985adbec"
   }
 }
