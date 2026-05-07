@@ -1,9 +1,7 @@
 ---
-title: "Can You Trust Your A/B Test?"
-subtitle: "Three Ways A/B Tests Quietly Go Wrong"
-author: "Jiyoung Koo"
 date: "2026-05-06"
 description: "A short revealjs presentation about common pitfalls in A/B testing: peeking, p-hacking, and novelty effects."
+image: pitfall.jpg
 format:
   revealjs:
     theme: simple
@@ -223,7 +221,7 @@ include-in-header:
     </script>
 ---
 
-## slide-1 {.unnumbered}
+## Can You Trust Your A/B Test? {.unnumbered}
 
 ```{=html}
 <div class="slide-wrap">
@@ -242,9 +240,6 @@ include-in-header:
         <div style="width:36px; height:2px; background:#C9952A; margin:0.5rem 0 0.7rem;"></div>
         <div style="font-family:'Inter',sans-serif; font-size:0.65em; font-weight:300; color:#7a7972; line-height:1.6; margin-bottom:1.2rem;">
           Three ways A/B tests quietly go wrong
-        </div>
-        <div style="font-family:'Inter',sans-serif; font-size:0.55em; font-weight:300; color:#aaa99a; line-height:1.7; border-top:0.5px solid #e2e0db; padding-top:0.6rem;">
-          Jiyoung Koo &nbsp;·&nbsp; MGTA 495: Marketing Analytics &nbsp;·&nbsp; UCSD Rady &nbsp;·&nbsp; Spring 2026
         </div>
       </div>
 
