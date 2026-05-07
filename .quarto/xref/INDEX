@@ -61,5 +61,8 @@
   },
   "quarto_website/index.qmd": {
     "index.html": "985adbec"
+  },
+  "blog/ab_pitfall/index.qmd": {
+    "index.html": "f78618a5"
   }
 }

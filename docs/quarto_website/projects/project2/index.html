@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jihee Yoon">
-<meta name="dcterms.date" content="2026-05-06">
+<meta name="dcterms.date" content="2026-05-07">
 
 <title>Replicating Card and Krueger (1994) – Jiyoung Koo</title>
 <style>
@@ -239,7 +239,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 6, 2026</p>
+      <p class="date">May 7, 2026</p>
     </div>
   </div>
   
@@ -259,12 +259,12 @@ window.Quarto = {
 <section id="data-and-setup" class="level2">
 <h2 class="anchored" data-anchor-id="data-and-setup">Data and Setup</h2>
 <p>The dataset contains 410 fast-food restaurants from New Jersey and Pennsylvania. The codebook shows that <code>public.dat</code> is a fixed-width file, so I read it using column positions from the codebook.</p>
-<div id="4a54e422" class="cell" data-execution_count="1">
+<div id="d7107101" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="30ee5715" class="cell" data-execution_count="2">
+<div id="27fcf939" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>colspecs <span class="op">=</span> [</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">0</span>, <span class="dv">3</span>),    <span class="co"># SHEET</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">4</span>, <span class="dv">5</span>),    <span class="co"># CHAIN</span></span>
@@ -492,7 +492,7 @@ window.Quarto = {
 FTE = \text{full-time workers} + 0.5 \times \text{part-time workers} + \text{managers}
 \]</span></p>
 <p>For stores that were permanently closed in the second wave, employment is set to 0.</p>
-<div id="d6a912a2" class="cell" data-execution_count="3">
+<div id="7deb36c0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert everything numeric just in case</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> df.columns:</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    df[c] <span class="op">=</span> pd.to_numeric(df[c], errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
@@ -582,7 +582,7 @@ FTE = \text{full-time workers} + 0.5 \times \text{part-time workers} + \text{man
 <section id="replicating-a-main-result" class="level2">
 <h2 class="anchored" data-anchor-id="replicating-a-main-result">Replicating a Main Result</h2>
 <p>A simple way to replicate the paper is to compare average employment before and after the minimum wage increase in New Jersey and Pennsylvania.</p>
-<div id="7c80f54e" class="cell" data-execution_count="4">
+<div id="d7b9ed86" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> df.groupby(<span class="st">"state_name"</span>)[[<span class="st">"fte_before"</span>, <span class="st">"fte_after"</span>]].mean().<span class="bu">round</span>(<span class="dv">3</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>summary[<span class="st">"change"</span>] <span class="op">=</span> (summary[<span class="st">"fte_after"</span>] <span class="op">-</span> summary[<span class="st">"fte_before"</span>]).<span class="bu">round</span>(<span class="dv">3</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -632,7 +632,7 @@ FTE = \text{full-time workers} + 0.5 \times \text{part-time workers} + \text{man
 <p><span class="math display">\[
 (\text{NJ after} - \text{NJ before}) - (\text{PA after} - \text{PA before})
 \]</span></p>
-<div id="7ea9af8c" class="cell" data-execution_count="5">
+<div id="d0cb1e49" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nj_before <span class="op">=</span> df.loc[df[<span class="st">"state_name"</span>] <span class="op">==</span> <span class="st">"NJ"</span>, <span class="st">"fte_before"</span>].mean()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>nj_after  <span class="op">=</span> df.loc[df[<span class="st">"state_name"</span>] <span class="op">==</span> <span class="st">"NJ"</span>, <span class="st">"fte_after"</span>].mean()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -659,7 +659,7 @@ Difference-in-differences estimate: 2.623</code></pre>
 <section id="additional-analysis-a-graph" class="level2">
 <h2 class="anchored" data-anchor-id="additional-analysis-a-graph">Additional Analysis: A Graph</h2>
 <p>As an additional analysis, I present the employment changes graphically.</p>
-<div id="252825ae" class="cell" data-execution_count="6">
+<div id="5e935f3f" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> summary[[<span class="st">"fte_before"</span>, <span class="st">"fte_after"</span>]].T</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plot_df.index <span class="op">=</span> [<span class="st">"Before"</span>, <span class="st">"After"</span>]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
