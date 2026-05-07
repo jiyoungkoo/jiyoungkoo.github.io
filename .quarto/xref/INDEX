@@ -64,5 +64,11 @@
   },
   "blog/ab_pitfall/index.qmd": {
     "index.html": "f78618a5"
+  },
+  "blog/ab_testing/ab_testing.qmd": {
+    "ab_testing.html": "6597daa6"
+  },
+  "blog/causal academy/replication_karlan_list.qmd": {
+    "replication_karlan_list.html": "d8b8a119"
   }
 }
