@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/ab_pitfall/index.html",
       "/blog/causal academy/replication_karlan_list.html",
       "/blog/ab_testing/ab_testing.html"
     ]

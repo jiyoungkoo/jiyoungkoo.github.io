@@ -1,0 +1,544 @@
+---
+title: "Can You Trust Your A/B Test?"
+subtitle: "Three Ways A/B Tests Quietly Go Wrong"
+author: "Jiyoung Koo"
+date: "2026-05-06"
+description: "A short revealjs presentation about common pitfalls in A/B testing: peeking, p-hacking, and novelty effects."
+format:
+  revealjs:
+    theme: simple
+    width: 1280
+    height: 720
+    margin: 0.05
+    slide-number: c/t
+    progress: true
+    transition: fade
+    transition-speed: fast
+    self-contained: true
+    center: false
+include-in-header:
+  text: |
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+      /* Reset & base */
+      .reveal, .reveal * { box-sizing: border-box; }
+      .reveal { font-family: 'Inter', sans-serif; font-weight: 300; background: #fff; }
+      .reveal .slides { width: 100% !important; height: 100% !important; }
+      .reveal .slides section {
+        width: 100%; height: 100%;
+        padding: 0 !important;
+        margin: 0 !important;
+        top: 0 !important;
+        text-align: left;
+        display: flex !important;
+        flex-direction: column;
+      }
+
+      /* Hide auto-generated title slide */
+      .reveal .slides section.title-slide { display: none !important; }
+
+      /* Hide h2 from revealjs default rendering — we use custom topbar */
+      .reveal .slides section > h2 { display: none !important; }
+
+      /* Progress bar */
+      .reveal .progress { height: 3px; background: #e2e0db; }
+      .reveal .progress span { background: #C9952A; }
+
+      /* Slide number */
+      .reveal .slide-number {
+        font-family: 'Inter', sans-serif;
+        font-size: 11px; font-weight: 300;
+        color: #ccc9be; background: transparent;
+        bottom: 10px; right: 14px;
+      }
+
+      /* Shared slide wrapper */
+      .slide-wrap {
+        width: 100%; height: 100%;
+        display: flex; flex-direction: column;
+        background: #ffffff;
+      }
+
+      /* Top bar */
+      .topbar {
+        background: #111111;
+        padding: 0 2rem;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+      }
+      .topbar-left {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.55em; font-weight: 400;
+        color: #ffffff; letter-spacing: 0.05em;
+      }
+      .topbar-right {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.55em; font-weight: 300;
+        color: #C9952A; letter-spacing: 0.05em;
+      }
+
+      /* Slide body */
+      .slide-body {
+        flex: 1;
+        padding: 1.2rem 2.2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      /* Slide heading inside body */
+      .slide-heading {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2em; font-weight: 400;
+        color: #111111; line-height: 1.2;
+        margin: 0 0 0.15em 0;
+        border-bottom: 0.5px solid #e2e0db;
+        padding-bottom: 0.15em;
+        flex-shrink: 0;
+      }
+
+      /* Two column layout */
+      .cols { display: flex; gap: 1.5rem; flex: 1; overflow: hidden; }
+      .col { display: flex; flex-direction: column; }
+      .col-l { flex: 1.1; }
+      .col-r { flex: 1; }
+
+      /* Body text */
+      .body-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65em; font-weight: 300;
+        color: #2a2a28; line-height: 1.65;
+        margin-bottom: 0.35em;
+      }
+      .body-text strong { font-weight: 500; color: #111111; }
+      .body-text em { color: #7a7972; font-style: italic; }
+
+      /* Stat card */
+      .stat-card {
+        background: #f8f7f4;
+        border: 0.5px solid #e2e0db;
+        border-left: 3px solid #C9952A;
+        border-radius: 6px;
+        padding: 0.55rem 0.9rem;
+        margin-bottom: 0.45rem;
+      }
+      .stat-card.red  { border-left-color: #8B2020; }
+      .stat-card.dark { border-left-color: #111111; }
+
+      .stat-num {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3em; font-weight: 400;
+        line-height: 1.1; margin-bottom: 0.05em;
+      }
+      .stat-num.gold { color: #C9952A; }
+      .stat-num.red  { color: #8B2020; }
+      .stat-num.dark { color: #111111; }
+
+      .stat-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.6em; font-weight: 300;
+        color: #7a7972; line-height: 1.45;
+      }
+
+      /* Callout */
+      .callout {
+        border-left: 2px solid #8B2020;
+        background: #fdf5f5;
+        padding: 0.3rem 0.65rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.6em; font-weight: 300;
+        color: #5a1010; line-height: 1.5;
+        margin: 0.3rem 0;
+      }
+      .callout.gold { border-color: #C9952A; background: #fdf9f2; color: #5a3e00; }
+
+      /* Pill */
+      .pill {
+        display: inline-block;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.5em; font-weight: 500;
+        letter-spacing: 0.09em; text-transform: uppercase;
+        border-radius: 3px; padding: 1px 9px;
+        margin-bottom: 0.25rem;
+      }
+      .pill.red  { background: #fdf5f5; color: #7a1818; border: 0.5px solid #e8a0a0; }
+      .pill.gold { background: #fdf9f2; color: #7a5000; border: 0.5px solid #e8d090; }
+
+      /* Fix grid */
+      .fix-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.6rem;
+        margin: 0.3rem 0 0.4rem;
+      }
+      .fix-card {
+        background: #f8f7f4;
+        border: 0.5px solid #e2e0db;
+        border-radius: 6px;
+        padding: 0.5rem 0.7rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.58em; font-weight: 300;
+        color: #2a2a28; line-height: 1.55;
+      }
+      .fix-label {
+        font-size: 0.8em; font-weight: 500;
+        letter-spacing: 0.09em; text-transform: uppercase;
+        color: #C9952A; margin-bottom: 0.3rem;
+      }
+
+      /* Cite */
+      .cite {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.58em; font-weight: 300;
+        color: #aaa99a; font-style: italic;
+        line-height: 1.55; margin-top: 0.4rem;
+      }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      Reveal.on('slidechanged', function(event) {
+        // Find all SVGs in the current slide and restart their animations
+        var svgs = event.currentSlide.querySelectorAll('svg');
+        svgs.forEach(function(svg) {
+          // Clone and replace to restart all SMIL animations
+          var parent = svg.parentNode;
+          var clone = svg.cloneNode(true);
+          parent.replaceChild(clone, svg);
+        });
+      });
+
+      // Also trigger on first load for the first slide
+      setTimeout(function() {
+        var svgs = document.querySelectorAll('.present svg');
+        svgs.forEach(function(svg) {
+          var parent = svg.parentNode;
+          var clone = svg.cloneNode(true);
+          parent.replaceChild(clone, svg);
+        });
+      }, 300);
+    });
+    </script>
+---
+
+## slide-1 {.unnumbered}
+
+```{=html}
+<div class="slide-wrap">
+  <div class="topbar">
+    <span class="topbar-left">Jiyoung Koo &nbsp;·&nbsp; MGTA 495: Marketing Analytics &nbsp;·&nbsp; UCSD Rady</span>
+    <span class="topbar-right">Spring 2026</span>
+  </div>
+  <div class="slide-body" style="justify-content:center;">
+    <div class="cols" style="align-items:center;">
+
+      <!-- Left -->
+      <div class="col col-l">
+        <div style="font-family:'Playfair Display',serif; font-size:1.9em; font-weight:400; color:#111111; line-height:1.15; margin-bottom:0.35rem;">
+          Can you trust<br>your A/B test?
+        </div>
+        <div style="width:36px; height:2px; background:#C9952A; margin:0.5rem 0 0.7rem;"></div>
+        <div style="font-family:'Inter',sans-serif; font-size:0.65em; font-weight:300; color:#7a7972; line-height:1.6; margin-bottom:1.2rem;">
+          Three ways A/B tests quietly go wrong
+        </div>
+        <div style="font-family:'Inter',sans-serif; font-size:0.55em; font-weight:300; color:#aaa99a; line-height:1.7; border-top:0.5px solid #e2e0db; padding-top:0.6rem;">
+          Jiyoung Koo &nbsp;·&nbsp; MGTA 495: Marketing Analytics &nbsp;·&nbsp; UCSD Rady &nbsp;·&nbsp; Spring 2026
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="col col-r" style="gap:0.5rem; display:flex; flex-direction:column;">
+        <div class="stat-card">
+          <div class="stat-num gold">33% → 42%</div>
+          <div class="stat-label">False discovery rate when p-hacking occurs</div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-num red">~57%</div>
+          <div class="stat-label">Of experimenters show signs of p-hacking</div>
+        </div>
+        <div class="stat-card dark">
+          <div class="stat-num dark">2,101</div>
+          <div class="stat-label">Real commercial A/B tests analyzed</div>
+        </div>
+        <div class="cite">Berman, Pekelis, Scott & Van den Bulte (2018)<br>Wharton School, UPenn · SSRN Working Paper</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## slide-2 {.unnumbered}
+
+```{=html}
+<div class="slide-wrap">
+  <div class="topbar">
+    <span class="topbar-left">Jiyoung Koo &nbsp;·&nbsp; MGTA 495: Marketing Analytics &nbsp;·&nbsp; UCSD Rady</span>
+    <span class="topbar-right">Problem 1 of 3</span>
+  </div>
+  <div class="slide-body">
+    <div class="slide-heading">Problem 1: The peeking problem</div>
+    <span class="pill red">Common mistake</span>
+    <div class="cols">
+
+      <!-- Left -->
+      <div class="col col-l">
+        <p class="body-text"><em>"We hit p &lt; 0.05 today — ship it!"</em></p>
+        <p class="body-text">The p-value <strong>fluctuates throughout the experiment</strong>. Stopping the moment it dips below 0.05 means cherry-picking a lucky moment.</p>
+        <div class="callout">Checking results daily inflates your false positive rate far beyond 5% — even when nothing real changed.</div>
+        <p class="body-text"><strong>Fix:</strong> Pre-register your sample size. Commit to it. Don't peek.</p>
+      </div>
+
+      <!-- Right: SVG -->
+      <div class="col col-r" style="justify-content:center;">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" width="100%">
+          <rect width="400" height="260" fill="#f8f7f4" rx="10"/>
+          <line x1="55" y1="20" x2="55" y2="210" stroke="#d8d5ce" stroke-width="1"/>
+          <line x1="55" y1="210" x2="378" y2="210" stroke="#d8d5ce" stroke-width="1"/>
+          <!-- Threshold line draws in -->
+          <line x1="55" y1="115" x2="378" y2="115" stroke="#8B2020" stroke-width="1.5" stroke-dasharray="6,4"
+            stroke-dashoffset="323" style="animation: drawThreshold 0.8s ease forwards 0.3s;">
+            <animate attributeName="stroke-dashoffset" from="323" to="0" dur="0.8s" begin="0.3s" fill="freeze"/>
+          </line>
+          <text x="382" y="119" fill="#8B2020" font-size="12" font-family="Inter,sans-serif" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1s" fill="freeze"/>
+            0.05
+          </text>
+          <!-- p-value line draws in -->
+          <polyline points="55,85 90,148 128,100 166,178 200,118 232,68 265,130 298,92 332,140 370,88"
+            fill="none" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"
+            stroke-dasharray="600" stroke-dashoffset="600">
+            <animate attributeName="stroke-dashoffset" from="600" to="0" dur="2s" begin="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+          </polyline>
+          <!-- Gold dot appears after line -->
+          <circle cx="232" cy="68" r="8" fill="#C9952A" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="2s" fill="freeze"/>
+            <animate attributeName="r" from="0" to="8" dur="0.4s" begin="2s" fill="freeze"/>
+          </circle>
+          <!-- Label appears -->
+          <rect x="172" y="28" width="100" height="22" fill="#fdf9f2" rx="4" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.3s" fill="freeze"/>
+          </rect>
+          <text x="222" y="43" fill="#8a6010" font-size="12" text-anchor="middle" font-family="Inter,sans-serif" font-weight="500" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.3s" fill="freeze"/>
+            Stop here?
+          </text>
+          <line x1="232" y1="60" x2="222" y2="51" stroke="#C9952A" stroke-width="1.2" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.3s" fill="freeze"/>
+          </line>
+          <text x="215" y="240" fill="#aaa99a" font-size="11" text-anchor="middle" font-family="Inter,sans-serif">Days of experiment</text>
+          <text x="22" y="118" fill="#aaa99a" font-size="11" text-anchor="middle" font-family="Inter,sans-serif" transform="rotate(-90,22,118)">p-value</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## slide-3 {.unnumbered}
+
+```{=html}
+<div class="slide-wrap">
+  <div class="topbar">
+    <span class="topbar-left">Jiyoung Koo &nbsp;·&nbsp; MGTA 495: Marketing Analytics &nbsp;·&nbsp; UCSD Rady</span>
+    <span class="topbar-right">Problem 2 of 3</span>
+  </div>
+  <div class="slide-body">
+    <div class="slide-heading">Problem 2: P-hacking</div>
+    <span class="pill red">Common mistake</span>
+    <div class="cols">
+
+      <!-- Left -->
+      <div class="col col-l">
+        <p class="body-text"><em>"No effect overall... what about women aged 18–24, on mobile, on Tuesdays?"</em></p>
+        <p class="body-text">Slicing data until something looks significant. If you test <strong>20 subgroups</strong>, you'll likely find one that crosses p &lt; 0.05 by pure chance.</p>
+        <div class="callout">At α = 0.05, testing 20 hypotheses gives a ~64% chance of at least one false positive.</div>
+        <p class="body-text"><strong>Fix:</strong> Decide on one primary metric before the experiment starts.</p>
+      </div>
+
+      <!-- Right: SVG -->
+      <div class="col col-r" style="justify-content:center;">
+        <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" width="100%">
+          <rect width="370" height="260" fill="#f8f7f4" rx="10"/>
+          <text x="185" y="28" fill="#1a1a18" font-size="13" font-weight="500" text-anchor="middle" font-family="Inter,sans-serif">20 subgroup tests</text>
+          <!-- Ellipses appear row by row -->
+          <ellipse cx="40"  cy="60" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="0.1s" fill="freeze"/></ellipse>
+          <ellipse cx="98"  cy="60" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="0.2s" fill="freeze"/></ellipse>
+          <ellipse cx="156" cy="60" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="0.3s" fill="freeze"/></ellipse>
+          <ellipse cx="214" cy="60" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="0.4s" fill="freeze"/></ellipse>
+          <ellipse cx="272" cy="60" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="0.5s" fill="freeze"/></ellipse>
+          <ellipse cx="40"  cy="104" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="0.6s" fill="freeze"/></ellipse>
+          <ellipse cx="98"  cy="104" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="0.7s" fill="freeze"/></ellipse>
+          <ellipse cx="156" cy="104" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="0.8s" fill="freeze"/></ellipse>
+          <ellipse cx="214" cy="104" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="0.9s" fill="freeze"/></ellipse>
+          <ellipse cx="272" cy="104" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="1.0s" fill="freeze"/></ellipse>
+          <ellipse cx="40"  cy="148" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="1.1s" fill="freeze"/></ellipse>
+          <ellipse cx="98"  cy="148" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="1.2s" fill="freeze"/></ellipse>
+          <ellipse cx="156" cy="148" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="1.3s" fill="freeze"/></ellipse>
+          <ellipse cx="214" cy="148" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="1.4s" fill="freeze"/></ellipse>
+          <ellipse cx="272" cy="148" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="1.5s" fill="freeze"/></ellipse>
+          <ellipse cx="40"  cy="192" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="1.6s" fill="freeze"/></ellipse>
+          <ellipse cx="98"  cy="192" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="1.7s" fill="freeze"/></ellipse>
+          <ellipse cx="156" cy="192" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="1.8s" fill="freeze"/></ellipse>
+          <ellipse cx="214" cy="192" rx="28" ry="14" fill="#d3d0c8" opacity="0"><animate attributeName="opacity" to="1" dur="0.15s" begin="1.9s" fill="freeze"/></ellipse>
+          <!-- Gold one pops in with scale -->
+          <ellipse cx="272" cy="192" rx="28" ry="14" fill="#C9952A" opacity="0">
+            <animate attributeName="opacity" to="1" dur="0.2s" begin="2.1s" fill="freeze"/>
+            <animateTransform attributeName="transform" type="scale" from="0.5" to="1" dur="0.3s" begin="2.1s" fill="freeze" additive="sum"/>
+          </ellipse>
+          <text x="272" y="196" fill="#fff" font-size="10" text-anchor="middle" font-family="Inter,sans-serif" font-weight="500" opacity="0">
+            <animate attributeName="opacity" to="1" dur="0.2s" begin="2.2s" fill="freeze"/>
+            p=0.03!
+          </text>
+          <!-- Arrow + labels fade in -->
+          <line x1="302" y1="192" x2="318" y2="192" stroke="#8a6010" stroke-width="1.2" opacity="0">
+            <animate attributeName="opacity" to="1" dur="0.3s" begin="2.4s" fill="freeze"/>
+          </line>
+          <text x="322" y="188" fill="#8a6010" font-size="11" font-family="Inter,sans-serif" opacity="0">
+            <animate attributeName="opacity" to="1" dur="0.3s" begin="2.4s" fill="freeze"/>
+            Only this
+          </text>
+          <text x="322" y="202" fill="#8a6010" font-size="11" font-family="Inter,sans-serif" opacity="0">
+            <animate attributeName="opacity" to="1" dur="0.3s" begin="2.4s" fill="freeze"/>
+            gets reported
+          </text>
+          <text x="185" y="240" fill="#aaa99a" font-size="11" text-anchor="middle" font-family="Inter,sans-serif" opacity="0">
+            <animate attributeName="opacity" to="1" dur="0.3s" begin="2.6s" fill="freeze"/>
+            19 null results quietly ignored
+          </text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## slide-4 {.unnumbered}
+
+```{=html}
+<div class="slide-wrap">
+  <div class="topbar">
+    <span class="topbar-left">Jiyoung Koo &nbsp;·&nbsp; MGTA 495: Marketing Analytics &nbsp;·&nbsp; UCSD Rady</span>
+    <span class="topbar-right">Problem 3 of 3</span>
+  </div>
+  <div class="slide-body">
+    <div class="slide-heading">Problem 3: The novelty effect</div>
+    <span class="pill gold">Easy to miss</span>
+    <div class="cols">
+
+      <!-- Left -->
+      <div class="col col-l">
+        <p class="body-text"><em>"Our new feature boosted clicks by 30%!" (For two weeks.)</em></p>
+        <p class="body-text">Users click on <strong>new things out of curiosity</strong>, not preference. If the A/B test runs during that novelty spike, it looks like a huge win — until full rollout.</p>
+        <div class="callout gold">The effect fades after novelty wears off, but the decision has already been made.</div>
+        <p class="body-text"><strong>Fix:</strong> Run the experiment long enough for novelty to wear off.</p>
+      </div>
+
+      <!-- Right: SVG -->
+      <div class="col col-r" style="justify-content:center;">
+        <svg viewBox="0 0 430 260" xmlns="http://www.w3.org/2000/svg" width="100%">
+          <rect width="430" height="260" fill="#f8f7f4" rx="10"/>
+          <line x1="55" y1="20" x2="55" y2="210" stroke="#d8d5ce" stroke-width="1"/>
+          <line x1="55" y1="210" x2="390" y2="210" stroke="#d8d5ce" stroke-width="1"/>
+          <!-- Baseline -->
+          <line x1="55" y1="155" x2="390" y2="155" stroke="#aaa99a" stroke-width="1" stroke-dasharray="5,4"/>
+          <text x="394" y="158" fill="#aaa99a" font-size="11" font-family="Inter,sans-serif">base</text>
+          <!-- A/B test window shading -->
+          <rect x="55" y="20" width="118" height="190" fill="#C9952A" opacity="0.07" rx="4"/>
+          <text x="95" y="210" fill="#8a6010" font-size="11" text-anchor="middle" font-family="Inter,sans-serif">A/B test window</text>
+          <!-- Novelty curve -->
+          <path d="M 55,155 C 72,155 88,38 126,42 C 162,46 186,92 222,138 C 256,170 310,157 390,155"
+            fill="none" stroke="#111111" stroke-width="2.5"
+            stroke-dasharray="700" stroke-dashoffset="700">
+            <animate attributeName="stroke-dashoffset" from="700" to="0" dur="2.5s" begin="0.3s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+          </path>
+          <circle cx="126" cy="42" r="7" fill="#C9952A" opacity="0">
+            <animate attributeName="opacity" to="1" dur="0.3s" begin="1.2s" fill="freeze"/>
+            <animate attributeName="r" from="0" to="7" dur="0.3s" begin="1.2s" fill="freeze"/>
+          </circle>
+          <text x="155" y="35" fill="#8a6010" font-size="11" font-family="Inter,sans-serif" opacity="0">
+            <animate attributeName="opacity" to="1" dur="0.3s" begin="1.4s" fill="freeze"/>
+            Peak
+          </text>
+          <text x="312" y="138" fill="#aaa99a" font-size="11" text-anchor="middle" font-family="Inter,sans-serif" opacity="0">
+            <animate attributeName="opacity" to="1" dur="0.3s" begin="2.6s" fill="freeze"/>
+            back to
+          </text>
+          <text x="312" y="152" fill="#aaa99a" font-size="11" text-anchor="middle" font-family="Inter,sans-serif" opacity="0">
+            <animate attributeName="opacity" to="1" dur="0.3s" begin="2.6s" fill="freeze"/>
+            baseline
+          </text>
+          <text x="215" y="240" fill="#aaa99a" font-size="11" text-anchor="middle" font-family="Inter,sans-serif">Time</text>
+          <text x="22" y="118" fill="#aaa99a" font-size="11" text-anchor="middle" font-family="Inter,sans-serif" transform="rotate(-90,22,118)">CTR</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## slide-5 {.unnumbered}
+
+```{=html}
+<div class="slide-wrap">
+  <div class="topbar">
+    <span class="topbar-left">Jiyoung Koo &nbsp;·&nbsp; MGTA 495: Marketing Analytics &nbsp;·&nbsp; UCSD Rady</span>
+    <span class="topbar-right">Takeaway</span>
+  </div>
+  <div class="slide-body">
+    <div class="slide-heading">So, can you trust your A/B test?</div>
+
+    <div class="cols">
+      <!-- Left -->
+      <div class="col col-l">
+        <p class="body-text" style="font-style:italic; color:#7a7972; margin-bottom:0.6rem;">Yes — but only if you run it right.</p>
+        <div class="fix-grid">
+          <div class="fix-card">
+            <div class="fix-label">Peeking problem</div>
+            Pre-register your sample size. Decide before you start, not during.
+          </div>
+          <div class="fix-card">
+            <div class="fix-label">P-hacking</div>
+            Pick one primary metric before the experiment. Stick to it.
+          </div>
+          <div class="fix-card">
+            <div class="fix-label">Novelty effect</div>
+            Run long enough for curiosity to wear off. Weeks, not days.
+          </div>
+        </div>
+        <p class="cite">"A/B testing is a powerful tool — but only when used correctly."</p>
+        <p class="cite">Berman, Pekelis, Scott & Van den Bulte (2018) · Wharton School, UPenn · SSRN</p>
+      </div>
+
+      <!-- Right: stat summary card -->
+      <div class="col col-r" style="justify-content:center;">
+        <div style="background:#f8f7f4; border:0.5px solid #e2e0db; border-left:3px solid #C9952A; border-radius:8px; padding:1.2rem 1.4rem;">
+          <div class="stat-num gold" style="font-size:1.4em; margin-bottom:0.08em;">33% → 42%</div>
+          <div class="stat-label" style="margin-bottom:0.9rem;">False discovery rate from p-hacking</div>
+          <div class="stat-num red" style="font-size:1.4em; margin-bottom:0.08em;">~57%</div>
+          <div class="stat-label" style="margin-bottom:0.9rem;">Of experimenters show p-hacking</div>
+          <div class="stat-num dark" style="font-size:1.4em; margin-bottom:0.08em;">2,101</div>
+          <div class="stat-label" style="margin-bottom:0.9rem;">Real A/B tests analyzed</div>
+          <div style="border-top:0.5px solid #e2e0db; padding-top:0.6rem;" class="cite">
+            Berman et al. (2018)<br>Wharton School · SSRN
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+```

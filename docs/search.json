@@ -18,189 +18,42 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Replication of Karlan and List (2007)\n\n\nA replication of key findings from Karlan and List (2007) on matching grants and charitable giving.\n\n\n\nJiyoung Koo\n\n\nApr 20, 2026\n\n\n\n\n\n\n\n\n\n\n\nA/B Testing a Call to Action\n\n\nA simulation-based introduction to A/B testing and key ideas in classical frequentist statistics.\n\n\n\nJiyoung Koo\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Can You Trust Your A/B Test?\n\n\nA short revealjs presentation about common pitfalls in A/B testing: peeking, p-hacking, and novelty effects.\n\n\n\nJiyoung Koo\n\n\nMay 6, 2026\n\n\n\n\n\n\n\n\n\n\n\nReplication of Karlan and List (2007)\n\n\nA replication of key findings from Karlan and List (2007) on matching grants and charitable giving.\n\n\n\nJiyoung Koo\n\n\nApr 20, 2026\n\n\n\n\n\n\n\n\n\n\n\nA/B Testing a Call to Action\n\n\nA simulation-based introduction to A/B testing and key ideas in classical frequentist statistics.\n\n\n\nJiyoung Koo\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "blog/causal academy/replication_karlan_list.html",
-    "href": "blog/causal academy/replication_karlan_list.html",
-    "title": "Replication of Karlan and List (2007)",
-    "section": "",
-    "text": "Karlan and List (2007) study whether matching grants affect charitable giving. In their field experiment, prior donors to a nonprofit organization were randomly assigned to receive either a standard fundraising letter or a letter that included a matching grant offer. The main question is whether lowering the effective “price” of giving through a match increases the likelihood that people donate.\nThis is an important causal question because fundraisers often use matching campaigns to increase donations, but it is not obvious whether these offers truly change behavior or simply repackage the same appeal. Because the authors use random assignment, differences in outcomes between the treatment and control groups can be interpreted causally.\nIn this post, I replicate three parts of their analysis. First, I check whether treatment and control groups look balanced on observable variables, which helps confirm that randomization worked. Second, I replicate the main finding that matching grants increase donation rates and average revenue per solicitation. Third, I estimate a regression similar to one of the specifications in Table 3. As an additional exercise, I also visualize the treatment effect graphically and explain whether the result mainly operates through the extensive or intensive margin."
+    "objectID": "blog/ab_pitfall/index.html#slide-1",
+    "href": "blog/ab_pitfall/index.html#slide-1",
+    "title": "Can You Trust Your A/B Test?",
+    "section": "slide-1",
+    "text": "slide-1\n\n  \n    Jiyoung Koo  ·  MGTA 495: Marketing Analytics  ·  UCSD Rady\n    Spring 2026\n  \n  \n    \n\n      \n      \n        \n          Can you trustyour A/B test?\n        \n        \n        \n          Three ways A/B tests quietly go wrong\n        \n        \n          Jiyoung Koo  ·  MGTA 495: Marketing Analytics  ·  UCSD Rady  ·  Spring 2026\n        \n      \n\n      \n      \n        \n          33% → 42%\n          False discovery rate when p-hacking occurs\n        \n        \n          ~57%\n          Of experimenters show signs of p-hacking\n        \n        \n          2,101\n          Real commercial A/B tests analyzed\n        \n        Berman, Pekelis, Scott & Van den Bulte (2018)Wharton School, UPenn · SSRN Working Paper"
   },
   {
-    "objectID": "blog/causal academy/replication_karlan_list.html#introduction",
-    "href": "blog/causal academy/replication_karlan_list.html#introduction",
-    "title": "Replication of Karlan and List (2007)",
-    "section": "",
-    "text": "Karlan and List (2007) study whether matching grants affect charitable giving. In their field experiment, prior donors to a nonprofit organization were randomly assigned to receive either a standard fundraising letter or a letter that included a matching grant offer. The main question is whether lowering the effective “price” of giving through a match increases the likelihood that people donate.\nThis is an important causal question because fundraisers often use matching campaigns to increase donations, but it is not obvious whether these offers truly change behavior or simply repackage the same appeal. Because the authors use random assignment, differences in outcomes between the treatment and control groups can be interpreted causally.\nIn this post, I replicate three parts of their analysis. First, I check whether treatment and control groups look balanced on observable variables, which helps confirm that randomization worked. Second, I replicate the main finding that matching grants increase donation rates and average revenue per solicitation. Third, I estimate a regression similar to one of the specifications in Table 3. As an additional exercise, I also visualize the treatment effect graphically and explain whether the result mainly operates through the extensive or intensive margin."
+    "objectID": "blog/ab_pitfall/index.html#slide-2",
+    "href": "blog/ab_pitfall/index.html#slide-2",
+    "title": "Can You Trust Your A/B Test?",
+    "section": "slide-2",
+    "text": "slide-2\n\n  \n    Jiyoung Koo  ·  MGTA 495: Marketing Analytics  ·  UCSD Rady\n    Problem 1 of 3\n  \n  \n    Problem 1: The peeking problem\n    Common mistake\n    \n\n      \n      \n        \"We hit p &lt; 0.05 today — ship it!\"\n        The p-value fluctuates throughout the experiment. Stopping the moment it dips below 0.05 means cherry-picking a lucky moment.\n        Checking results daily inflates your false positive rate far beyond 5% — even when nothing real changed.\n        Fix: Pre-register your sample size. Commit to it. Don't peek.\n      \n\n      \n      \n        \n          \n          \n          \n          \n          \n            \n          \n          \n            \n            0.05\n          \n          \n          \n            \n          \n          \n          \n            \n            \n          \n          \n          \n            \n          \n          \n            \n            Stop here?\n          \n          \n            \n          \n          Days of experiment\n          p-value"
   },
   {
-    "objectID": "blog/causal academy/replication_karlan_list.html#loading-the-data",
-    "href": "blog/causal academy/replication_karlan_list.html#loading-the-data",
-    "title": "Replication of Karlan and List (2007)",
-    "section": "Loading the Data",
-    "text": "Loading the Data\n\n\n\n\n\n\n\n\n\namount\nfreq\nHPA\nask1\nask2\nask3\ncontrol\ntreatment\nask\nratio\n...\nsize25\nsize50\nsize100\nMRM2\ndormant\nltmedMRA\nred0\nblue0\nclose25\namountchange\n\n\n\n\n0\n0.0\n32.0\n500.0\n750.0\n950.0\n1125.0\n0.0\n1.0\n1.0\n1.0\n...\n1.0\n0.0\n0.0\n19.0\n1.0\n0.0\n1.0\n0.0\n0.0\n-150.0\n\n\n1\n0.0\n22.0\n300.0\n500.0\n625.0\n750.0\n1.0\n0.0\n0.0\n0.0\n...\n0.0\n0.0\n0.0\n29.0\n1.0\n0.0\n1.0\n0.0\n0.0\n-100.0\n\n\n2\n0.0\n22.0\n500.0\n750.0\n950.0\n1125.0\n1.0\n0.0\n0.0\n0.0\n...\n0.0\n0.0\n0.0\n3.0\n0.0\n0.0\n1.0\n0.0\n0.0\n-218.0\n\n\n3\n0.0\n29.0\n250.0\n500.0\n625.0\n750.0\n0.0\n1.0\n3.0\n3.0\n...\n0.0\n1.0\n0.0\n4.0\n0.0\n0.0\n0.0\n1.0\n0.0\n-50.0\n\n\n4\n0.0\n17.0\n50.0\n55.0\n70.0\n85.0\n0.0\n1.0\n3.0\n2.0\n...\n0.0\n0.0\n0.0\n8.0\n1.0\n0.0\n0.0\n1.0\n0.0\n-50.0\n\n\n\n\n5 rows × 35 columns\n\n\n\nTo prepare for the analysis, I create a binary variable equal to 1 if a person donated and 0 otherwise."
+    "objectID": "blog/ab_pitfall/index.html#slide-3",
+    "href": "blog/ab_pitfall/index.html#slide-3",
+    "title": "Can You Trust Your A/B Test?",
+    "section": "slide-3",
+    "text": "slide-3\n\n  \n    Jiyoung Koo  ·  MGTA 495: Marketing Analytics  ·  UCSD Rady\n    Problem 2 of 3\n  \n  \n    Problem 2: P-hacking\n    Common mistake\n    \n\n      \n      \n        \"No effect overall... what about women aged 18–24, on mobile, on Tuesdays?\"\n        Slicing data until something looks significant. If you test 20 subgroups, you'll likely find one that crosses p &lt; 0.05 by pure chance.\n        At α = 0.05, testing 20 hypotheses gives a ~64% chance of at least one false positive.\n        Fix: Decide on one primary metric before the experiment starts.\n      \n\n      \n      \n        \n          \n          20 subgroup tests\n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n          \n            \n            \n          \n          \n            \n            p=0.03!\n          \n          \n          \n            \n          \n          \n            \n            Only this\n          \n          \n            \n            gets reported\n          \n          \n            \n            19 null results quietly ignored"
   },
   {
-    "objectID": "blog/causal academy/replication_karlan_list.html#balance-check-replicating-part-of-table-1",
-    "href": "blog/causal academy/replication_karlan_list.html#balance-check-replicating-part-of-table-1",
-    "title": "Replication of Karlan and List (2007)",
-    "section": "Balance Check (Replicating Part of Table 1)",
-    "text": "Balance Check (Replicating Part of Table 1)\nA key feature of a randomized experiment is that the treatment and control groups should be similar before treatment. If that is true, then differences in outcomes after the letters are sent are more credibly caused by the matching grant itself.\nI examine a few observable variables that appear in Table 1:\n\nfreq: number of prior donations\nHPA: highest previous amount donated\ndormant: indicator for whether the donor had been inactive\nltmedMRA: indicator for whether the donor’s recent giving was below the median\n\n\n\n\n\n\n\n\n\ntreatment\nControl\nTreatment\n\n\n\n\nfreq\n8.047\n8.035\n\n\nHPA\n58.960\n59.597\n\n\ndormant\n0.523\n0.524\n\n\nltmedMRA\n0.488\n0.497\n\n\n\n\n\n\n\nThe treatment and control groups are very similar on these observable characteristics. This supports the claim that randomization worked as intended and that there is no obvious evidence of selection bias between the two groups."
+    "objectID": "blog/ab_pitfall/index.html#slide-4",
+    "href": "blog/ab_pitfall/index.html#slide-4",
+    "title": "Can You Trust Your A/B Test?",
+    "section": "slide-4",
+    "text": "slide-4\n\n  \n    Jiyoung Koo  ·  MGTA 495: Marketing Analytics  ·  UCSD Rady\n    Problem 3 of 3\n  \n  \n    Problem 3: The novelty effect\n    Easy to miss\n    \n\n      \n      \n        \"Our new feature boosted clicks by 30%!\" (For two weeks.)\n        Users click on new things out of curiosity, not preference. If the A/B test runs during that novelty spike, it looks like a huge win — until full rollout.\n        The effect fades after novelty wears off, but the decision has already been made.\n        Fix: Run the experiment long enough for novelty to wear off.\n      \n\n      \n      \n        \n          \n          \n          \n          \n          \n          base\n          \n          \n          A/B test window\n          \n          \n            \n          \n          \n            \n            \n          \n          \n            \n            Peak\n          \n          \n            \n            back to\n          \n          \n            \n            baseline\n          \n          Time\n          CTR"
   },
   {
-    "objectID": "blog/causal academy/replication_karlan_list.html#main-analysis",
-    "href": "blog/causal academy/replication_karlan_list.html#main-analysis",
-    "title": "Replication of Karlan and List (2007)",
-    "section": "Main Analysis",
-    "text": "Main Analysis\n\nReplicating Table 2A, Panel A\nThe core result in the paper is that matching grants increase both the response rate and the average amount raised per solicitation.\n\n\nResponse Rate\n\n\ntreatment\n0.0    0.017858\n1.0    0.022039\nName: donate, dtype: float64\n\n\n\n\ntreatment\n0.0    1.79\n1.0    2.20\nName: donate, dtype: float64\n\n\nThe donation rate is about 1.79% in the control group and 2.20% in the treatment group. This means that offering a matching grant increases the probability of donating by roughly 23%.\n\n\nAverage Donation Amount (Unconditional)\n\n\ntreatment\n0.0    0.813268\n1.0    0.966873\nName: amount, dtype: float32\n\n\nThe average amount raised per solicitation is about 0.81 in the control group and 0.97 in the treatment group. This is an increase of about 19%, which closely matches the main result in the paper.\n\n\nAverage Donation Conditional on Giving\n\n\ntreatment\n0.0    45.540268\n1.0    43.871876\nName: amount, dtype: float32\n\n\nAmong those who donate, the average gift size is fairly similar across groups. This suggests that the matching grant mostly affects whether people choose to donate, rather than how much they give once they decide to contribute."
-  },
-  {
-    "objectID": "blog/causal academy/replication_karlan_list.html#regression-analysis",
-    "href": "blog/causal academy/replication_karlan_list.html#regression-analysis",
-    "title": "Replication of Karlan and List (2007)",
-    "section": "Regression Analysis",
-    "text": "Regression Analysis\nBecause the assignment notes mention that Table 3 appears to have been produced using a standard linear regression even though the paper labels it as probit, I estimate a linear probability model using OLS.\n\n\n                            OLS Regression Results                            \n==============================================================================\nDep. Variable:                 donate   R-squared:                       0.000\nModel:                            OLS   Adj. R-squared:                  0.000\nMethod:                 Least Squares   F-statistic:                     9.618\nDate:                Thu, 07 May 2026   Prob (F-statistic):            0.00193\nTime:                        00:10:31   Log-Likelihood:                 26630.\nNo. Observations:               50083   AIC:                        -5.326e+04\nDf Residuals:                   50081   BIC:                        -5.324e+04\nDf Model:                           1                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst          0.0179      0.001     16.225      0.000       0.016       0.020\ntreatment      0.0042      0.001      3.101      0.002       0.002       0.007\n==============================================================================\nOmnibus:                    59814.280   Durbin-Watson:                   1.997\nProb(Omnibus):                  0.000   Jarque-Bera (JB):          4317152.727\nSkew:                           6.740   Prob(JB):                         0.00\nKurtosis:                      46.440   Cond. No.                         3.23\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n\n\nThe coefficient on treatment is positive and statistically significant, indicating that receiving a matching offer increases the probability of donating. In a linear probability model, this coefficient can be interpreted directly as the change in donation probability associated with treatment.\nThis OLS specification is also useful because it aligns more closely with the assignment note that the Table 3 estimates appear to come from a standard linear regression.\n\nRegression with Basic Controls\nAs a robustness check, I also add a few pre-treatment characteristics as controls.\n\n\n                            OLS Regression Results                            \n==============================================================================\nDep. Variable:                 donate   R-squared:                       0.016\nModel:                            OLS   Adj. R-squared:                  0.016\nMethod:                 Least Squares   F-statistic:                     165.9\nDate:                Thu, 07 May 2026   Prob (F-statistic):          1.45e-175\nTime:                        00:10:31   Log-Likelihood:                 27036.\nNo. Observations:               50083   AIC:                        -5.406e+04\nDf Residuals:                   50077   BIC:                        -5.401e+04\nDf Model:                           5                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst          0.0148      0.002      8.942      0.000       0.012       0.018\ntreatment      0.0042      0.001      3.128      0.002       0.002       0.007\nfreq           0.0013   5.74e-05     22.702      0.000       0.001       0.001\nHPA         -1.49e-05    9.6e-06     -1.552      0.121   -3.37e-05    3.91e-06\ndormant       -0.0163      0.001    -12.777      0.000      -0.019      -0.014\nltmedMRA       0.0041      0.001      3.045      0.002       0.001       0.007\n==============================================================================\nOmnibus:                    58989.422   Durbin-Watson:                   1.993\nProb(Omnibus):                  0.000   Jarque-Bera (JB):          4091508.000\nSkew:                           6.590   Prob(JB):                         0.00\nKurtosis:                      45.273   Cond. No.                         299.\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n\n\nThe treatment effect remains positive after adding controls, which supports the conclusion that the matching grant increased donation probability.\nBecause treatment was randomly assigned, the treatment coefficient can be interpreted causally: randomization helps ensure that other factors, such as prior donor characteristics or baseline giving tendencies, are balanced across groups on average."
-  },
-  {
-    "objectID": "blog/causal academy/replication_karlan_list.html#something-additional-a-graphical-presentation-of-the-main-result",
-    "href": "blog/causal academy/replication_karlan_list.html#something-additional-a-graphical-presentation-of-the-main-result",
-    "title": "Replication of Karlan and List (2007)",
-    "section": "Something Additional: A Graphical Presentation of the Main Result",
-    "text": "Something Additional: A Graphical Presentation of the Main Result\nAs an additional exercise, I present the treatment effect graphically. The paper mainly reports this result in a table, but a simple figure makes the difference easy to see.\n\n\n\n\n\n\n\n\n\nThe graph shows a clear increase in the response rate for the treatment group. The difference is small in absolute terms but meaningful relative to the low baseline donation rate.\nThis pattern also helps clarify the mechanism behind the main effect. The matching grant appears to operate mainly through the extensive margin: it gets more people to donate. By contrast, the conditional gift amount changes very little, so there is less evidence that the treatment strongly affects the intensive margin, or how much donors choose to give once they decide to donate."
-  },
-  {
-    "objectID": "blog/causal academy/replication_karlan_list.html#conclusion",
-    "href": "blog/causal academy/replication_karlan_list.html#conclusion",
-    "title": "Replication of Karlan and List (2007)",
-    "section": "Conclusion",
-    "text": "Conclusion\nThis replication reproduces the main qualitative findings of Karlan and List (2007). First, the treatment and control groups appear balanced on observable characteristics, which supports the validity of the experimental design. Second, matching grants increase both the probability of donating and the average amount raised per solicitation. Third, an OLS regression confirms that the treatment effect is positive and statistically significant.\nMy additional graph also makes the main result easier to see and reinforces the interpretation that the effect works primarily by increasing participation rather than changing gift size among donors.\nOverall, this paper provides a clear example of how randomized experiments can be used to draw causal conclusions in marketing and fundraising contexts."
-  },
-  {
-    "objectID": "hw1_questions.html",
-    "href": "hw1_questions.html",
-    "title": "A/B Testing a Call to Action",
-    "section": "",
-    "text": "Note\n\n\n\nSuppose you manage a website with a landing page that includes an option for visitors to sign up for your newsletter. You are interested in improving the effectiveness of this sign-up feature.\nTo do this, you consider two different calls to action (CTAs). CTA A reads “Sign up for our newsletter here!” while CTA B reads “Stay up to date by signing up!” Although the messages are similar, even small differences in wording may influence user behavior.\nTo determine which CTA performs better, you run an A/B test. In an A/B test, visitors are randomly assigned to see one of the two versions. You can then compare the sign-up rates between the two groups to evaluate which CTA leads to more conversions."
-  },
-  {
-    "objectID": "hw1_questions.html#introduction",
-    "href": "hw1_questions.html#introduction",
-    "title": "A/B Testing a Call to Action",
-    "section": "",
-    "text": "Note\n\n\n\nSuppose you manage a website with a landing page that includes an option for visitors to sign up for your newsletter. You are interested in improving the effectiveness of this sign-up feature.\nTo do this, you consider two different calls to action (CTAs). CTA A reads “Sign up for our newsletter here!” while CTA B reads “Stay up to date by signing up!” Although the messages are similar, even small differences in wording may influence user behavior.\nTo determine which CTA performs better, you run an A/B test. In an A/B test, visitors are randomly assigned to see one of the two versions. You can then compare the sign-up rates between the two groups to evaluate which CTA leads to more conversions."
-  },
-  {
-    "objectID": "hw1_questions.html#the-ab-test-as-a-statistical-problem",
-    "href": "hw1_questions.html#the-ab-test-as-a-statistical-problem",
-    "title": "A/B Testing a Call to Action",
-    "section": "The A/B Test as a Statistical Problem",
-    "text": "The A/B Test as a Statistical Problem\n\n\n\n\n\n\nNote\n\n\n\nIn this section, connect the A/B test to a formal statistical framework. Address each of the following ideas:\n\nEach visitor either signs up or does not, so we can model each visitor’s outcome as a draw from a Bernoulli distribution with parameter \\(\\pi\\), the probability of signing up.\nBecause the CTA a visitor sees may influence their probability of signing up, we allow the parameter to differ across groups: visitors who see CTA A have sign-up probability \\(\\pi_A\\), and visitors who see CTA B have sign-up probability \\(\\pi_B\\). Each visitor can either sign up (1) or not (0).\nThe quantity we care about is \\(\\theta = \\pi_A - \\pi_B\\), the difference in sign-up rates between the two CTAs.\nOur estimator of \\(\\theta\\) is the difference in sample means, \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\). (Since each observation is either 0 or 1, the sample mean is simply the proportion of visitors who signed up — so \\(\\bar{X}_A = \\hat\\pi_A\\) and \\(\\bar{X}_B = \\hat\\pi_B\\).)"
-  },
-  {
-    "objectID": "hw1_questions.html#simulating-data",
-    "href": "hw1_questions.html#simulating-data",
-    "title": "A/B Testing a Call to Action",
-    "section": "Simulating Data",
-    "text": "Simulating Data\n\n\n\n\n\n\nNote\n\n\n\n\nWrite a brief paragraph for the reader explaining that in the real world we would not know the true values of \\(\\pi_A\\) and \\(\\pi_B\\), but for the purpose of this exercise we will set them ourselves so that we can study the behavior of our estimator when we know the truth.\nSuppose \\(\\pi_A = 0.22\\) and \\(\\pi_B = 0.18\\), so the true difference is \\(\\theta = 0.04\\).\nUsing a language of your choice, simulate 1,000 draws from each of the two Bernoulli distributions (2,000 total). Store the results so you can use them in the sections that follow."
-  },
-  {
-    "objectID": "hw1_questions.html#the-law-of-large-numbers",
-    "href": "hw1_questions.html#the-law-of-large-numbers",
-    "title": "A/B Testing a Call to Action",
-    "section": "The Law of Large Numbers",
-    "text": "The Law of Large Numbers\n\n\n\n\n\n\nNote\n\n\n\n\nWrite an introductory sentence or two explaining the Law of Large Numbers to the reader: as the sample size grows, the sample mean converges to the population mean. Connect this back to our estimator — the LLN is what gives us confidence that \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\) will be close to the true \\(\\theta\\) when our sample is large enough.\nThen demonstrate this visually. Using the simulated data from the previous section, compute the element-wise differences between the CTA A draws and the CTA B draws to get a vector of 1,000 differences. Calculate the cumulative average of that vector (i.e., the running mean after 1 draw, after 2 draws, …, after 1,000 draws) and plot it against the number of observations.\nThe plot should show a noisy average when only a few observations are included that settles down and converges toward the true difference of 0.04 as the sample size grows.\nAfter the plot, write a few sentences explaining what the reader should take away from it."
-  },
-  {
-    "objectID": "hw1_questions.html#bootstrap-standard-errors",
-    "href": "hw1_questions.html#bootstrap-standard-errors",
-    "title": "A/B Testing a Call to Action",
-    "section": "Bootstrap Standard Errors",
-    "text": "Bootstrap Standard Errors\n\n\n\n\n\n\nNote\n\n\n\n\nNow that we “trust” our estimator, the next natural question is: how precise is it? We would like to report not just a point estimate of \\(\\theta\\) but also a confidence interval that communicates our uncertainty.\nWrite a short introduction explaining the idea of bootstrapping to the reader. The bootstrap is a resampling method that lets us estimate the variability of a statistic without relying on a closed-form formula. We resample (with replacement) from our observed data many times, compute the statistic of interest on each resample, and use the standard deviation of those resampled statistics as our estimate of the standard error.\nThen carry out the following steps:\n\nFrom your 1,000 CTA A draws and 1,000 CTA B draws, draw a bootstrap resample of size 1,000 (with replacement) from each group. Compute \\(\\hat\\theta^* = \\bar{X}_A^* - \\bar{X}_B^*\\) for that resample.\nRepeat step 1 a total of 1,000 times to produce a vector of 1,000 bootstrapped estimates of \\(\\theta\\).\nCompute the standard deviation of those 1,000 values. This is your bootstrapped standard error.\nCompare it to the analytical standard error. For the difference in means of two independent Bernoulli samples, the standard error formula is:\n\n\n\\[\nSE(\\hat\\theta) = \\sqrt{\\frac{\\hat\\pi_A(1 - \\hat\\pi_A)}{n_A} + \\frac{\\hat\\pi_B(1 - \\hat\\pi_B)}{n_B}}\n\\]\nwhere \\(\\hat\\pi_A\\) and \\(\\hat\\pi_B\\) are the sample proportions and \\(n_A\\) and \\(n_B\\) are the sample sizes.\n\nReport both the bootstrapped standard error and the analytical standard error and comment on how close they are to each other. Then use the bootstrapped standard error to construct a 95% confidence interval for \\(\\theta\\) and interpret it for the reader."
-  },
-  {
-    "objectID": "hw1_questions.html#the-central-limit-theorem",
-    "href": "hw1_questions.html#the-central-limit-theorem",
-    "title": "A/B Testing a Call to Action",
-    "section": "The Central Limit Theorem",
-    "text": "The Central Limit Theorem\n\n\n\n\n\n\nNote\n\n\n\n\nWrite a short introduction explaining the Central Limit Theorem to the reader: regardless of the shape of the underlying population distribution, the sampling distribution of the sample mean (and therefore of the difference in sample means) becomes approximately Normal as the sample size grows.\nThen demonstrate this visually by creating four histograms, one for each of the following sample sizes: \\(n \\in \\{25, 50, 100, 500\\}\\).\nFor each sample size \\(n\\):\n\nDraw \\(n\\) observations from the CTA A distribution and \\(n\\) observations from the CTA B distribution.\nCompute \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\).\nRepeat steps 1–2 a total of 1,000 times to produce 1,000 values of \\(\\hat\\theta\\).\nPlot a histogram of those 1,000 values.\n\nArrange the four histograms so they can be compared easily (e.g., in a 2x2 grid with consistent x-axis scales).\nAfter the plots, write a few sentences explaining what the reader should observe: at small sample sizes the histogram may look rough or asymmetric, but as \\(n\\) increases the distribution of \\(\\hat\\theta\\) becomes smoother and more bell-shaped, illustrating the Central Limit Theorem in action."
-  },
-  {
-    "objectID": "hw1_questions.html#hypothesis-testing",
-    "href": "hw1_questions.html#hypothesis-testing",
-    "title": "A/B Testing a Call to Action",
-    "section": "Hypothesis Testing",
-    "text": "Hypothesis Testing\n\n\n\n\n\n\nNote\n\n\n\n\nNow that we have seen the CLT in action — that the sampling distribution of \\(\\hat\\theta\\) is approximately Normal for large samples — we can use this result to perform a formal hypothesis test.\nWrite a paragraph explaining what a hypothesis test is to the reader. We set up a null hypothesis \\(H_0: \\theta = 0\\) (i.e., the two CTAs produce the same sign-up rate) and an alternative hypothesis \\(H_1: \\theta \\neq 0\\). The goal is to assess whether the data provide enough evidence to reject \\(H_0\\).\nThen explain why we standardize \\(\\hat\\theta\\) to form a test statistic. We compute:\n\n\\[\nz = \\frac{\\hat\\theta - 0}{SE(\\hat\\theta)}\n\\]\n\nWalk the reader through the logic of this standardization step by step:\n\nBy the CLT, we know that \\(\\hat\\theta\\) is approximately Normal for large samples. Under \\(H_0\\), the mean of that distribution is 0.\nWhen we divide a Normal random variable by its standard deviation, we get a standard Normal \\(N(0,1)\\). So under \\(H_0\\), \\(z \\;\\dot\\sim\\; N(0,1)\\).\nThis means we know the distribution of our test statistic under the null, which is exactly what we need to compute a p-value.\n\nExplain to the reader why this is sometimes called a “t-test” even though the test statistic follows an approximate Normal distribution, not a t-distribution. The classical t-test arises when the data are drawn from a Normal distribution and the variance must be estimated — the ratio then follows an exact t-distribution. In our setting the data are Bernoulli (not Normal), so there is no exact t-distribution result. The CLT gives us approximate Normality, and since we estimate the SE from the data, what we are really doing is closer to a z-test. In practice, for large samples the t-distribution and the standard Normal are nearly identical, so the distinction has little practical consequence — but it is important to understand why.\nUsing your simulated data, compute the test statistic and its associated p-value (using the standard Normal distribution as the reference). Interpret the result for the reader."
-  },
-  {
-    "objectID": "hw1_questions.html#the-t-test-as-a-regression",
-    "href": "hw1_questions.html#the-t-test-as-a-regression",
-    "title": "A/B Testing a Call to Action",
-    "section": "The T-Test as a Regression",
-    "text": "The T-Test as a Regression\n\n\n\n\n\n\nNote\n\n\n\n\nIt turns out that the two-sample test we just ran is mathematically equivalent to a simple linear regression. Understanding this connection is useful because it means the same machinery — and the same software — that you use for regression can also perform hypothesis tests, and it generalizes naturally to more complex experimental designs.\nExplain the setup to the reader. Stack the CTA A and CTA B data into a single dataset with two columns: an outcome \\(Y_i\\) (1 if the visitor signed up, 0 otherwise) and an indicator \\(D_i\\) (1 if the visitor saw CTA A, 0 if they saw CTA B). Then fit the regression:\n\n\\[\nY_i = \\beta_0 + \\beta_1 D_i + \\varepsilon_i\n\\]\n\nWalk through the interpretation of the coefficients:\n\n\\(\\beta_0\\) is the expected value of \\(Y_i\\) when \\(D_i = 0\\) — i.e., the mean of the B group, which estimates \\(\\pi_B\\).\n\\(\\beta_0 + \\beta_1\\) is the expected value of \\(Y_i\\) when \\(D_i = 1\\) — i.e., the mean of the A group, which estimates \\(\\pi_A\\).\nTherefore \\(\\beta_1 = \\pi_A - \\pi_B = \\theta\\), and the OLS estimate \\(\\hat\\beta_1\\) is numerically identical to \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\).\n\nFit this regression using your simulated data. Report the coefficient estimate \\(\\hat\\beta_1\\), its standard error, its t-statistic, and its p-value. Compare these to the values you computed in the previous section using the two-sample approach — they should match (up to a small difference in how the standard error is computed; standard OLS assumes a single pooled variance, while the two-sample formula we used assumes separate variances for each group).\nExplain to the reader why this equivalence matters: the regression framework makes it easy to add controls, interactions, or additional treatment arms, all while producing the same inference in the simple case."
-  },
-  {
-    "objectID": "hw1_questions.html#the-problem-with-peeking",
-    "href": "hw1_questions.html#the-problem-with-peeking",
-    "title": "A/B Testing a Call to Action",
-    "section": "The Problem with Peeking",
-    "text": "The Problem with Peeking\n\n\n\n\n\n\nNote\n\n\n\n\nYour boss is impatient. Rather than waiting until all 1,000 visitors have been assigned to each group, she wants to run the hypothesis test after every 100 visitors per group — peeking at the results after 100, 200, 300, …, up to 1,000 visitors per group (10 tests in total). If any of those tests comes back significant at the \\(\\alpha = 0.05\\) level, she wants to declare a winner and stop the experiment early.\nExplain to the reader why this is problematic under classical frequentist statistics. The key issue is that a single test at \\(\\alpha = 0.05\\) has a 5% chance of a false positive (rejecting \\(H_0\\) when it is actually true). But when you conduct multiple tests on accumulating data, each peek is another opportunity to get a false positive. The overall probability of at least one false rejection across all the peeks is much higher than 5%.\nDemonstrate this with a simulation. The idea is as follows:\n\nSet up a world where the null hypothesis is true: \\(\\pi_A = \\pi_B = 0.20\\) (i.e., \\(\\theta = 0\\), there is no difference between the CTAs).\nSimulate a single experiment: draw 1,000 observations for group A and 1,000 for group B. After every 100 observations per group (at \\(n = 100, 200, \\ldots, 1000\\)), compute the z-statistic and p-value. Record whether any of the 10 p-values falls below 0.05.\nRepeat step 2 a total of 10,000 times to simulate 10,000 experiments.\nCompute the fraction of those 10,000 experiments in which at least one peek produced a significant result. This is the empirical false positive rate under peeking.\n\nCompare this to the nominal 5% false positive rate of a single test. Report the result and explain to the reader why peeking inflates the Type I error rate and what this means in practice for running A/B tests."
-  },
-  {
-    "objectID": "education.html",
-    "href": "education.html",
-    "title": "",
-    "section": "",
-    "text": "University of California, San Diego M.S. in Business Analytics | Jul 2025 – Dec 2026\n\n\nSan Diego, CA\nRelevant Courses - AI-Assisted Math & Programming for Business Analytics - Business Analytics in Marketing, Finance, and Operations - SQL and ETL - Collecting and Analyzing Large Data - Business Intelligence - Customer Analytics - Supply Chain Analytics - Experiments for Business Analytics\n\n\n\n\nEwha Womans University B.A. in Business Administration & Economics | Mar 2009 – Aug 2013\n\n\nSeoul, South Korea\nExchange Program - EDHEC Business School, France - MSc in Financial Economics\nRelevant Courses - Statistics for Business - Mathematics for Economics - Management Information Systems - Introduction to Excel and VBA Programming - Financial Economics - Seminars on Economics (Financial Engineering)\n\n\n\n\nKorea National Open University Additional Coursework in Data Science & Statistics | Mar 2023 – Dec 2024\n\n\nSeoul, South Korea\nRelevant Courses - Python Computing - Linear Algebra - Statistical Computing with R - Statistical Analysis Using Excel - Probability Concepts and Applications - Introduction to Statistics\n\n\n\n\n\n\n\nCertified Public Accountant (CPA) | Washington State, 2025\nSQL Developer | K-Data, 2025\nForeign Exchange Manager | KITA, 2015\n\n\n\n\n\nKorean (Native)\nEnglish (Fluent)\nRussian (Conversational, TORFL Level 1)\nFrench (Basic, DELF A1)"
-  },
-  {
-    "objectID": "education.html#education",
-    "href": "education.html#education",
-    "title": "",
-    "section": "",
-    "text": "University of California, San Diego M.S. in Business Analytics | Jul 2025 – Dec 2026\n\n\nSan Diego, CA\nRelevant Courses - AI-Assisted Math & Programming for Business Analytics - Business Analytics in Marketing, Finance, and Operations - SQL and ETL - Collecting and Analyzing Large Data - Business Intelligence - Customer Analytics - Supply Chain Analytics - Experiments for Business Analytics\n\n\n\n\nEwha Womans University B.A. in Business Administration & Economics | Mar 2009 – Aug 2013\n\n\nSeoul, South Korea\nExchange Program - EDHEC Business School, France - MSc in Financial Economics\nRelevant Courses - Statistics for Business - Mathematics for Economics - Management Information Systems - Introduction to Excel and VBA Programming - Financial Economics - Seminars on Economics (Financial Engineering)\n\n\n\n\nKorea National Open University Additional Coursework in Data Science & Statistics | Mar 2023 – Dec 2024\n\n\nSeoul, South Korea\nRelevant Courses - Python Computing - Linear Algebra - Statistical Computing with R - Statistical Analysis Using Excel - Probability Concepts and Applications - Introduction to Statistics"
-  },
-  {
-    "objectID": "education.html#certifications",
-    "href": "education.html#certifications",
-    "title": "",
-    "section": "",
-    "text": "Certified Public Accountant (CPA) | Washington State, 2025\nSQL Developer | K-Data, 2025\nForeign Exchange Manager | KITA, 2015"
-  },
-  {
-    "objectID": "education.html#languages",
-    "href": "education.html#languages",
-    "title": "",
-    "section": "",
-    "text": "Korean (Native)\nEnglish (Fluent)\nRussian (Conversational, TORFL Level 1)\nFrench (Basic, DELF A1)"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Jiyoung Koo",
-    "section": "",
-    "text": "Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.\n\n\nUniversity of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011\n\n\n\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
-  },
-  {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "Jiyoung Koo",
-    "section": "",
-    "text": "University of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011"
-  },
-  {
-    "objectID": "about.html#experience",
-    "href": "about.html#experience",
-    "title": "Jiyoung Koo",
-    "section": "",
-    "text": "Wengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "My Projects",
-    "section": "",
-    "text": "No matching items"
+    "objectID": "blog/ab_pitfall/index.html#slide-5",
+    "href": "blog/ab_pitfall/index.html#slide-5",
+    "title": "Can You Trust Your A/B Test?",
+    "section": "slide-5",
+    "text": "slide-5\n\n  \n    Jiyoung Koo  ·  MGTA 495: Marketing Analytics  ·  UCSD Rady\n    Takeaway\n  \n  \n    So, can you trust your A/B test?\n\n    \n      \n      \n        Yes — but only if you run it right.\n        \n          \n            Peeking problem\n            Pre-register your sample size. Decide before you start, not during.\n          \n          \n            P-hacking\n            Pick one primary metric before the experiment. Stick to it.\n          \n          \n            Novelty effect\n            Run long enough for curiosity to wear off. Weeks, not days.\n          \n        \n        \"A/B testing is a powerful tool — but only when used correctly.\"\n        Berman, Pekelis, Scott & Van den Bulte (2018) · Wharton School, UPenn · SSRN\n      \n\n      \n      \n        \n          33% → 42%\n          False discovery rate from p-hacking\n          ~57%\n          Of experimenters show p-hacking\n          2,101\n          Real A/B tests analyzed\n          \n            Berman et al. (2018)Wharton School · SSRN"
   },
   {
     "objectID": "blog/ab_testing/ab_testing.html",
@@ -278,6 +131,188 @@
     "title": "A/B Testing a Call to Action",
     "section": "Conclusion",
     "text": "Conclusion\nThis A/B testing example illustrates several core ideas in classical frequentist statistics. The Law of Large Numbers shows why sample averages become more reliable as the sample grows. The bootstrap provides a practical way to measure uncertainty. The Central Limit Theorem explains why Normal approximations become useful for inference. Hypothesis testing gives a formal framework for evaluating evidence, and the regression formulation shows that the same logic can be expressed in a broader modeling language.\nJust as importantly, the peeking example shows that sound inference depends not only on formulas but also on disciplined experimental practice. A/B testing is powerful, but only when it is paired with careful statistical reasoning."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "My Projects",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Jiyoung Koo",
+    "section": "",
+    "text": "Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.\n\n\nUniversity of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011\n\n\n\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "Jiyoung Koo",
+    "section": "",
+    "text": "University of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "Jiyoung Koo",
+    "section": "",
+    "text": "Wengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
+  },
+  {
+    "objectID": "education.html",
+    "href": "education.html",
+    "title": "",
+    "section": "",
+    "text": "University of California, San Diego M.S. in Business Analytics | Jul 2025 – Dec 2026\n\n\nSan Diego, CA\nRelevant Courses - AI-Assisted Math & Programming for Business Analytics - Business Analytics in Marketing, Finance, and Operations - SQL and ETL - Collecting and Analyzing Large Data - Business Intelligence - Customer Analytics - Supply Chain Analytics - Experiments for Business Analytics\n\n\n\n\nEwha Womans University B.A. in Business Administration & Economics | Mar 2009 – Aug 2013\n\n\nSeoul, South Korea\nExchange Program - EDHEC Business School, France - MSc in Financial Economics\nRelevant Courses - Statistics for Business - Mathematics for Economics - Management Information Systems - Introduction to Excel and VBA Programming - Financial Economics - Seminars on Economics (Financial Engineering)\n\n\n\n\nKorea National Open University Additional Coursework in Data Science & Statistics | Mar 2023 – Dec 2024\n\n\nSeoul, South Korea\nRelevant Courses - Python Computing - Linear Algebra - Statistical Computing with R - Statistical Analysis Using Excel - Probability Concepts and Applications - Introduction to Statistics\n\n\n\n\n\n\n\nCertified Public Accountant (CPA) | Washington State, 2025\nSQL Developer | K-Data, 2025\nForeign Exchange Manager | KITA, 2015\n\n\n\n\n\nKorean (Native)\nEnglish (Fluent)\nRussian (Conversational, TORFL Level 1)\nFrench (Basic, DELF A1)"
+  },
+  {
+    "objectID": "education.html#education",
+    "href": "education.html#education",
+    "title": "",
+    "section": "",
+    "text": "University of California, San Diego M.S. in Business Analytics | Jul 2025 – Dec 2026\n\n\nSan Diego, CA\nRelevant Courses - AI-Assisted Math & Programming for Business Analytics - Business Analytics in Marketing, Finance, and Operations - SQL and ETL - Collecting and Analyzing Large Data - Business Intelligence - Customer Analytics - Supply Chain Analytics - Experiments for Business Analytics\n\n\n\n\nEwha Womans University B.A. in Business Administration & Economics | Mar 2009 – Aug 2013\n\n\nSeoul, South Korea\nExchange Program - EDHEC Business School, France - MSc in Financial Economics\nRelevant Courses - Statistics for Business - Mathematics for Economics - Management Information Systems - Introduction to Excel and VBA Programming - Financial Economics - Seminars on Economics (Financial Engineering)\n\n\n\n\nKorea National Open University Additional Coursework in Data Science & Statistics | Mar 2023 – Dec 2024\n\n\nSeoul, South Korea\nRelevant Courses - Python Computing - Linear Algebra - Statistical Computing with R - Statistical Analysis Using Excel - Probability Concepts and Applications - Introduction to Statistics"
+  },
+  {
+    "objectID": "education.html#certifications",
+    "href": "education.html#certifications",
+    "title": "",
+    "section": "",
+    "text": "Certified Public Accountant (CPA) | Washington State, 2025\nSQL Developer | K-Data, 2025\nForeign Exchange Manager | KITA, 2015"
+  },
+  {
+    "objectID": "education.html#languages",
+    "href": "education.html#languages",
+    "title": "",
+    "section": "",
+    "text": "Korean (Native)\nEnglish (Fluent)\nRussian (Conversational, TORFL Level 1)\nFrench (Basic, DELF A1)"
+  },
+  {
+    "objectID": "hw1_questions.html",
+    "href": "hw1_questions.html",
+    "title": "A/B Testing a Call to Action",
+    "section": "",
+    "text": "Note\n\n\n\nSuppose you manage a website with a landing page that includes an option for visitors to sign up for your newsletter. You are interested in improving the effectiveness of this sign-up feature.\nTo do this, you consider two different calls to action (CTAs). CTA A reads “Sign up for our newsletter here!” while CTA B reads “Stay up to date by signing up!” Although the messages are similar, even small differences in wording may influence user behavior.\nTo determine which CTA performs better, you run an A/B test. In an A/B test, visitors are randomly assigned to see one of the two versions. You can then compare the sign-up rates between the two groups to evaluate which CTA leads to more conversions."
+  },
+  {
+    "objectID": "hw1_questions.html#introduction",
+    "href": "hw1_questions.html#introduction",
+    "title": "A/B Testing a Call to Action",
+    "section": "",
+    "text": "Note\n\n\n\nSuppose you manage a website with a landing page that includes an option for visitors to sign up for your newsletter. You are interested in improving the effectiveness of this sign-up feature.\nTo do this, you consider two different calls to action (CTAs). CTA A reads “Sign up for our newsletter here!” while CTA B reads “Stay up to date by signing up!” Although the messages are similar, even small differences in wording may influence user behavior.\nTo determine which CTA performs better, you run an A/B test. In an A/B test, visitors are randomly assigned to see one of the two versions. You can then compare the sign-up rates between the two groups to evaluate which CTA leads to more conversions."
+  },
+  {
+    "objectID": "hw1_questions.html#the-ab-test-as-a-statistical-problem",
+    "href": "hw1_questions.html#the-ab-test-as-a-statistical-problem",
+    "title": "A/B Testing a Call to Action",
+    "section": "The A/B Test as a Statistical Problem",
+    "text": "The A/B Test as a Statistical Problem\n\n\n\n\n\n\nNote\n\n\n\nIn this section, connect the A/B test to a formal statistical framework. Address each of the following ideas:\n\nEach visitor either signs up or does not, so we can model each visitor’s outcome as a draw from a Bernoulli distribution with parameter \\(\\pi\\), the probability of signing up.\nBecause the CTA a visitor sees may influence their probability of signing up, we allow the parameter to differ across groups: visitors who see CTA A have sign-up probability \\(\\pi_A\\), and visitors who see CTA B have sign-up probability \\(\\pi_B\\). Each visitor can either sign up (1) or not (0).\nThe quantity we care about is \\(\\theta = \\pi_A - \\pi_B\\), the difference in sign-up rates between the two CTAs.\nOur estimator of \\(\\theta\\) is the difference in sample means, \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\). (Since each observation is either 0 or 1, the sample mean is simply the proportion of visitors who signed up — so \\(\\bar{X}_A = \\hat\\pi_A\\) and \\(\\bar{X}_B = \\hat\\pi_B\\).)"
+  },
+  {
+    "objectID": "hw1_questions.html#simulating-data",
+    "href": "hw1_questions.html#simulating-data",
+    "title": "A/B Testing a Call to Action",
+    "section": "Simulating Data",
+    "text": "Simulating Data\n\n\n\n\n\n\nNote\n\n\n\n\nWrite a brief paragraph for the reader explaining that in the real world we would not know the true values of \\(\\pi_A\\) and \\(\\pi_B\\), but for the purpose of this exercise we will set them ourselves so that we can study the behavior of our estimator when we know the truth.\nSuppose \\(\\pi_A = 0.22\\) and \\(\\pi_B = 0.18\\), so the true difference is \\(\\theta = 0.04\\).\nUsing a language of your choice, simulate 1,000 draws from each of the two Bernoulli distributions (2,000 total). Store the results so you can use them in the sections that follow."
+  },
+  {
+    "objectID": "hw1_questions.html#the-law-of-large-numbers",
+    "href": "hw1_questions.html#the-law-of-large-numbers",
+    "title": "A/B Testing a Call to Action",
+    "section": "The Law of Large Numbers",
+    "text": "The Law of Large Numbers\n\n\n\n\n\n\nNote\n\n\n\n\nWrite an introductory sentence or two explaining the Law of Large Numbers to the reader: as the sample size grows, the sample mean converges to the population mean. Connect this back to our estimator — the LLN is what gives us confidence that \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\) will be close to the true \\(\\theta\\) when our sample is large enough.\nThen demonstrate this visually. Using the simulated data from the previous section, compute the element-wise differences between the CTA A draws and the CTA B draws to get a vector of 1,000 differences. Calculate the cumulative average of that vector (i.e., the running mean after 1 draw, after 2 draws, …, after 1,000 draws) and plot it against the number of observations.\nThe plot should show a noisy average when only a few observations are included that settles down and converges toward the true difference of 0.04 as the sample size grows.\nAfter the plot, write a few sentences explaining what the reader should take away from it."
+  },
+  {
+    "objectID": "hw1_questions.html#bootstrap-standard-errors",
+    "href": "hw1_questions.html#bootstrap-standard-errors",
+    "title": "A/B Testing a Call to Action",
+    "section": "Bootstrap Standard Errors",
+    "text": "Bootstrap Standard Errors\n\n\n\n\n\n\nNote\n\n\n\n\nNow that we “trust” our estimator, the next natural question is: how precise is it? We would like to report not just a point estimate of \\(\\theta\\) but also a confidence interval that communicates our uncertainty.\nWrite a short introduction explaining the idea of bootstrapping to the reader. The bootstrap is a resampling method that lets us estimate the variability of a statistic without relying on a closed-form formula. We resample (with replacement) from our observed data many times, compute the statistic of interest on each resample, and use the standard deviation of those resampled statistics as our estimate of the standard error.\nThen carry out the following steps:\n\nFrom your 1,000 CTA A draws and 1,000 CTA B draws, draw a bootstrap resample of size 1,000 (with replacement) from each group. Compute \\(\\hat\\theta^* = \\bar{X}_A^* - \\bar{X}_B^*\\) for that resample.\nRepeat step 1 a total of 1,000 times to produce a vector of 1,000 bootstrapped estimates of \\(\\theta\\).\nCompute the standard deviation of those 1,000 values. This is your bootstrapped standard error.\nCompare it to the analytical standard error. For the difference in means of two independent Bernoulli samples, the standard error formula is:\n\n\n\\[\nSE(\\hat\\theta) = \\sqrt{\\frac{\\hat\\pi_A(1 - \\hat\\pi_A)}{n_A} + \\frac{\\hat\\pi_B(1 - \\hat\\pi_B)}{n_B}}\n\\]\nwhere \\(\\hat\\pi_A\\) and \\(\\hat\\pi_B\\) are the sample proportions and \\(n_A\\) and \\(n_B\\) are the sample sizes.\n\nReport both the bootstrapped standard error and the analytical standard error and comment on how close they are to each other. Then use the bootstrapped standard error to construct a 95% confidence interval for \\(\\theta\\) and interpret it for the reader."
+  },
+  {
+    "objectID": "hw1_questions.html#the-central-limit-theorem",
+    "href": "hw1_questions.html#the-central-limit-theorem",
+    "title": "A/B Testing a Call to Action",
+    "section": "The Central Limit Theorem",
+    "text": "The Central Limit Theorem\n\n\n\n\n\n\nNote\n\n\n\n\nWrite a short introduction explaining the Central Limit Theorem to the reader: regardless of the shape of the underlying population distribution, the sampling distribution of the sample mean (and therefore of the difference in sample means) becomes approximately Normal as the sample size grows.\nThen demonstrate this visually by creating four histograms, one for each of the following sample sizes: \\(n \\in \\{25, 50, 100, 500\\}\\).\nFor each sample size \\(n\\):\n\nDraw \\(n\\) observations from the CTA A distribution and \\(n\\) observations from the CTA B distribution.\nCompute \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\).\nRepeat steps 1–2 a total of 1,000 times to produce 1,000 values of \\(\\hat\\theta\\).\nPlot a histogram of those 1,000 values.\n\nArrange the four histograms so they can be compared easily (e.g., in a 2x2 grid with consistent x-axis scales).\nAfter the plots, write a few sentences explaining what the reader should observe: at small sample sizes the histogram may look rough or asymmetric, but as \\(n\\) increases the distribution of \\(\\hat\\theta\\) becomes smoother and more bell-shaped, illustrating the Central Limit Theorem in action."
+  },
+  {
+    "objectID": "hw1_questions.html#hypothesis-testing",
+    "href": "hw1_questions.html#hypothesis-testing",
+    "title": "A/B Testing a Call to Action",
+    "section": "Hypothesis Testing",
+    "text": "Hypothesis Testing\n\n\n\n\n\n\nNote\n\n\n\n\nNow that we have seen the CLT in action — that the sampling distribution of \\(\\hat\\theta\\) is approximately Normal for large samples — we can use this result to perform a formal hypothesis test.\nWrite a paragraph explaining what a hypothesis test is to the reader. We set up a null hypothesis \\(H_0: \\theta = 0\\) (i.e., the two CTAs produce the same sign-up rate) and an alternative hypothesis \\(H_1: \\theta \\neq 0\\). The goal is to assess whether the data provide enough evidence to reject \\(H_0\\).\nThen explain why we standardize \\(\\hat\\theta\\) to form a test statistic. We compute:\n\n\\[\nz = \\frac{\\hat\\theta - 0}{SE(\\hat\\theta)}\n\\]\n\nWalk the reader through the logic of this standardization step by step:\n\nBy the CLT, we know that \\(\\hat\\theta\\) is approximately Normal for large samples. Under \\(H_0\\), the mean of that distribution is 0.\nWhen we divide a Normal random variable by its standard deviation, we get a standard Normal \\(N(0,1)\\). So under \\(H_0\\), \\(z \\;\\dot\\sim\\; N(0,1)\\).\nThis means we know the distribution of our test statistic under the null, which is exactly what we need to compute a p-value.\n\nExplain to the reader why this is sometimes called a “t-test” even though the test statistic follows an approximate Normal distribution, not a t-distribution. The classical t-test arises when the data are drawn from a Normal distribution and the variance must be estimated — the ratio then follows an exact t-distribution. In our setting the data are Bernoulli (not Normal), so there is no exact t-distribution result. The CLT gives us approximate Normality, and since we estimate the SE from the data, what we are really doing is closer to a z-test. In practice, for large samples the t-distribution and the standard Normal are nearly identical, so the distinction has little practical consequence — but it is important to understand why.\nUsing your simulated data, compute the test statistic and its associated p-value (using the standard Normal distribution as the reference). Interpret the result for the reader."
+  },
+  {
+    "objectID": "hw1_questions.html#the-t-test-as-a-regression",
+    "href": "hw1_questions.html#the-t-test-as-a-regression",
+    "title": "A/B Testing a Call to Action",
+    "section": "The T-Test as a Regression",
+    "text": "The T-Test as a Regression\n\n\n\n\n\n\nNote\n\n\n\n\nIt turns out that the two-sample test we just ran is mathematically equivalent to a simple linear regression. Understanding this connection is useful because it means the same machinery — and the same software — that you use for regression can also perform hypothesis tests, and it generalizes naturally to more complex experimental designs.\nExplain the setup to the reader. Stack the CTA A and CTA B data into a single dataset with two columns: an outcome \\(Y_i\\) (1 if the visitor signed up, 0 otherwise) and an indicator \\(D_i\\) (1 if the visitor saw CTA A, 0 if they saw CTA B). Then fit the regression:\n\n\\[\nY_i = \\beta_0 + \\beta_1 D_i + \\varepsilon_i\n\\]\n\nWalk through the interpretation of the coefficients:\n\n\\(\\beta_0\\) is the expected value of \\(Y_i\\) when \\(D_i = 0\\) — i.e., the mean of the B group, which estimates \\(\\pi_B\\).\n\\(\\beta_0 + \\beta_1\\) is the expected value of \\(Y_i\\) when \\(D_i = 1\\) — i.e., the mean of the A group, which estimates \\(\\pi_A\\).\nTherefore \\(\\beta_1 = \\pi_A - \\pi_B = \\theta\\), and the OLS estimate \\(\\hat\\beta_1\\) is numerically identical to \\(\\hat\\theta = \\bar{X}_A - \\bar{X}_B\\).\n\nFit this regression using your simulated data. Report the coefficient estimate \\(\\hat\\beta_1\\), its standard error, its t-statistic, and its p-value. Compare these to the values you computed in the previous section using the two-sample approach — they should match (up to a small difference in how the standard error is computed; standard OLS assumes a single pooled variance, while the two-sample formula we used assumes separate variances for each group).\nExplain to the reader why this equivalence matters: the regression framework makes it easy to add controls, interactions, or additional treatment arms, all while producing the same inference in the simple case."
+  },
+  {
+    "objectID": "hw1_questions.html#the-problem-with-peeking",
+    "href": "hw1_questions.html#the-problem-with-peeking",
+    "title": "A/B Testing a Call to Action",
+    "section": "The Problem with Peeking",
+    "text": "The Problem with Peeking\n\n\n\n\n\n\nNote\n\n\n\n\nYour boss is impatient. Rather than waiting until all 1,000 visitors have been assigned to each group, she wants to run the hypothesis test after every 100 visitors per group — peeking at the results after 100, 200, 300, …, up to 1,000 visitors per group (10 tests in total). If any of those tests comes back significant at the \\(\\alpha = 0.05\\) level, she wants to declare a winner and stop the experiment early.\nExplain to the reader why this is problematic under classical frequentist statistics. The key issue is that a single test at \\(\\alpha = 0.05\\) has a 5% chance of a false positive (rejecting \\(H_0\\) when it is actually true). But when you conduct multiple tests on accumulating data, each peek is another opportunity to get a false positive. The overall probability of at least one false rejection across all the peeks is much higher than 5%.\nDemonstrate this with a simulation. The idea is as follows:\n\nSet up a world where the null hypothesis is true: \\(\\pi_A = \\pi_B = 0.20\\) (i.e., \\(\\theta = 0\\), there is no difference between the CTAs).\nSimulate a single experiment: draw 1,000 observations for group A and 1,000 for group B. After every 100 observations per group (at \\(n = 100, 200, \\ldots, 1000\\)), compute the z-statistic and p-value. Record whether any of the 10 p-values falls below 0.05.\nRepeat step 2 a total of 10,000 times to simulate 10,000 experiments.\nCompute the fraction of those 10,000 experiments in which at least one peek produced a significant result. This is the empirical false positive rate under peeking.\n\nCompare this to the nominal 5% false positive rate of a single test. Report the result and explain to the reader why peeking inflates the Type I error rate and what this means in practice for running A/B tests."
+  },
+  {
+    "objectID": "blog/causal academy/replication_karlan_list.html",
+    "href": "blog/causal academy/replication_karlan_list.html",
+    "title": "Replication of Karlan and List (2007)",
+    "section": "",
+    "text": "Karlan and List (2007) study whether matching grants affect charitable giving. In their field experiment, prior donors to a nonprofit organization were randomly assigned to receive either a standard fundraising letter or a letter that included a matching grant offer. The main question is whether lowering the effective “price” of giving through a match increases the likelihood that people donate.\nThis is an important causal question because fundraisers often use matching campaigns to increase donations, but it is not obvious whether these offers truly change behavior or simply repackage the same appeal. Because the authors use random assignment, differences in outcomes between the treatment and control groups can be interpreted causally.\nIn this post, I replicate three parts of their analysis. First, I check whether treatment and control groups look balanced on observable variables, which helps confirm that randomization worked. Second, I replicate the main finding that matching grants increase donation rates and average revenue per solicitation. Third, I estimate a regression similar to one of the specifications in Table 3. As an additional exercise, I also visualize the treatment effect graphically and explain whether the result mainly operates through the extensive or intensive margin."
+  },
+  {
+    "objectID": "blog/causal academy/replication_karlan_list.html#introduction",
+    "href": "blog/causal academy/replication_karlan_list.html#introduction",
+    "title": "Replication of Karlan and List (2007)",
+    "section": "",
+    "text": "Karlan and List (2007) study whether matching grants affect charitable giving. In their field experiment, prior donors to a nonprofit organization were randomly assigned to receive either a standard fundraising letter or a letter that included a matching grant offer. The main question is whether lowering the effective “price” of giving through a match increases the likelihood that people donate.\nThis is an important causal question because fundraisers often use matching campaigns to increase donations, but it is not obvious whether these offers truly change behavior or simply repackage the same appeal. Because the authors use random assignment, differences in outcomes between the treatment and control groups can be interpreted causally.\nIn this post, I replicate three parts of their analysis. First, I check whether treatment and control groups look balanced on observable variables, which helps confirm that randomization worked. Second, I replicate the main finding that matching grants increase donation rates and average revenue per solicitation. Third, I estimate a regression similar to one of the specifications in Table 3. As an additional exercise, I also visualize the treatment effect graphically and explain whether the result mainly operates through the extensive or intensive margin."
+  },
+  {
+    "objectID": "blog/causal academy/replication_karlan_list.html#loading-the-data",
+    "href": "blog/causal academy/replication_karlan_list.html#loading-the-data",
+    "title": "Replication of Karlan and List (2007)",
+    "section": "Loading the Data",
+    "text": "Loading the Data\n\n\n\n\n\n\n\n\n\namount\nfreq\nHPA\nask1\nask2\nask3\ncontrol\ntreatment\nask\nratio\n...\nsize25\nsize50\nsize100\nMRM2\ndormant\nltmedMRA\nred0\nblue0\nclose25\namountchange\n\n\n\n\n0\n0.0\n32.0\n500.0\n750.0\n950.0\n1125.0\n0.0\n1.0\n1.0\n1.0\n...\n1.0\n0.0\n0.0\n19.0\n1.0\n0.0\n1.0\n0.0\n0.0\n-150.0\n\n\n1\n0.0\n22.0\n300.0\n500.0\n625.0\n750.0\n1.0\n0.0\n0.0\n0.0\n...\n0.0\n0.0\n0.0\n29.0\n1.0\n0.0\n1.0\n0.0\n0.0\n-100.0\n\n\n2\n0.0\n22.0\n500.0\n750.0\n950.0\n1125.0\n1.0\n0.0\n0.0\n0.0\n...\n0.0\n0.0\n0.0\n3.0\n0.0\n0.0\n1.0\n0.0\n0.0\n-218.0\n\n\n3\n0.0\n29.0\n250.0\n500.0\n625.0\n750.0\n0.0\n1.0\n3.0\n3.0\n...\n0.0\n1.0\n0.0\n4.0\n0.0\n0.0\n0.0\n1.0\n0.0\n-50.0\n\n\n4\n0.0\n17.0\n50.0\n55.0\n70.0\n85.0\n0.0\n1.0\n3.0\n2.0\n...\n0.0\n0.0\n0.0\n8.0\n1.0\n0.0\n0.0\n1.0\n0.0\n-50.0\n\n\n\n\n5 rows × 35 columns\n\n\n\nTo prepare for the analysis, I create a binary variable equal to 1 if a person donated and 0 otherwise."
+  },
+  {
+    "objectID": "blog/causal academy/replication_karlan_list.html#balance-check-replicating-part-of-table-1",
+    "href": "blog/causal academy/replication_karlan_list.html#balance-check-replicating-part-of-table-1",
+    "title": "Replication of Karlan and List (2007)",
+    "section": "Balance Check (Replicating Part of Table 1)",
+    "text": "Balance Check (Replicating Part of Table 1)\nA key feature of a randomized experiment is that the treatment and control groups should be similar before treatment. If that is true, then differences in outcomes after the letters are sent are more credibly caused by the matching grant itself.\nI examine a few observable variables that appear in Table 1:\n\nfreq: number of prior donations\nHPA: highest previous amount donated\ndormant: indicator for whether the donor had been inactive\nltmedMRA: indicator for whether the donor’s recent giving was below the median\n\n\n\n\n\n\n\n\n\ntreatment\nControl\nTreatment\n\n\n\n\nfreq\n8.047\n8.035\n\n\nHPA\n58.960\n59.597\n\n\ndormant\n0.523\n0.524\n\n\nltmedMRA\n0.488\n0.497\n\n\n\n\n\n\n\nThe treatment and control groups are very similar on these observable characteristics. This supports the claim that randomization worked as intended and that there is no obvious evidence of selection bias between the two groups."
+  },
+  {
+    "objectID": "blog/causal academy/replication_karlan_list.html#main-analysis",
+    "href": "blog/causal academy/replication_karlan_list.html#main-analysis",
+    "title": "Replication of Karlan and List (2007)",
+    "section": "Main Analysis",
+    "text": "Main Analysis\n\nReplicating Table 2A, Panel A\nThe core result in the paper is that matching grants increase both the response rate and the average amount raised per solicitation.\n\n\nResponse Rate\n\n\ntreatment\n0.0    0.017858\n1.0    0.022039\nName: donate, dtype: float64\n\n\n\n\ntreatment\n0.0    1.79\n1.0    2.20\nName: donate, dtype: float64\n\n\nThe donation rate is about 1.79% in the control group and 2.20% in the treatment group. This means that offering a matching grant increases the probability of donating by roughly 23%.\n\n\nAverage Donation Amount (Unconditional)\n\n\ntreatment\n0.0    0.813268\n1.0    0.966873\nName: amount, dtype: float32\n\n\nThe average amount raised per solicitation is about 0.81 in the control group and 0.97 in the treatment group. This is an increase of about 19%, which closely matches the main result in the paper.\n\n\nAverage Donation Conditional on Giving\n\n\ntreatment\n0.0    45.540268\n1.0    43.871876\nName: amount, dtype: float32\n\n\nAmong those who donate, the average gift size is fairly similar across groups. This suggests that the matching grant mostly affects whether people choose to donate, rather than how much they give once they decide to contribute."
+  },
+  {
+    "objectID": "blog/causal academy/replication_karlan_list.html#regression-analysis",
+    "href": "blog/causal academy/replication_karlan_list.html#regression-analysis",
+    "title": "Replication of Karlan and List (2007)",
+    "section": "Regression Analysis",
+    "text": "Regression Analysis\nBecause the assignment notes mention that Table 3 appears to have been produced using a standard linear regression even though the paper labels it as probit, I estimate a linear probability model using OLS.\n\n\n                            OLS Regression Results                            \n==============================================================================\nDep. Variable:                 donate   R-squared:                       0.000\nModel:                            OLS   Adj. R-squared:                  0.000\nMethod:                 Least Squares   F-statistic:                     9.618\nDate:                Thu, 07 May 2026   Prob (F-statistic):            0.00193\nTime:                        00:13:21   Log-Likelihood:                 26630.\nNo. Observations:               50083   AIC:                        -5.326e+04\nDf Residuals:                   50081   BIC:                        -5.324e+04\nDf Model:                           1                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst          0.0179      0.001     16.225      0.000       0.016       0.020\ntreatment      0.0042      0.001      3.101      0.002       0.002       0.007\n==============================================================================\nOmnibus:                    59814.280   Durbin-Watson:                   1.997\nProb(Omnibus):                  0.000   Jarque-Bera (JB):          4317152.727\nSkew:                           6.740   Prob(JB):                         0.00\nKurtosis:                      46.440   Cond. No.                         3.23\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n\n\nThe coefficient on treatment is positive and statistically significant, indicating that receiving a matching offer increases the probability of donating. In a linear probability model, this coefficient can be interpreted directly as the change in donation probability associated with treatment.\nThis OLS specification is also useful because it aligns more closely with the assignment note that the Table 3 estimates appear to come from a standard linear regression.\n\nRegression with Basic Controls\nAs a robustness check, I also add a few pre-treatment characteristics as controls.\n\n\n                            OLS Regression Results                            \n==============================================================================\nDep. Variable:                 donate   R-squared:                       0.016\nModel:                            OLS   Adj. R-squared:                  0.016\nMethod:                 Least Squares   F-statistic:                     165.9\nDate:                Thu, 07 May 2026   Prob (F-statistic):          1.45e-175\nTime:                        00:13:21   Log-Likelihood:                 27036.\nNo. Observations:               50083   AIC:                        -5.406e+04\nDf Residuals:                   50077   BIC:                        -5.401e+04\nDf Model:                           5                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst          0.0148      0.002      8.942      0.000       0.012       0.018\ntreatment      0.0042      0.001      3.128      0.002       0.002       0.007\nfreq           0.0013   5.74e-05     22.702      0.000       0.001       0.001\nHPA         -1.49e-05    9.6e-06     -1.552      0.121   -3.37e-05    3.91e-06\ndormant       -0.0163      0.001    -12.777      0.000      -0.019      -0.014\nltmedMRA       0.0041      0.001      3.045      0.002       0.001       0.007\n==============================================================================\nOmnibus:                    58989.422   Durbin-Watson:                   1.993\nProb(Omnibus):                  0.000   Jarque-Bera (JB):          4091508.000\nSkew:                           6.590   Prob(JB):                         0.00\nKurtosis:                      45.273   Cond. No.                         299.\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n\n\nThe treatment effect remains positive after adding controls, which supports the conclusion that the matching grant increased donation probability.\nBecause treatment was randomly assigned, the treatment coefficient can be interpreted causally: randomization helps ensure that other factors, such as prior donor characteristics or baseline giving tendencies, are balanced across groups on average."
+  },
+  {
+    "objectID": "blog/causal academy/replication_karlan_list.html#something-additional-a-graphical-presentation-of-the-main-result",
+    "href": "blog/causal academy/replication_karlan_list.html#something-additional-a-graphical-presentation-of-the-main-result",
+    "title": "Replication of Karlan and List (2007)",
+    "section": "Something Additional: A Graphical Presentation of the Main Result",
+    "text": "Something Additional: A Graphical Presentation of the Main Result\nAs an additional exercise, I present the treatment effect graphically. The paper mainly reports this result in a table, but a simple figure makes the difference easy to see.\n\n\n\n\n\n\n\n\n\nThe graph shows a clear increase in the response rate for the treatment group. The difference is small in absolute terms but meaningful relative to the low baseline donation rate.\nThis pattern also helps clarify the mechanism behind the main effect. The matching grant appears to operate mainly through the extensive margin: it gets more people to donate. By contrast, the conditional gift amount changes very little, so there is less evidence that the treatment strongly affects the intensive margin, or how much donors choose to give once they decide to donate."
+  },
+  {
+    "objectID": "blog/causal academy/replication_karlan_list.html#conclusion",
+    "href": "blog/causal academy/replication_karlan_list.html#conclusion",
+    "title": "Replication of Karlan and List (2007)",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis replication reproduces the main qualitative findings of Karlan and List (2007). First, the treatment and control groups appear balanced on observable characteristics, which supports the validity of the experimental design. Second, matching grants increase both the probability of donating and the average amount raised per solicitation. Third, an OLS regression confirms that the treatment effect is positive and statistically significant.\nMy additional graph also makes the main result easier to see and reinforces the interpretation that the effect works primarily by increasing participation rather than changing gift size among donors.\nOverall, this paper provides a clear example of how randomized experiments can be used to draw causal conclusions in marketing and fundraising contexts."
   },
   {
     "objectID": "resume.html",
