@@ -70,5 +70,11 @@
   },
   "blog/causal academy/replication_karlan_list.qmd": {
     "replication_karlan_list.html": "d8b8a119"
+  },
+  "Koo_Jiyoung-ab_testing_pitfalls.qmd": {
+    "Koo_Jiyoung-ab_testing_pitfalls.html": "725a5cf1"
+  },
+  "blog/mle/index.qmd": {
+    "index.html": "7104b8a6"
   }
 }
