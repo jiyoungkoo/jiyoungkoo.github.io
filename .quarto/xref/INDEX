@@ -76,5 +76,14 @@
   },
   "blog/mle/index.qmd": {
     "index.html": "7104b8a6"
+  },
+  "blog/mln_conjoint/index.qmd": {
+    "index.html": "2b6d2238"
+  },
+  "blog/mln_conjoint/notebook.ipynb": {
+    "notebook.html": "ef23ef5a"
+  },
+  "notebook.ipynb": {
+    "notebook.html": "470337c2"
   }
 }

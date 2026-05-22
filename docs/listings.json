@@ -1,18 +1,19 @@
 [
   {
-    "listing": "/blog.html",
-    "items": [
-      "/blog/mle/index.html",
-      "/blog/ab_pitfall/index.html",
-      "/blog/causal academy/replication_karlan_list.html",
-      "/blog/ab_testing/ab_testing.html"
-    ]
-  },
-  {
     "listing": "/projects.html",
     "items": [
       "/projects/project1/index.html",
       "/projects/project2/index.html"
+    ]
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/mln_conjoint/index.html",
+      "/blog/mle/index.html",
+      "/blog/ab_pitfall/index.html",
+      "/blog/causal academy/replication_karlan_list.html",
+      "/blog/ab_testing/ab_testing.html"
     ]
   }
 ]
