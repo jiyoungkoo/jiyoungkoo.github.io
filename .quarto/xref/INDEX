@@ -85,5 +85,8 @@
   },
   "notebook.ipynb": {
     "notebook.html": "470337c2"
+  },
+  "blog/mnl_conjoint/index.qmd": {
+    "index.html": "1ee3a199"
   }
 }

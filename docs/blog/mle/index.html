@@ -258,7 +258,7 @@ window.Quarto = {
 <section id="exploring-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h2>
 <p>The dataset contains 1,500 firms and four variables: the number of patents, region, firm age, and customer status.</p>
-<div id="b9bd74a1" class="cell" data-execution_count="3">
+<div id="1c66b2d4" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -297,7 +297,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We begin by comparing the number of patents between Blueprinty customers and non-customers.</p>
-<div id="9ab4f528" class="cell" data-execution_count="4">
+<div id="c340470c" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -320,7 +320,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The average number of patents for non-customers is approximately 3.47, while customers have a higher average of about 4.13 patents over the past five years. This suggests that firms using Blueprinty’s software tend to have more patents on average.</p>
-<div id="ede9ae13" class="cell" data-execution_count="5">
+<div id="82dc18ad" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -332,7 +332,7 @@ window.Quarto = {
 <p>The histograms reinforce this pattern. The distribution for customers appears to be slightly shifted to the right, indicating a higher concentration of firms with larger patent counts. Customers also show a somewhat longer right tail, suggesting more high-performing firms among Blueprinty users.</p>
 <p>However, this difference alone does not imply that Blueprinty’s software causes higher patent output. Firms are not randomly assigned to use the software, so this gap may reflect underlying differences in firm characteristics rather than a causal effect.</p>
 <p>Next, we examine whether Blueprinty’s customers differ systematically from non-customers in terms of region and firm age.</p>
-<div id="040f4d06" class="cell" data-execution_count="6">
+<div id="f43b1000" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -374,7 +374,7 @@ window.Quarto = {
 </div>
 <p>The regional distribution reveals substantial differences between the two groups. A large majority of Blueprinty’s customers are located in the Northeast, whereas non-customers are more evenly distributed across regions. This suggests that Blueprinty’s customer base is geographically concentrated.</p>
 <p>This matters because regional factors may influence innovation and patent activity. Certain regions may have stronger innovation ecosystems, better access to technical talent, or more supportive business environments. As a result, higher patent counts among customers could partly reflect regional advantages rather than the effect of Blueprinty’s software.</p>
-<div id="4c511a62" class="cell" data-execution_count="7">
+<div id="576582f0" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -402,7 +402,7 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<div id="b3007078" class="cell" data-execution_count="8">
+<div id="b0489760" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -430,7 +430,7 @@ L(\lambda) = \prod_{i=1}^{n} \frac{e^{-\lambda}\lambda^{Y_i}}{Y_i!}
 \ell(\lambda) = \sum_{i=1}^{n} \left(Y_i \log \lambda - \lambda - \log(Y_i!)\right)
 \]</span></p>
 <p>The log-likelihood is easier to work with because it turns a product into a sum while preserving the same maximum.</p>
-<div id="a81bbc65" class="cell" data-execution_count="9">
+<div id="d1c6c2f9" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> df[<span class="st">"patents"</span>].values</span>
@@ -441,7 +441,7 @@ L(\lambda) = \prod_{i=1}^{n} \frac{e^{-\lambda}\lambda^{Y_i}}{Y_i!}
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(Y <span class="op">*</span> np.log(lam) <span class="op">-</span> lam <span class="op">-</span> gammaln(Y <span class="op">+</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="7827d917" class="cell" data-execution_count="10">
+<div id="27e4f8ea" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -452,7 +452,7 @@ L(\lambda) = \prod_{i=1}^{n} \frac{e^{-\lambda}\lambda^{Y_i}}{Y_i!}
 </div>
 <p>The log-likelihood function reaches its maximum at approximately <span class="math inline">\(\lambda = 3.68\)</span>, which is also equal to the sample mean of the data. This is not a coincidence. In a Poisson model, the maximum likelihood estimator of <span class="math inline">\(\lambda\)</span> is the sample mean.</p>
 <p>To confirm this numerically, we can maximize the log-likelihood directly.</p>
-<div id="9b1facd1" class="cell" data-execution_count="11">
+<div id="c7bed91b" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -492,7 +492,7 @@ Y_i \sim \text{Poisson}(\lambda_i)
 <p><span class="math display">\[
 \ell(\beta) = \sum_{i=1}^{n} \left(Y_i X_i'\beta - \exp(X_i'\beta) - \log(Y_i!)\right)
 \]</span></p>
-<div id="63b7f2fd" class="cell" data-execution_count="13">
+<div id="cfca3199" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poisson_regression_loglikelihood(beta, Y, X):</span>
@@ -501,7 +501,7 @@ Y_i \sim \text{Poisson}(\lambda_i)
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(Y <span class="op">*</span> eta <span class="op">-</span> lam <span class="op">-</span> gammaln(Y <span class="op">+</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="ccf28ae6" class="cell" data-execution_count="14">
+<div id="1a5c8dfe" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -557,7 +557,7 @@ Y_i \sim \text{Poisson}(\lambda_i)
 </div>
 </div>
 <p>As a check, we fit the same model using <code>statsmodels</code>’ built-in GLM function.</p>
-<div id="77798019" class="cell" data-execution_count="15">
+<div id="f149ce41" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -642,7 +642,7 @@ Y_i \sim \text{Poisson}(\lambda_i)
 <p>The coefficient estimates from the hand-coded likelihood and the built-in GLM model match closely. The standard errors may differ slightly because the hand-coded version relies on a numerical approximation of the Hessian.</p>
 <p>The regression results reveal several important patterns. First, the coefficient on firm age is positive, while the coefficient on age squared is negative. This indicates a concave relationship between firm age and patenting: patents increase with age, but at a decreasing rate. This pattern is economically intuitive, as firms accumulate experience over time but may eventually reach diminishing returns in innovation.</p>
 <p>The customer coefficient is positive and statistically significant at conventional levels, indicating that Blueprinty customers have higher expected patent counts after controlling for firm age and region. In particular, the estimated coefficient implies that customer firms have approximately a 23% higher expected number of patents, holding other factors constant.</p>
-<div id="e81c8df2" class="cell" data-execution_count="16">
+<div id="c93119d4" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -676,7 +676,7 @@ Y_i \sim \text{Poisson}(\lambda_i)
 <li>A dataset where all firms are treated as customers.</li>
 </ol>
 <p>Using the fitted model, we predict the expected number of patents for each firm under both scenarios.</p>
-<div id="e4642cc4" class="cell" data-execution_count="17">
+<div id="08002033" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -704,7 +704,7 @@ Y_i \sim \text{Poisson}(\lambda_i)
 </div>
 <p>The results show that the average predicted number of patents is approximately 3.44 if all firms were non-customers, compared to 4.23 if all firms were customers.</p>
 <p>This implies that being a Blueprinty customer is associated with an increase of about 0.79 additional patents over a five-year period, holding firm age and region constant.</p>
-<div id="91ced676" class="cell" data-execution_count="18">
+<div id="fabaa4a1" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

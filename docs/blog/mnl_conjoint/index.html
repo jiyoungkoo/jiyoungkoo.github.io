@@ -261,7 +261,7 @@ window.Quarto = {
 <section id="the-data" class="level2">
 <h2 class="anchored" data-anchor-id="the-data">The Data</h2>
 <p>The survey data are organized at the item-position level. Each row corresponds to one item shown in one task. The response variable equals <code>1</code> if the item was selected as best, <code>-1</code> if selected as worst, and <code>0</code> otherwise.</p>
-<div id="6103fa3d" class="cell" data-execution_count="3">
+<div id="8b935c77" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -292,7 +292,7 @@ window.Quarto = {
 </div>
 </div>
 <p>A first check revealed that the raw data include some rows with item value <code>11</code>, which does not correspond to one of the ten class labels. To focus on the intended ten-class MaxDiff design, I keep only real items 1 through 10 and then retain valid tasks with four rows, exactly one best choice, one worst choice, and two neutral options.</p>
-<div id="10285977" class="cell" data-execution_count="4">
+<div id="62b365ed" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -318,7 +318,7 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<div id="b99cffbd" class="cell" data-execution_count="5">
+<div id="eeaeb685" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -392,7 +392,7 @@ window.Quarto = {
 \text{score}_j = \%\text{best}_j - \%\text{worst}_j
 \]</span></p>
 <p>A high positive score means the class is frequently chosen as best and rarely chosen as worst. A negative score means the opposite.</p>
-<div id="25a1f66b" class="cell" data-execution_count="6">
+<div id="66697036" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -512,7 +512,7 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<div id="eed098cf" class="cell" data-execution_count="7">
+<div id="5084ac5e" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -554,7 +554,7 @@ P(\text{worst}=j \mid \text{best}) =
 \right]
 \]</span></p>
 <p>where <span class="math inline">\(j_b^*\)</span> is the item chosen as best and <span class="math inline">\(j_w^*\)</span> is the item chosen as worst.</p>
-<div id="5c63f464" class="cell" data-execution_count="9">
+<div id="fae9282f" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> full_beta(beta_free):</span>
@@ -575,7 +575,7 @@ P(\text{worst}=j \mid \text{best}) =
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ll.<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="f13b42a5" class="cell" data-execution_count="10">
+<div id="0d26829d" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -662,7 +662,7 @@ P(\text{worst}=j \mid \text{best}) =
 </table>
 </div>
 </div>
-<div id="ce2a1a1b" class="cell" data-execution_count="11">
+<div id="f899c6cf" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -688,7 +688,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 \boldsymbol{\beta} \sim N(0, 10I)
 \]</span></p>
 <p>Then I sample from the posterior using a random-walk Metropolis-Hastings algorithm.</p>
-<div id="f452534a" class="cell" data-execution_count="12">
+<div id="fadb8a97" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_prior(beta_free):</span>
@@ -722,7 +722,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="580b7db3" class="cell" data-execution_count="13">
+<div id="325940da" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -753,7 +753,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 </div>
 </div>
 <p>The acceptance rate falls within the recommended range for a random-walk Metropolis sampler. This suggests the proposal step size was tuned reasonably well.</p>
-<div id="1f54b3f7" class="cell" data-execution_count="14">
+<div id="8490de3b" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -770,7 +770,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 </div>
 </div>
 <p>The trace plots show the expected “fuzzy caterpillar” pattern after the early burn-in period. The chain appears to stabilize rather than drifting continuously, which provides reasonable evidence that the sampler is exploring the posterior distribution.</p>
-<div id="63ab553f" class="cell" data-execution_count="15">
+<div id="b5afece4" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -890,7 +890,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 </table>
 </div>
 </div>
-<div id="3662c19e" class="cell" data-execution_count="16">
+<div id="951acd91" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -904,7 +904,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 </section>
 <section id="comparing-the-three-methods" class="level2">
 <h2 class="anchored" data-anchor-id="comparing-the-three-methods">Comparing the Three Methods</h2>
-<div id="d7ec2047" class="cell" data-execution_count="17">
+<div id="92b9d8cd" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <table class="dataframe table table-striped table-hover caption-top table-sm small" data-border="1">
 <thead>
@@ -1013,7 +1013,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 </table>
 </div>
 </div>
-<div id="4eac6355" class="cell" data-execution_count="18">
+<div id="6fc060bb" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
