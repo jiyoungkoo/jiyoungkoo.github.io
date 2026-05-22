@@ -251,7 +251,7 @@ window.Quarto = {
 \theta = 0.22 - 0.18 = 0.04
 \]</span></p>
 <p>I now simulate 1,000 draws from each Bernoulli distribution.</p>
-<div id="95ef1b14" class="cell" data-execution_count="2">
+<div id="2d290e71" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
@@ -293,7 +293,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="the-law-of-large-numbers">The Law of Large Numbers</h2>
 <p>The Law of Large Numbers tells us that as the sample size grows, the sample mean converges to the population mean. In this setting, that idea is important because it helps justify why <span class="math inline">\(\hat\theta = \bar{X}_A - \bar{X}_B\)</span> should be close to the true <span class="math inline">\(\theta\)</span> once the sample is large enough.</p>
 <p>To illustrate this, I compute the element-wise differences between the simulated CTA A and CTA B outcomes, then calculate the cumulative average of that difference vector.</p>
-<div id="ae23cc8e" class="cell" data-execution_count="3">
+<div id="ed9625e0" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -310,7 +310,7 @@ window.Quarto = {
 <p>Once I have an estimate of the treatment effect, the next question is how precise that estimate is. A point estimate alone does not tell us how much uncertainty remains, so it is useful to report a standard error and a confidence interval.</p>
 <p>One way to estimate the standard error is by using the bootstrap. The bootstrap is a resampling method that avoids relying entirely on a closed-form formula. The basic idea is to repeatedly resample from the observed data, with replacement, and recalculate the statistic of interest each time. The standard deviation of those resampled statistics provides an estimate of the standard error.</p>
 <p>I now generate 1,000 bootstrap resamples. In each resample, I draw 1,000 observations with replacement from group A and 1,000 observations with replacement from group B, compute the difference in means, and store the result.</p>
-<div id="59cefd68" class="cell" data-execution_count="4">
+<div id="6542906e" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
@@ -362,7 +362,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="the-central-limit-theorem">The Central Limit Theorem</h2>
 <p>The Central Limit Theorem says that regardless of the shape of the underlying population distribution, the sampling distribution of the sample mean becomes approximately Normal as the sample size grows. Since my estimator is the difference in two sample means, the same idea applies here as well.</p>
 <p>To demonstrate this, I simulate the sampling distribution of <span class="math inline">\(\hat\theta\)</span> for four different sample sizes: <span class="math inline">\(n \in \{25, 50, 100, 500\}\)</span>. For each sample size, I repeatedly draw observations from the two Bernoulli distributions, compute the difference in means, and repeat that process 1,000 times.</p>
-<div id="ab0dc5e8" class="cell" data-execution_count="6">
+<div id="198ee92d" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -390,7 +390,7 @@ z = \frac{\hat\theta - 0}{SE(\hat\theta)}
 \]</span></p>
 <p>The logic behind this is straightforward. First, the CLT tells us that <span class="math inline">\(\hat\theta\)</span> is approximately Normally distributed in large samples. Second, under the null hypothesis that distribution is centered at 0. Third, when a Normal random variable is divided by its standard deviation, the result follows a standard Normal distribution. That means under <span class="math inline">\(H_0\)</span>, the statistic <span class="math inline">\(z\)</span> is approximately distributed as <span class="math inline">\(N(0,1)\)</span>, which gives us a reference distribution for computing a p-value.</p>
 <p>This is sometimes called a t-test, but in this setting it is more accurate to think of it as a large-sample z-test. The classical exact t-test comes from Normally distributed data with an estimated variance. Here the data are Bernoulli rather than Normal, so there is no exact t-distribution result. Instead, we rely on the CLT and a Normal approximation. In large samples, the practical difference is very small, but the conceptual distinction is still worth understanding.</p>
-<div id="2717ccc2" class="cell" data-execution_count="7">
+<div id="6ec90d04" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
@@ -440,7 +440,7 @@ z = \frac{\hat\theta - 0}{SE(\hat\theta)}
 Y_i = \beta_0 + \beta_1 D_i + \varepsilon_i
 \]</span></p>
 <p>In this model, <span class="math inline">\(\beta_0\)</span> is the expected value of <span class="math inline">\(Y_i\)</span> when <span class="math inline">\(D_i = 0\)</span>, which is the mean of group B. The quantity <span class="math inline">\(\beta_0 + \beta_1\)</span> is the expected value of <span class="math inline">\(Y_i\)</span> when <span class="math inline">\(D_i = 1\)</span>, which is the mean of group A. Therefore, <span class="math inline">\(\beta_1\)</span> must be the difference in means, <span class="math inline">\(\pi_A - \pi_B = \theta\)</span>. That means the OLS estimate <span class="math inline">\(\hat\beta_1\)</span> is numerically identical to <span class="math inline">\(\hat\theta\)</span>.</p>
-<div id="e9e02fff" class="cell" data-execution_count="8">
+<div id="8c17c35d" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
@@ -480,7 +480,7 @@ Y_i = \beta_0 + \beta_1 D_i + \varepsilon_i
 </div>
 </div>
 </div>
-<div id="0e723347" class="cell" data-execution_count="9">
+<div id="5ee511f1" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
@@ -527,7 +527,7 @@ Y_i = \beta_0 + \beta_1 D_i + \varepsilon_i
 <p>Now suppose a manager is impatient and does not want to wait until the full sample has been collected. Instead, she checks the hypothesis test after every 100 visitors per group and stops the experiment early if any one of those tests is significant at the 5% level.</p>
 <p>This is a problem under classical frequentist inference. A single test at <span class="math inline">\(\alpha = 0.05\)</span> has a 5% chance of producing a false positive when the null is true. But when I repeatedly test the data as it accumulates, each peek creates another opportunity to reject the null by chance alone. The overall probability of at least one false rejection becomes much larger than 5%.</p>
 <p>To show this, I simulate a world in which the null hypothesis is true, so that <span class="math inline">\(\pi_A = \pi_B = 0.20\)</span>. In each simulated experiment, I generate 1,000 observations for each group and compute a p-value after every 100 observations per group. If any one of those p-values is below 0.05, I count that experiment as a false positive. I then repeat the entire process 10,000 times.</p>
-<div id="4fb7acd9" class="cell" data-execution_count="10">
+<div id="324c348d" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
